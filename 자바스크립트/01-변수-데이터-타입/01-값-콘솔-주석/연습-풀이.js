@@ -30,7 +30,7 @@ console.info("ℹ 터미널 콘솔의 기능을 다양하게 활용할 수 있�
 // --------------------------------------------------------------------------
 
 // 숫자 (정수)
-console.group("숫자 (정수)");
+console.groupCollapsed("숫자 (정수)");
 console.log(10);
 console.log(101);
 console.log(908);
