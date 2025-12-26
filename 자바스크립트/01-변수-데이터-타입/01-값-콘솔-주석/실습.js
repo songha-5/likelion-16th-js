@@ -52,6 +52,10 @@ console.log(`자바스크립트 프로그램 - 역따옴표`);
 console.log(false);
 console.log(true);
 
+/**
+ *특별한 주석
+ *  JSDoc 사용시 활용
+ */
 // -----------------------------
 // 주석 한 줄(single line comment)
 
