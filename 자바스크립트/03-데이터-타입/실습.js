@@ -66,9 +66,9 @@ console.log('Java' + 'Script') // JavaScript
 // --------------------------------------------------------------------------
 
 // true 값
-
+console.log(3 == '3')
 // false 값
-
+console.log(3 === '3')
 
 // --------------------------------------------------------------------------
 // 널 (Null)
@@ -79,12 +79,27 @@ console.log('Java' + 'Script') // JavaScript
 // * 선택된 인덱스
 // * 로그인 사용자
 
+let selectedIndex = null // 개발자가 의도를 가지고 값을 비운 경우
+console.log(selectedIndex)
+selectedIndex = 3 // 4번째 박스가 선택됨 (상태)
+console.log(selectedIndex) // 2번째 박스가 선택됨 ( 시간의 흐름에 따라 변경된 값 )
+
+// 로그인 시도 (HTML form)
+// 로그인 성공
+let logInUser = '김가가'
+console.log('로그인 사용자', logInUser)
+// 로그아웃
+logInUser = null
+console.log('로그인 사용자', logInUser)
 
 // --------------------------------------------------------------------------
 // 언디파인드 (Undefined)
 // --------------------------------------------------------------------------
 
 // 선언만 하고 값을 할당하지 않음
+// 초기화: 의도적으로 값을 할당하지 않음 (엔진이 기본적으로 값을 undefined로 설정)
+let memortyStick 
+console.log(memortyStick) // undefined
 
 // undefined vs null 비교
 // undefined → 값이 없음 (자동)
@@ -96,6 +111,17 @@ console.log('Java' + 'Script') // JavaScript
 // --------------------------------------------------------------------------
 
 // 심볼 생성 - 항상 고유한 값
+// 문자열일 경우, 같은 키(key) 값인 경우 동일한 값이다.
+const productAID = 'abc', productBID = 'abc'
+
+// 심볼인 경우, 값은 키 값을 사용해도 각각 고유한 값이다.
+const productAIDSymbol = Symbol('abc'), productBIDSymbol = Symbol('abc')
+// 고유한 값인가? ( 조건 productAID와 productBID가 값이 달라야 한다.)
+// 비교 연산자 (두 값을 비교 -> 불리언 값 평가)
+// 두 값이 같다 .ture 불리언 평가 (고유하지 않다)
+console.log('문자열을 사용할 때 고유하지 않다?',productAID == productBID) // true
+console.log('심볼을 사용할 때 고유하지 않다?',productAIDSymbol == productBIDSymbol) // false
+
 
 // 설명이 있는 심볼
 
