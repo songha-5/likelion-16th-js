@@ -136,9 +136,9 @@ console.log('심볼을 사용할 때 고유하지 않다?',productAIDSymbol == p
 // * +2 정확하지 않음
 
 // BigInt 생성 - 숫자 뒤에 n 붙이기
-
+const bigIntLiteral = 1000n
 // BigInt() 사용
-
+const bigInt = BigInt(1000) // 1000n
 // BigInt와 Number는 섞을 수 없음
 // ❌ 숫자와 빅인트를 더할 경우 에러!
 // ✅ 빅인트끼리 더할 경우 가능
