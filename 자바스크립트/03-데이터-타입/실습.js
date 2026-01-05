@@ -148,7 +148,7 @@ const bigInt = BigInt(1000) // 1000n
 // 참조 타입 (Reference Types)
 // --------------------------------------------------------------------------
 
-// 객체
+// 함수
 function coffeeMaker(coffeeBean, water, ice){
   // 절차
   console.log('1. 원두를 갈고 있습니다.')
@@ -161,7 +161,7 @@ function coffeeMaker(coffeeBean, water, ice){
   return coffe
 }
 coffeeMaker('케냐', '물 200ml', true)
-// 배열
+// 객체
 const coffeMenu = {
   name : '아메리카노',
   price: 4_500,
@@ -169,7 +169,13 @@ const coffeMenu = {
   isHot: true,
   ingredients: ['에스프레소', '물']
 }
-// 함수
+// 배열
+const shoopingList = ['우유', '계란', '빵', '사과', '치즈']
+const shoopingListB = [
+  '우유',
+  '계란',
+  '빵',
+]
 
 
 // --------------------------------------------------------------------------
