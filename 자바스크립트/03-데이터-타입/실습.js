@@ -162,7 +162,13 @@ function coffeeMaker(coffeeBean, water, ice){
 }
 coffeeMaker('케냐', '물 200ml', true)
 // 배열
-
+const coffeMenu = {
+  name : '아메리카노',
+  price: 4_500,
+  size: 'Large',
+  isHot: true,
+  ingredients: ['에스프레소', '물']
+}
 // 함수
 
 
