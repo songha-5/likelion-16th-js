@@ -20,7 +20,8 @@ const countNumberA = 1
 // - 숫자2(상수)
 const countNumberB = 2
 // - 결과(변수)
-console.log(countNumberA + countNumberB)
+const result = countNumberA + countNumberB
+console.log(result)
 
 // --------------------------------------------------------------------------
 // 연습: 다음 쇼핑 정보를 변수로 관리하세요.
