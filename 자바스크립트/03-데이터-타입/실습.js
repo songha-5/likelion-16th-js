@@ -149,7 +149,18 @@ const bigInt = BigInt(1000) // 1000n
 // --------------------------------------------------------------------------
 
 // 객체
+function coffeeMaker(coffeeBean, water, ice){
+  // 절차
+  console.log('1. 원두를 갈고 있습니다.')
+  console.log('2. 물끓이기')
+  console.log('3. 커피 추출')
+  console.log('4. 커피 제조')
+  console.log('5. 커피 완성')
 
+  let coffe = `맛있는 ${coffeeBean} 커피`
+  return coffe
+}
+coffeeMaker('케냐', '물 200ml', true)
 // 배열
 
 // 함수
