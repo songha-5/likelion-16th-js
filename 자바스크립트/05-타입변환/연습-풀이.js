@@ -1,146 +1,148 @@
-// --------------------------------------------------------------------------
-// 연습 문제: 도서관 대출 시스템
-// --------------------------------------------------------------------------
-// 도서관에서 책을 대출하고 반납하는 시스템을 만들어보세요.
 
-console.group('[도서관 대출 시스템]')
 
-const TOTAL_BOOKS = 145        // 도서관 전체 보유 도서
-const BORROWED_TODAY = '12권'  // 오늘 대출된 책
-const RETURNED_TODAY = '8권'   // 오늘 반납된 책
-
-// BORROWED_TODAY를 숫자로 변환하세요.
-let borrowed_today = parseInt(BORROWED_TODAY)
-
-// RETURNED_TODAY를 숫자로 변환하세요.
-let returned_today = parseInt(RETURNED_TODAY)
-
-// 현재 대출 가능한 책의 수를 계산하세요.
-let loan_today = TOTAL_BOOKS - borrowed_today + returned_today
-
-// 대출 가능한 책이 100권 이상인지 확인하세요.
-let more_than_100_books = loan_today >= 100
-
-// 결과를 출력하세요.
-console.log('오늘 대출된 책 =', borrowed_today + '권')
-console.log('오늘 반납됩 책 =', returned_today + '권')
-console.log('현재 대출 가능한 책의 수 = ', loan_today + '권')
-console.log('대출 가능한 책이 100권 이상 =', more_than_100_books)
-
-console.groupEnd('[도서관 대출 시스템]')
+const BOOK_PAGE = '256쪽'     // 책 페이지 수
+const SHELF_NUMBER = '12'    // 서가 번호
+const BOOK_COUNT = 145       // 보유 도서 수
+const BOOK_PRICE = '18500원' // 책 가격
+const BOOK_RATING = '4.5점'  // 도서 평점
+const LOAN_PERIOD = '14'    // 대출 기간
 
 
 // --------------------------------------------------------------------------
-// 연습 문제: 온라인 서점 할인 계산
+// 연습 문제: 문자 → 숫자 변환
 // --------------------------------------------------------------------------
-// 온라인 서점에서 책을 구매할 때 할인을 적용하는 프로그램을 만들어보세요.
 
-console.group('[온라인 서점 할인 계산]')
 
-const BOOK_PRICE = '18500원'   // 책 정가
-let cart_count = 0            // 장바구니 수량
+// parseInt()를 사용해서 BOOK_PAGE를 숫자로 변환하고, 변환된 값과 값의 타입을 확인합니다.
+let book_page = parseInt(BOOK_PAGE)
+console.log('book_page =', book_page, typeof book_page)
 
-// BOOK_PRICE를 숫자로 변환하세요.
-let book_price = parseInt(BOOK_PRICE)
 
-// 장바구니에 책을 3권 추가하세요.
-cart_count += 3
+// Number()를 사용해서 SHELF_NUMBER를 숫자로 변환하고, 변환된 값과 값의 타입을 확인합니다.
+let shelf_number = Number(SHELF_NUMBER)
+console.log('shelf_number =', shelf_number, typeof shelf_number)
 
-// 총 금액을 계산하세요. (책 가격 × 수량)
-let total_price = book_price * cart_count
-let original_price = total_price
-
-// 10% 할인된 금액을 계산하세요.
-let discounted_price = total_price * 0.1
-
-// 최종 결제 금액을 계산하세요.
-total_price -= discounted_price
-
-// 결과를 출력하세요.
-console.log('장바구니 수량 =', cart_count + '권')
-console.log('할인 전 금액 =', original_price + '원')
-console.log('할인된 금액 =', discounted_price + '원')
-console.log('최종 결제 금액 =', total_price + '원')
-
-console.groupEnd('[온라인 서점 할인 계산]')
+// + 연산자를 사용해서 LOAN_PERIOD를 숫자로 변환하고, 변환된 값과 값의 타입을 확인합니다.
+const loan_period = +LOAN_PERIOD
+console.log('loan_period =', loan_period, typeof loan_period)
 
 
 // --------------------------------------------------------------------------
-// 연습 문제: 도서 페이지 진행률 계산
+// 연습 문제: 숫자 → 문자 변환
 // --------------------------------------------------------------------------
-// 책을 읽는 진행률을 계산하는 프로그램을 만들어보세요.
 
-console.group('[도서 페이지 진행률 계산]')
+let book_count
 
-const BOOK_PAGE = '256쪽'  // 전체 페이지
-const SHELF_NUMBER = '12'  // 서가 번호
-let current_page = 0        // 현재 읽은 페이지
+// toString()을 사용해서 BOOK_COUNT를 문자로 변환하고, 변환된 값과 값의 타입을 확인합니다.
+book_count = BOOK_COUNT.toString()
 
-// BOOK_PAGE를 숫자로 변환하세요.
-let book_pages = parseInt(BOOK_PAGE)
+// String()을 사용해서 BOOK_COUNT를 문자로 변환하고, 변환된 값과 값의 타입을 확인합니다.
+book_count = String(BOOK_COUNT)
 
-// 오늘 64페이지를 읽었습니다. current_page에 더하세요.
-current_page += 64
+// 빈 문자('')를 더해서 BOOK_COUNT를 문자로 변환하고, 변환된 값과 값의 타입을 확인합니다.
+book_count = BOOK_COUNT + ''
 
-// 내일 48페이지를 더 읽을 예정입니다. current_page에 더하세요.
-current_page += 48
+console.log('book_count =', book_count, typeof book_count)
 
-// 읽은 페이지가 전체의 절반 이상인지 확인하세요.
-let more_than_half_read = current_page >= book_pages / 2
-
-// 남은 페이지를 계산하세요.
-let remaining_pages = book_pages - current_page
-
-// 진행률을 계산하세요. (읽은 페이지 / 전체 페이지 * 100)
-let read_progress = remaining_pages / book_pages * 100
-
-// 하루에 32페이지씩 읽는다면, 남은 책을 다 읽는데 며칠이 걸릴까요?
-let read_it_all_days = Math.ceil(remaining_pages / 32)
-
-
-// 결과를 출력하세요.
-console.log('전체 페이지 =', book_pages + '쪽')
-console.log('현재 페이지 =', current_page + '쪽')
-console.log('남은 페이지 =', remaining_pages + '쪽')
-console.log('진행률 =', read_progress + '%')
-console.log('절반 이상 읽음 =', more_than_half_read)
-console.log('완독까지 남은 일수 =', read_it_all_days + '일')
-
-console.groupEnd('[도서 페이지 진행률 계산]')
 
 // --------------------------------------------------------------------------
-// 연습 문제: 도서관 회원 포인트 시스템
+// 연습 문제: 문자 → 실수 변환
 // --------------------------------------------------------------------------
-// 도서관에서 책을 대출하면 포인트를 적립하는 시스템입니다.
 
-console.group('[도서관 회원 포인트 시스템]')
 
-const MEMBER_ID = '2024' // 회원 번호
-let points = 0           // 현재 포인트
+const PRICE = '81.56만원'
+const RATING = '4.8점'
 
-// 책 1권 대출 시, 100포인트를 적립합니다. (3권 대출)
-points += 100
-points += 100
-points += 100
+// parseFloat()를 사용해서 PRICE를 실수로 변환하고, 변환된 값과 값의 타입을 확인합니다.
 
-// 포인트가 500점 이상이면 '우수 회원'입니다.
-let is_excellent_member = points >= 500
 
-// 회원 번호가 숫자 2024와 일치하는지 확인하세요.
-console.log(MEMBER_ID === 2024)
+// parseFloat()를 사용해서 RATING을 실수로 변환하고, 변환된 값과 값의 타입을 확인합니다.
 
-// 포인트로 책 1권을 교환하려면 250포인트가 필요합니다.
-// 현재 포인트로 몇 권을 교환할 수 있나요?
-let exchange_books = Math.floor(points / 250)
 
-// 교환 후 남은 포인트는 얼마인가요?
-let remaining_points = points - 250 * exchange_books
+// --------------------------------------------------------------------------
+// 연습 문제: 숫자 → 불리언 변환
+// --------------------------------------------------------------------------
 
-// 결과를 출력하세요.
-console.log('회원 번호:', MEMBER_ID)
-console.log('현재 포인트:', points + '점')
-console.log('우수 회원:', is_excellent_member)
-console.log('교환 가능 권수:', exchange_books + '권')
-console.log('교환 후 남은 포인트:', remaining_points + '점')
 
-console.groupEnd('[도서관 회원 포인트 시스템]')
+const STOCK = 10
+const SOLD_OUT = 0
+
+// Boolean()을 사용해서 STOCK을 불리언으로 변환하고, 변환된 값과 값의 타입을 확인합니다.
+let stock = Boolean(STOCK)
+console.log('stock =', stock, typeof stock)
+
+// Boolean()을 사용해서 SOLD_OUT을 불리언으로 변환하고, 변환된 값과 값의 타입을 확인합니다.
+let sold_out = Boolean(SOLD_OUT)
+console.log('sold_out =', sold_out, typeof sold_out)
+
+// --------------------------------------------------------------------------
+// 연습 문제: Falsy 값 → 불리언 변환
+// --------------------------------------------------------------------------
+
+
+// 다음 값들을 Boolean()으로 변환하고 결과를 예측하세요.
+
+// Boolean(0)           // 예측: false
+// Boolean('')          // 예측: false
+// Boolean(false)       // 예측: false
+// Boolean(null)        // 예측: false
+// Boolean(undefined)    // 예측: false
+// Boolean(NaN)         // 예측: false
+
+
+// 위 코드의 실제 결과를 확인하세요.
+console.log(
+  Boolean(0),
+  Boolean('') ,
+  Boolean(false),
+  Boolean(null),
+  Boolean(undefined),
+  Boolean(NaN)
+)
+
+// --------------------------------------------------------------------------
+// 연습 문제: 숫자가 아님(NaN)
+// --------------------------------------------------------------------------
+
+
+// Math.sqrt(-1)을 사용해서 NaN을 만드세요.
+console.log(Math.sqrt(-1))
+
+// 1 + NaN을 사용해서 NaN을 만드세요.
+console.log(1 + NaN)
+
+// undefined + undefined를 사용해서 NaN을 만드세요.
+console.log(undefined + undefined)
+
+// '안녕' / 2를 사용해서 NaN을 만드세요.
+console.log('안녕' / 2)
+
+
+// --------------------------------------------------------------------------
+// 연습 문제: NaN 확인
+// --------------------------------------------------------------------------
+
+
+const INVALID_NUMBER = '안녕' * 3
+
+// typeof 연산자로 INVALID_NUMBER의 타입을 확인하세요.
+// (힌트: NaN도 'number' 타입입니다!)
+console.log(typeof INVALID_NUMBER)
+
+// isNaN()을 사용해서 INVALID_NUMBER가 NaN인지 확인하세요.
+console.log(isNaN(INVALID_NUMBER))
+
+// Number.isNaN()을 사용해서 INVALID_NUMBER가 NaN인지 확인하세요.
+console.log(Number.isNaN(INVALID_NUMBER))
+
+
+// --------------------------------------------------------------------------
+// 연습 문제: 상품 가격 변경
+// --------------------------------------------------------------------------
+
+// 상품 가격(문자열)을 숫자로 변환하고 10% 할인된 가격을 계산한 후, '원'을 붙여 출력하세요.
+
+const PRODUCT_PRICE = '50000원'
+let price = parseInt(PRODUCT_PRICE)
+price = price - price * 0.1
+console.log(price + '원')
