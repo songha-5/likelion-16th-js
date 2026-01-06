@@ -61,8 +61,14 @@ console.log(amount)
 // --------------------------------------------------------------------------
 
 // 문자열 + 문자열
+const lastName = 'song'
+const firstName = 'gaga'
+console.log(lastName + firstName)
 
 // 문자열 + 숫자 (숫자가 문자열로 변환됨)
+const greeting = 'hi'
+const favoriteNumber = 7
+const result = greeting + favoriteNumber  // ['hi' + '7'] 문자열로 변환해서 합쳐버림
 
 // 숫자 + 문자열
 
@@ -91,13 +97,13 @@ console.log(amount)
 let count = 0
 
 // 후 증가 (Post-increment)
-
+count ++
 // 전 증가 (Pre-increment)
-
+++ count
 // 후 감소 (Post-decrement)
-
+count --
 // 전 감소 (Pre-decrement)
-
+-- count
 
 // --------------------------------------------------------------------------
 // 할당 연산자
@@ -135,15 +141,23 @@ console.log(x)
 // [할당 연산] 점수 누적
 // --------------------------------------------------------------------------
 let totalScore = 0
-// console.log(totalScore)
+
+totalScore += 92
+totalScore += 100
+totalScore += 81
+console.log(totalScore)
 
 // [할당 연산] 재고 감소
 let stock = 100
-// console.log(stock)
+stock -= 5
+stock -= 15
+stock -= 34
+console.log(stock)
 
 // [할당 연산] 가격 인상
 let price = 10000
-// console.log(price)
+price *= (1 + 0.05) // 5% 인상
+console.log(price)
 
 
 // --------------------------------------------------------------------------
