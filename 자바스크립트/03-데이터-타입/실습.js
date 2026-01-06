@@ -182,16 +182,30 @@ const shoopingListB = [
 // typeof 연산자
 // --------------------------------------------------------------------------
 
-// 기본 타입
+// 기본 타입 (Primitive Types)
+console.group('기본 타입 ---------------------')
 // * null
+console.log(typeof null)
 // * undefined
+console.log(typeof undefined)
 // * String
+console.log(typeof '데이터 타입을 문자 값으로 알려줌')
 // * Number
+console.log(typeof 20260105)
 // * Boolean
+console.log(typeof false)
 // * BigInt
+console.log(typeof 900n)
 // * Symbol
+console.log(typeof Symbol('y9'))
+console.groupEnd()
 
 // 참조 타입
+console.group('객체 타입 ----------------------')
 // * Object
+console.log(typeof{})
 // * Array
+console.log(typeof[])
 // * Function
+console.log(typeof function(){})
+console.groupEnd()
