@@ -57,7 +57,16 @@
 // --------------------------------------------------------------------------
 
 // 두 수의 곱(multiply)을 계산해 결과를 반환하는 함수 작성
+function sum(num1, num2) {
+  return num1 + num2
+}
 
+function multiply(num1, num2) {
+  return num1 * num2
+}
+
+const result = sum(multiply(21, 11),9 + 3)
+console.log(result)
 // 함수 호출 안에 다른 함수 호출(표현식)이 있는 경우
 // 설명:
 // 1. multiply(3, 5)가 먼저 평가(실행)되어 10이 됨
@@ -82,3 +91,23 @@
 // 1. 매개변수(Parameter)는 '빈 상자(변수)', 인자(Argument)는 '실제 내용물(값)'입니다.
 // 2. `return`을 만나면 함수는 그 즉시 종료되고 값을 반환합니다.
 // 3. 함수에 수식이나 다른 함수를 넣으면, 먼저 계산(평가)된 뒤에 결과값이 전달됩니다.
+
+//
+function logger(logMessage) {
+  console.log(logMessage)
+}
+logger('HI!')
+
+const pxToRem = function(pxValue) {
+  return parseInt(pxValue, 10) / 16 + 'rem'
+}
+console.log(pxToRem(24))
+console.log(pxToRem('24px'))
+
+const remToPx = function(remValue) {
+  return parseFloat(remValue, 10) * 16 + 'px'
+}
+console.log(remToPx(1.2))
+console.log(remToPx('1.1'))
+
+
