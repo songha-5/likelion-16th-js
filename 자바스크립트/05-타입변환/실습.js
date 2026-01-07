@@ -99,6 +99,14 @@ console.log(tempHexCode)
 // 출력 결과 (예시): '#ff8000'
 console.log(hexCode)
 
+
+// 색상코드 16진수 -> 색상값 10진수
+const redHex = 'ff', greenHex = '80', blueHex = '00'
+console.log(parseInt(redHex, 16))
+console.log(parseInt(greenHex, 16))
+console.log(parseInt(blueHex, 16))
+
+
 // --------------------------------------------------------------------------
 // 숫자 → 불리언 변환
 // --------------------------------------------------------------------------
@@ -106,14 +114,8 @@ console.log(hexCode)
 // --------------------------------------------------------------------------
 
 // 출력 결과: 0 → false
-
-// 출력 결과: 1 → true
-
-// 출력 결과: -1 → true
-
-// 출력 결과: 0.1 → true
-
-// 출력 결과: -0.1 → true
+console.log(!!0, Boolean(0)) //false
+console.log(!!1, Boolean(1)) //true
 
 
 // --------------------------------------------------------------------------
@@ -123,22 +125,29 @@ console.log(hexCode)
 // --------------------------------------------------------------------------
 
 // 출력 결과: '' → false
-
-// 출력 결과: ' ' → true
-
-// 출력 결과: '0' → true
+console.log(!!'', Boolean('')) //false
+console.log(!!' ', Boolean(' ')) //true
 
 
 // --------------------------------------------------------------------------
 // 숫자가 아님(NaN): 숫자 연산 실패 시, 생성
 // --------------------------------------------------------------------------
 // * Math.sqrt(-1)
+console.log(Math.sqrt(-1))
 // * 숫자 + NaN
+console.log(1+NaN)
 // * undefined + undefined
+console.log(undefined + undefined)
 // * 문자를 숫자로 나누기
+console.log('문자' / 2)
 // * Number(str), parseInt(str), parseFloat(str)
+console.log(Number('문자'))
+console.log(parseInt('문자'))
+console.log(parseFloat('문자'))
 // * 0 / 0
+console.log(0/0)
 // * Infinity - Infinity
+console.log(Infinity - Infinity)
 // --------------------------------------------------------------------------
 
 // 출력 결과: Math.sqrt(-1) → NaN
