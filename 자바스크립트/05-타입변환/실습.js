@@ -177,7 +177,13 @@ console.log(Infinity - Infinity)
 // * Number.isNaN(): 진짜 NaN만 판단 (정확) ✅
 // --------------------------------------------------------------------------
 
+// 비교 연산자로 NaN을 구분하는 것은 불가능!
+const thisIsNaN = Math.sqrt(-1)
+console.log(thisIsNaN == NaN)
+console.log(thisIsNaN === NaN)
+
 // 출력 결과: typeof NaN → 'number' (⚠️ NaN이지만, number 타입으로 인식)
+console.log(typeof thisIsNaN)
 
 // 출력 결과: isNaN(1) → false (✅ NaN 아님)
 
