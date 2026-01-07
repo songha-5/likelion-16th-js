@@ -14,85 +14,80 @@ const PRODUCT_3_QUANTITY = '1'
 
 // 첫 번째 상품의 소계를 계산하세요.
 // 출력 결과: 70000 (number)
-let product_1_subtotal = PRODUCT_1_PRICE * PRODUCT_1_QUANTITY
-console.log(product_1_subtotal)
+let product_1_subtotal = Number(PRODUCT_1_PRICE) * Number(PRODUCT_1_QUANTITY)
+console.log('product_1_subtotal =', product_1_subtotal, typeof product_1_subtotal)
 
 // 두 번째 상품의 소계를 계산하세요.
 // 출력 결과: 144000 (number)
-let product_2_subtotal = PRODUCT_2_PRICE * PRODUCT_2_QUANTITY
-console.log(product_2_subtotal)
+let product_2_subtotal = Number(PRODUCT_2_PRICE) * PRODUCT_2_QUANTITY
+console.log('product_2_subtotal =', product_2_subtotal, typeof product_2_subtotal)
 
 // 세 번째 상품의 소계를 계산하세요.
 // 출력 결과: 25000 (number)
-let product_3_subtotal = PRODUCT_3_PRICE * PRODUCT_3_QUANTITY
-console.log(product_3_subtotal)
+let product_3_subtotal = PRODUCT_3_PRICE * Number(PRODUCT_3_QUANTITY)
+console.log('product_3_subtotal =', product_3_subtotal, typeof product_3_subtotal)
 
 // 전체 상품의 합계를 계산하세요.
 // 출력 결과: 239000 (number)
 let cart_total = product_1_subtotal + product_2_subtotal + product_3_subtotal
-console.log(cart_total)
+console.log('cart_total =', cart_total, typeof cart_total)
 
 // 배송비를 추가하세요. (3000원, 문자열로 입력됨)
 const SHIPPING_FEE = '3000'
 // 출력 결과: 242000 (number)
-let total_with_shipping = Number(SHIPPING_FEE) + cart_total
-console.log(total_with_shipping)
+let total_with_shipping = cart_total + Number(SHIPPING_FEE)
+console.log('total_with_shipping =', total_with_shipping, typeof total_with_shipping)
 
 // 회원 할인율을 적용하세요. (10% 할인, 문자열로 입력됨)
 const MEMBER_DISCOUNT_RATE = '0.1'
 // 출력 결과: 24200 (number)
 let discount_amount = total_with_shipping * Number(MEMBER_DISCOUNT_RATE)
-console.log(discount_amount)
+console.log('discount_amount =', discount_amount, typeof discount_amount)
 
 // 최종 결제 금액을 계산하세요.
 // 출력 결과: 217800 (number)
 let final_payment = total_with_shipping - discount_amount
-console.log(final_payment)
+console.log('final_payment =', final_payment, typeof final_payment)
 
 // 포인트 적립액을 계산하세요. (최종 금액의 1%, 문자열로 입력됨)
 const POINT_RATE = '0.01'
 // 출력 결과: 2178 (number)
 let earned_points = final_payment * Number(POINT_RATE)
-console.log(earned_points)
+console.log('earned_points =', earned_points, typeof earned_points)
 
 // 다음 구매 시 사용 가능한 쿠폰 금액 (문자열)
 const COUPON_AMOUNT = '5000'
 // 쿠폰을 사용했을 때의 금액을 계산하세요.
 // 출력 결과: 212800 (number)
-let payment_with_coupon = final_payment - COUPON_AMOUNT
-console.log(payment_with_coupon)
+let payment_with_coupon = final_payment - Number(COUPON_AMOUNT)
+console.log('payment_with_coupon =', payment_with_coupon, typeof payment_with_coupon)
 
 // 결제 정보를 문자열로 출력하세요.
 // 출력 결과: '상품 합계: 239000원, 배송비: 3000원, 할인: 24200원, 최종 결제: 217800원'
-let payment_result = '상품 합계:' + final_payment + '원, '
-let payment_delivery = '배송비 :' + SHIPPING_FEE + '원, '
-let payment_discount = '할인 :' + discount_amount + '원, '
-let payment_finalresult = '최종 결제 :' + final_payment + '원'
-let payment_summary = payment_result + payment_delivery + payment_discount + payment_finalresult
-console.log(payment_summary) 
+let payment_summary = `상품 합계: ${cart_total}원, 배송비: ${SHIPPING_FEE}원, 할인: ${discount_amount}원, 최종 결제: ${final_payment}원`
+console.log(payment_summary)
 
 // 잘못된 계산 예시 (주의!)
 // PRODUCT_1_PRICE, PRODUCT_1_QUANTITY 덧셈: 문자열 연결이 일어나는 경우 
 // 출력 결과: '350002' (string) - 잘못된 계산!
 let wrong_calculation_1 = PRODUCT_1_PRICE + PRODUCT_1_QUANTITY
-console.log(wrong_calculation_1)
+console.log('wrong_calculation_1 =', wrong_calculation_1, typeof wrong_calculation_1)
 
 // 올바른 계산 방법
 // 출력 결과: 37000 (number)
-let correct_calculation_1  = Number(PRODUCT_1_PRICE) + Number(PRODUCT_1_QUANTITY)
-console.log(correct_calculation_1)
-
+let correct_calculation_1 = Number(PRODUCT_1_PRICE) + Number(PRODUCT_1_QUANTITY)
+console.log('correct_calculation_1 =', correct_calculation_1, typeof correct_calculation_1)
 
 // NaN이 발생하는 경우
 const INVALID_PRICE = 'abc'
 // 출력 결과: NaN (number)
-let invalid_calculation = Number(INVALID_PRICE)
-console.log(invalid_calculation)
+let invalid_calculation = Number(INVALID_PRICE) * 10
+console.log('invalid_calculation =', invalid_calculation, typeof invalid_calculation)
 
 // NaN 체크하기
 // 출력 결과: true
-let is_invalid
-console.log(isNaN(is_invalid))
+let is_invalid = isNaN(invalid_calculation)
+console.log('is_invalid =', is_invalid, typeof is_invalid)
 
 
 // --------------------------------------------------------------------------
@@ -111,73 +106,68 @@ const USER_COUPON = undefined   // undefined
 // 나이를 숫자로 변환하세요.
 // 출력 결과: 28 (number)
 let age_number = Number(USER_AGE)
-console.log(age_number)
+console.log('age_number =', age_number, typeof age_number)
 
 // 내년 나이를 계산하세요.
 // 출력 결과: 29 (number)
 let next_year_age = age_number + 1
-console.log(next_year_age)
+console.log('next_year_age =', next_year_age, typeof next_year_age)
 
 // 키를 숫자로 변환하세요.
 // 출력 결과: 175.5 (number)
-let height_number = Number(USER_HEIGHT)
-console.log(height_number)
+let height_number = parseFloat(USER_HEIGHT)
+console.log('height_number =', height_number, typeof height_number)
 
 // 몸무게를 숫자로 변환하세요.
 // 출력 결과: 70 (number)
 let weight_number = Number(USER_WEIGHT)
-console.log(weight_number)
+console.log('weight_number =', weight_number, typeof weight_number)
 
 // BMI를 계산하세요. (몸무게 / (키/100)²)
 // 출력 결과: 약 22.73 (number)
-let bmi = (weight_number / (height_number / 100) ** 2)
-console.log(bmi)
+let bmi = weight_number / ((height_number / 100) ** 2)
+console.log('bmi =', bmi, typeof bmi)
 
 // 회원 여부를 불리언으로 변환하세요.
 // 힌트! 부정(!) 연산자 활용
 // 출력 결과: true (boolean)
 let is_member_boolean = !!IS_MEMBER
-console.log(is_member_boolean)
+console.log('is_member_boolean =', is_member_boolean, typeof is_member_boolean)
 
 // 로그인 횟수를 숫자로 변환하세요.
 // 출력 결과: 0 (number)
 let login_count_number = Number(LOGIN_COUNT)
-console.log(login_count_number)
+console.log('login_count_number =', login_count_number, typeof login_count_number)
 
 // 로그인 횟수가 0인지 확인하세요.
 // 출력 결과: true (boolean)
 let is_first_login = login_count_number === 0
-console.log(is_first_login)
+console.log('is_first_login =', is_first_login, typeof is_first_login)
 
 // 포인트를 숫자로 변환하세요. (null → 0)
 // 출력 결과: 0 (number)
 let point_number = Number(USER_POINT)
-console.log(point_number)
+console.log('point_number =', point_number, typeof point_number)
 
 // 쿠폰을 숫자로 변환하세요. (undefined → NaN)
 // 출력 결과: NaN (number)
 let coupon_number = Number(USER_COUPON)
-console.log(coupon_number)
+console.log('coupon_number =', coupon_number, typeof coupon_number)
 
 // 쿠폰이 유효한지 확인하세요.
 // 출력 결과: false (쿠폰이 NaN이므로)
 let is_coupon_valid = !isNaN(coupon_number)
-console.log(is_coupon_valid)
+console.log('is_coupon_valid =', is_coupon_valid, typeof is_coupon_valid)
 
 // 나이가 성인(20세 이상)인지 확인하세요.
 // 출력 결과: true (boolean)
-let is_adult = USER_AGE >= 20
-console.log(is_adult)
+let is_adult = age_number >= 20
+console.log('is_adult =', is_adult, typeof is_adult)
 
 // 사용자 정보 요약 문자열 만들기
 // 출력 결과: '나이: 28세, 키: 175.5cm, 몸무게: 70kg, 회원: true'
-let user_age = '나이: ' + Number(USER_AGE) + '세 ,'
-let user_height = '키: ' + parseFloat(USER_HEIGHT) + 'cm ,'
-let user_weight = '몸무게: ' + Number(USER_HEIGHT) + 'kg ,'
-let user_member = '회원: ' + IS_MEMBER
-let user_info_summary = user_age + user_height +user_weight +user_member
+let user_info_summary = `나이: ${age_number}세, 키: ${height_number}cm, 몸무게: ${weight_number}kg, 회원: ${is_member_boolean}`
 console.log(user_info_summary)
-
 
 // Falsy 값 테스트
 const TEST_VALUE_1 = '0'  // 문자열 '0'
@@ -187,22 +177,19 @@ const TEST_VALUE_4 = null
 const TEST_VALUE_5 = undefined
 
 // Boolean으로 변환했을 때 결과를 예측하세요.
-let test_1_boolean = TEST_VALUE_1
-console.log(!!test_1_boolean)
-// 출력 결과: true
+let test_1_boolean = Boolean(TEST_VALUE_1)
+// 출력 결과: true (비어있지 않은 문자열은 true)
 
-let test_2_boolean
-console.log(!!test_2_boolean)
-// 출력 결과: false
+let test_2_boolean = Boolean(TEST_VALUE_2)
+// 출력 결과: false (숫자 0은 false)
 
-let test_3_boolean
-console.log(!!test_3_boolean)
-// 출력 결과: false
+let test_3_boolean = Boolean(TEST_VALUE_3)
+// 출력 결과: false (빈 문자열은 false)
 
-let test_4_boolean
-console.log(!!test_4_boolean)
-// 출력 결과: false
+let test_4_boolean = Boolean(TEST_VALUE_4)
+// 출력 결과: false (null은 false)
 
-let test_5_boolean
-console.log(!!test_5_boolean)
-// 출력 결과: false
+let test_5_boolean = Boolean(TEST_VALUE_5)
+// 출력 결과: false (undefined는 false)
+
+console.log(test_1_boolean, test_2_boolean, test_3_boolean, test_4_boolean, test_5_boolean)
