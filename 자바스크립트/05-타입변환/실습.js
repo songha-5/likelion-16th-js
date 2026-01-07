@@ -40,6 +40,7 @@ console.log(Number(1234))
 console.log(Number('1234년'))
 console.log(Number('1234.1234'))
 
+// 단항연산자
 console.log(+1 + +1)
 
 // 출력 결과: '2026' → 2026
@@ -52,6 +53,7 @@ console.log(+1 + +1)
 // --------------------------------------------------------------------------
 
 // 출력 결과: '3.141592' → 3.141592
+console.log(parseFloat(PI))
 
 // 출력 결과: '9.24점' → 9.24
 
@@ -65,13 +67,37 @@ console.log(+1 + +1)
 // --------------------------------------------------------------------------
 
 // 출력 결과: 2027 → '2027'
-
+console.log(String(NEXT_YEAR))
+console.log(NEXT_YEAR+'')
+console.log(NEXT_YEAR.toString())
 // 출력 결과: 2027 → '2027년'
 
 // 출력 결과: 255 → '11111111' (2진수)
 
 // 출력 결과: 255 → 'ff' (16진수)
+// 색상 값(일상, 10진수) → 색상 코드(컴퓨터, 16진수) 변환
+const red = 255, green = 128, blue = 0
 
+let hexCode = '#'
+const redHexValue = red.toString(16)
+console.log(redHexValue)
+const greenHexValue = green.toString(16)
+console.log(greenHexValue)
+const blueHexValue = blue.toString(16).padStart(2,'0')
+console.log(blueHexValue)
+
+// hexCode = hexCode + redHexValue
+// 복합 할당 연산자 (+=)
+hexCode += redHexValue
+hexCode += greenHexValue
+hexCode += blueHexValue
+
+// 비추천 코드
+const tempHexCode = '#' + red.toString(16).padStart(2, '0') + green.toString(16).padStart(2, '0') + blue.toString(16).padStart(2, '0')
+console.log(tempHexCode)
+
+// 출력 결과 (예시): '#ff8000'
+console.log(hexCode)
 
 // --------------------------------------------------------------------------
 // 숫자 → 불리언 변환
