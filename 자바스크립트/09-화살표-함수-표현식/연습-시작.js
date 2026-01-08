@@ -7,7 +7,8 @@
 // 조건:
 // 1. 매개변수가 2개이므로 소괄호()를 꼭 작성
 // 2. 중괄호{}와 return을 사용하는 "명시적 반환"
-
+const naver = (domain, path) => `https://${domain}/${path}`
+console.log(naver('naver.com', 'news'))
 // [기존 코드]
 // const makeUrl = function(domain, path) {
 //   return 'https://' + domain + '/' + path
@@ -25,9 +26,10 @@ let makeUrl
 // 조건:
 // 1. 매개변수 소괄호() 생략 (매개변수가 1개)
 // 2. 중괄호{}와 return 생략 (코드가 한 줄)
-
 // [작성 공간]
-let calculateVat
+const calculateVat = price => parseInt(price) * 0.1
+console.log(calculateVat(13_000))
+
 
 
 // --------------------------------------------------------------------------
@@ -41,4 +43,5 @@ let calculateVat
 // 2. 객체를 반환할 때 소괄호()로 감싸는 것을 잊지 마세요.
 
 // [작성 공간]
-let createButtonProps
+let createButtonProps = (label, color) => ({ label: label, color: color})
+console.log(createButtonProps('fillButton', 'red'))

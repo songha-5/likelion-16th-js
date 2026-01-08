@@ -176,3 +176,15 @@ console.log(createHouse('성수동 자가','자가', 25000))
 // 2. 매개변수가 1개면 소괄호 생략 가능, 0개거나 2개 이상이면 필수입니다.
 // 3. 중괄호 {}를 생략하면 return 없이도 값이 자동으로 반환(암묵적 반환)됩니다.
 // 4. 객체를 바로 반환할 때는 소괄호 ()로 감싸주어야 합니다.
+
+const ten  = _ => 10
+console.log(ten())
+
+const logger = massage => `${massage}화살표 함수는 유연해요`
+console.log(logger('오! '))
+
+const pxToRem2 = px => parseInt(px) / 16 + 'px'
+console.log(pxToRem2('12px'))
+
+const percentage = (x, y) => x / y * 100 + '%'
+console.log(percentage(3, 6))
