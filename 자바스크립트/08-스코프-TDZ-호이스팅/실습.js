@@ -50,12 +50,13 @@ console.log(myHouse())
 // 함수 outer 호출
 const outer = function() {
   const livingRoom = '거실의 소파'
+  let myRoom = '';
 
   function inner () {
     const myRoom = '내 방의 침대'
   }
-  
   inner()
+  console.log(myRoom)
 }
 
 
@@ -119,3 +120,74 @@ const outer = function() {
 // 1. 안쪽 스코프에서는 바깥쪽을 볼 수 있지만, 바깥쪽에서는 안쪽을 볼 수 없습니다.
 // 2. 호이스팅은 선언을 최상단으로 끌어올린 것처럼 작동하는 현상입니다. (함수 선언문은 즉시 사용 가능)
 // 3. let과 const는 TDZ(일시적 사각지대) 덕분에 선언 전에 사용하는 실수를 막아줍니다.
+
+// 스코프 상자 열어보기
+//다음 코드를 실행했을 때, 콘솔에 출력될 순서와 값을 예측해보세요.
+let name = '바깥 세상(Global)'
+
+function myRoom() {
+  let name = '내 방(Local)'
+  console.log('1번:', name) 
+}
+
+console.log('2번:', name)
+myRoom()
+// 1번 > 2번
+
+/* 
+ **TDZ 탐정 놀이**
+
+다음 코드에는 치명적인 에러가 숨어 있습니다. 
+코드가 실행되다가 몇 번째 번호에서 멈출지 찾고, 그 이유를 설명해보세요.v
+
+*/
+
+/* console.log('시작합니다!') // 1
+
+let apple = '사과' // 2
+
+{
+  console.log(apple) // 3
+  let apple = '청사과' // 4
+}
+
+console.log('끝났습니다!') // 5 */
+
+/* 
+
+### **호이스팅 순서 맞추기**
+
+아래 코드에는 두 개의 함수 호출이 있습니다. 
+
+하나는 정상 작동하고, 하나는 오류가 발생합니다. 
+어느 것이 오류인지 찾고 이유를 말해보세요
+
+*/
+
+/* // 1. 함수 선언문 호출
+dance()
+
+// 2. 함수 표현식 호출
+sing() 
+
+function dance() {
+  console.log('춤을 춥니다! 💃')
+}
+
+const sing = function() {
+  console.log('노래를 부릅니다! 🎤')
+} */
+
+/* 
+  
+  ### **안전한 코드로 리팩토링**
+
+아래는 `var`를 사용하여 작성된 위험한 코드입니다.
+
+`var`를 `let`이나 `const`로 바꾸세요. 
+바꿨을 때 발생하는 오류를 해결하기 위해 코드의 순서를 올바르게 수정하세요.*/
+
+const job = "개발자"
+console.log('내 직업은 ' + job + '입니다.') 
+
+// var job = '개발자'
