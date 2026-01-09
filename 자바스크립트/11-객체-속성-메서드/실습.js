@@ -23,7 +23,11 @@
 // memory 속성: '64GB 2667 DDR4'
 // macOS 속성: 'Sequoia 15.4'
 // 객체 출력
-
+const macbookPro = {
+  processor : '2.4 GHz 8코어 Intel Core i9',
+  memory : '64GB 2667 DDR4',
+  macOS : 'Sequoia 15.4',
+}
 
 // 설명:
 // 객체는 중괄호 {} 안에 키-값 쌍을 쉼표(,)로 구분하여 작성합니다.
@@ -47,7 +51,14 @@
 // anArray 속성: [] (빈 배열)
 // 객체 출력
 
-
+const 객체 = {
+	'key' : 'value', // 문자열
+	'key' : 15, //숫자
+	boolean : true, // 불리언
+	aObject: {}, // object
+	afunction: function() {}, // function
+	anArray: [] // array
+}
 // 설명:
 // 객체는 JavaScript에서 유효한 모든 값을 포함할 수 있습니다.
 // 기본 타입(문자열, 숫자, 불린)과 객체 타입(객체, 함수, 배열) 모두 가능합니다.
@@ -63,7 +74,7 @@
 // macbookPro 객체의 processor 속성 값을 점 표기법으로 읽어 변수에 저장
 // processor 변수 출력
 
-
+console.log(macbookPro.processor)
 // macbookPro 객체의 memory 속성 값을 점 표기법으로 읽어 출력
 
 
@@ -82,7 +93,9 @@
 
 // macbookPro 객체의 macOS 속성 값을 대괄호 표기법으로 읽어 변수에 저장
 // macOS 변수 출력
-
+const os = macbookPro['processor']
+console.log(os)
+console.log(macbookPro['processor'])
 
 // 설명:
 // 대괄호([]) 표기법은 객체['속성_이름'] 형태로 사용합니다.
@@ -117,10 +130,16 @@
 // --------------------------------------------------------------------------
 
 // propertyName 변수에 'processor' 문자열 할당
+// 사용자가 select요소를 사용한 드롭다운 메뉴에서 option을 선택, 값 변경 가능
+let selectedPropName = 'processor' // 'memory ram' 'max-os' 'processor'
+
+selectedPropName = 'macOS'
+
+console.log(selectedPropName)
 
 
 // macbookPro 객체의 속성을 propertyName 변수를 사용해 읽어 출력
-
+console.log(macbookPro[selectedPropName])
 
 // propertyName 변수 값을 'memory'로 변경
 
@@ -197,7 +216,11 @@
 
 // macbookPro 객체에 getMemory 메서드 추가
 // getMemory 메서드는 memory 속성 값을 반환하는 함수
-
+macbookPro.getMemory = function() {
+  // return macbookPro.memory
+  return this.memory
+}
+console.log(macbookPro.getMemory())
 
 // macbookPro 객체에 playMusic 메서드 추가
 // playMusic 메서드는 songTitle 매개변수를 받아
@@ -225,16 +248,17 @@
 // --------------------------------------------------------------------------
 
 // cache 함수 선언 (빈 함수)
-
+function cache() {}
+console.log(typeof cache)
 
 // cache 함수에 data 속성 추가 (값: '캐싱된 데이터')
-
+cache.data ='캐싱된 데이터'
 
 // cache 함수의 data 속성 값 출력
-
+console.log(cache.data)
 
 // cache 함수의 타입 출력 (typeof 연산자 사용)
-
+console.log(cache())
 
 // 설명:
 // JavaScript의 함수는 객체 타입입니다.
@@ -250,12 +274,18 @@
 // --------------------------------------------------------------------------
 
 // sayHello 함수를 함수 표현식으로 작성 ('안녕! ' 반환)
-
+const sayHello =  function() {
+  return '하이'
+}
+console.log(sayHello())
 
 // greeting 함수를 함수 표현식으로 작성
 // 매개변수: helloMessage (함수), name (문자열)
 // 기능: helloMessage 함수를 호출한 결과와 name을 연결하여 출력
-
+const greeting = function(helloMessage, name) {
+  return helloMessage() +' '+ name
+}
+console.log(greeting(sayHello, 'minho'))
 
 // greeting 함수 호출 (sayHello 함수와 '🌈 자바스크립트' 전달)
 
@@ -276,6 +306,15 @@
 // 매개변수: message (문자열)
 // 반환: name을 매개변수로 받아 'message + name'을 출력하는 함수
 
+function createGreeting(message) {
+  // 화살표 함수 표현식 (값)
+  const displayMessage = (name) => message + name
+
+  //함수 내부에 정의된 함수(값)을 밖으로 내보낸다
+  return displayMessage
+}
+const greet = createGreeting('화이팅')
+console.log(greet('2'))
 
 // createGreeting 함수를 호출하여 반환된 함수를 greet 변수에 저장
 // (인자로 '안녕하세요, ' 전달)
