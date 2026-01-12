@@ -56,16 +56,19 @@
 // user 객체 생성
 // name 속성: '이준'
 // age 속성: 20
-
+const user = {
+  name: '이준',
+  age: 20
+}
 
 // user 객체의 name 속성 출력
-
+console.log(user.name)
 
 // user 객체의 email 속성 출력 (존재하지 않는 속성)
-
+console.log(user.email)
 
 // user 객체의 address 속성 출력 (존재하지 않는 속성)
-
+console.log(user.address)
 
 // 설명:
 // 객체에 존재하지 않는 속성에 접근하면 undefined가 반환됩니다.
@@ -81,16 +84,21 @@
 // --------------------------------------------------------------------------
 
 // fruits 배열 생성 ['천혜향', '애플망고']
-
+const fruits = ['천혜향', '애플망고', '샤인머스캣']
 
 // fruits 배열의 0번 인덱스 출력
-
+console.log(fruits[0])
+console.log(fruits.at(0))
 
 // fruits 배열의 1번 인덱스 출력
-
+console.log(fruits[1])
+console.log(fruits.at(1))
 
 // fruits 배열의 2번 인덱스 출력 (존재하지 않는 인덱스)
-
+console.log(fruits[2])
+console.log(fruits.at(2))
+console.log(fruits[3])
+console.log(fruits.at(3))
 
 // 설명:
 // 배열에 존재하지 않는 인덱스에 접근하면 undefined가 반환됩니다.
@@ -108,10 +116,12 @@
 // greet 함수 선언
 // 매개변수: name, age
 // 기능: name과 age를 각각 출력
-
+function greet(name, age) {
+  return 'name = ' + name + ' / age = ' + age
+}
 
 // greet 함수 호출 ('현정'만 전달, age는 전달하지 않음)
-
+console.log(greet('현정'))
 
 // 설명:
 // 함수 매개변수에 값을 전달하지 않으면 해당 매개변수는 undefined가 됩니다.
