@@ -390,6 +390,18 @@ else {
 // 그 외의 경우
 //   - '입장료: 7,000원' 출력
 
+let ageEnter =  66
+
+if (ageEnter < 7) {
+  console.log('입장료 무료')
+} else if (ageEnter >= 7 && ageEnter < 19) {
+  console.log('입장료: 5,000원')
+} else if (ageEnter >= 19 && ageEnter < 65) {
+  console.log('입장료: 10,000원')
+} else {
+  console.log('입장료: 7,000')
+}
+
 
 // 설명:
 // 여러 조건을 순차적으로 검사하여 나이에 따른 입장료를 계산합니다.
@@ -400,7 +412,7 @@ else {
 
 // 온도에 따른 옷차림 추천
 // temperature 변수에 25 할당
-
+let temperature = 25
 
 // if … else if … else 문 작성
 // 조건 1: temperature가 28 이상인 경우
@@ -412,6 +424,17 @@ else {
 // 그 외의 경우
 //   - '두꺼운 외투를 입으세요.' 출력
 
+if ( temperature >= 28) {
+  console.log('반팔과 반바지를 입으세요.')
+} else if (temperature >= 20 && temperature < 28) {
+  console.log('긴팔 티셔츠를 입으세요.')
+} else if (temperature >= 10 && temperature < 20) {
+  console.log('가디건이나 자켓을 챙기세요')
+} else {
+  console.log('두꺼운 외투를 입으세요.')
+}
+
+
 
 // 설명:
 // 온도에 따라 적절한 옷차림을 추천합니다.
@@ -422,16 +445,21 @@ else {
 
 // 로그인 상태 확인
 // isLoggedIn 변수에 false 할당
-
+let isLoggedIn = false 
 
 // username 변수에 null 할당
-
+let username = null
 
 // if 문 작성
 // 조건: isLoggedIn === true이고 username !== null인 경우
 //   - '[username]님, 환영합니다!' 출력
 // 그 외의 경우
 //   - '로그인이 필요합니다.' 출력
+if (isLoggedIn === true && username !== null) {
+  console.log(username+'님 환영합니다')
+} else {
+  console.log('로그인이 필요합니다.')
+}
 
 
 // 설명:
