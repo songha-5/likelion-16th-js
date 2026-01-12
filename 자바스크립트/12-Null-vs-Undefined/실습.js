@@ -248,7 +248,6 @@ const findUser = (id) => {
   // 배열도 객체, 객체는 메서드를 가질 수 있다.
   // 배열의 능력(메서드,  method)중 하나가 찾는 것 입니다.
   // 배열.찾는다 [...].find()
-
   const findedUser = users.find(function(user) {
     return user.id === Number(id)
   })
@@ -295,7 +294,7 @@ console.log(findUser(1))
 // --------------------------------------------------------------------------
 
 // null과 undefined를 == 연산자로 비교한 결과 출력
-
+console.log(null == undefined)
 
 // 설명:
 // == 연산자는 타입을 자동 변환한 후 비교합니다.
@@ -310,7 +309,7 @@ console.log(findUser(1))
 // --------------------------------------------------------------------------
 
 // null과 undefined를 === 연산자로 비교한 결과 출력
-
+console.log(undefined=== null)
 
 // 설명:
 // === 연산자는 타입까지 엄격하게 비교합니다.
@@ -324,18 +323,20 @@ console.log(findUser(1))
 // --------------------------------------------------------------------------
 // 좋은 예 vs 나쁜 예
 // --------------------------------------------------------------------------
-
+{
 // ✅ 좋은 예 - undefined
 // data1 변수 선언 (값 할당하지 않음)
-
+let data1
+console.log(data1)
 
 // ❌ 나쁜 예 - undefined를 명시적으로 할당하지 마세요
 // data2 변수에 undefined 할당 (불필요)
-
+let currentUser2 = null
 
 // ✅ 좋은 예 - null
 // currentUser2 변수에 null 할당 (아직 로그인하지 않음을 명시)
-
+currentUser = null
+console.log(currentUser)
 
 // product 객체 생성
 // name 속성: '랩탑'
@@ -346,7 +347,7 @@ console.log(findUser(1))
 // undefined는 JavaScript 엔진이 자동으로 할당하므로 명시적으로 할당하지 마세요.
 // null은 개발자가 의도적으로 "값이 없음"을 표현할 때 사용하세요.
 
-
+}
 // --------------------------------------------------------------------------
 // 핵심!
 // --------------------------------------------------------------------------
@@ -367,25 +368,41 @@ console.log(findUser(1))
 // 레벨 속성: 1
 // 무기 속성: null (초기에는 무기가 없음)
 // 방어구 속성: null (초기에는 방어구가 없음)
-
+const 마법사 = {
+  이름: '멀린',
+  레벨: 99,
+  무기: null,
+  방어구: null
+}
 
 // 캐릭터 객체 출력
-
+console.log(마법사)
 
 // 캐릭터가 무기를 획득
 // 무기 속성을 '강철 검'으로 변경
-
+마법사.무기 = '강철 검'
 
 // 캐릭터 객체 출력
-
+console.log(마법사)
 
 // getWeaponName 함수 선언
 // 매개변수: character
 // 기능: character의 무기가 null이면 '무기 없음' 반환, 아니면 무기 이름 반환
-
+function getWeaponName(캐릭터) {
+  return 캐릭터.무기 || '무기 없음'
+}
 
 // getWeaponName 함수 호출 (캐릭터 객체 전달) 및 결과 출력
+console.log(getWeaponName(마법사))
 
+const 난쟁이 = {
+  이름: '스머프',
+  레벨: 12,
+  무기: null,
+  방어구: null
+}
+
+console.log(getWeaponName(난쟁이))
 
 // 설명:
 // null을 사용하여 "값이 없음"을 명시적으로 표현하고,
@@ -395,3 +412,21 @@ console.log(findUser(1))
 // { 이름: '전사', 레벨: 1, 무기: null, 방어구: null }
 // { 이름: '전사', 레벨: 1, 무기: '강철 검', 방어구: null }
 // '강철 검'
+
+{
+  // &&, || 조건 처리
+
+  // 표현식(Expression)
+  // - 계산 후, 값을 구하는 과정(평가)
+
+  // 표현식에서의 논리곱(&&, AND) 연산자
+  // - 첫 번째 거짓 같은 값(Falsy)를 찾는 연산자
+  let result1 = 1 && {} && '' && -1 && 10n && [0, 1, 2]
+  console.log(result1)
+
+  // 표현식에서의 논리합(||, OR) 연산자
+  // - 첫 번째 참 같은 값(Truthy)를 찾는 연산자
+  let result2 = 'false' || '' || null || undefined || Symbol()
+  console.log(result2)
+
+}
