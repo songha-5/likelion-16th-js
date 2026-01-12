@@ -138,15 +138,19 @@ console.log(greet('현정'))
 // 소드마스터 객체 생성
 // 이름 속성: '요하네스 리히테나워'
 // 무기 속성: null (의도적으로 "무기가 없음"을 표현)
-
+const 소드마스터 = {
+  '이름': '요하네스 리히테나워',
+  '무기 속성': null
+}
 
 // 소드마스터 객체의 무기 속성 출력
-
+console.log(소드마스터['무기 속성'])
 
 // 소드마스터 객체의 무기 속성을 '츠바이헨더'로 변경
-
+소드마스터['무기 속성'] = '츠바이헨더'
 
 // 소드마스터 객체의 무기 속성 출력
+console.log(소드마스터['무기 속성'])
 
 
 // 설명:
@@ -162,18 +166,21 @@ console.log(greet('현정'))
 // --------------------------------------------------------------------------
 
 // currentUser 변수에 null 할당 (아직 로그인하지 않음을 명시)
-
+let currentUser = null
 
 // currentUser 변수 출력
-
+console.log(currentUser, Boolean(currentUser))
 
 // 로그인 후 currentUser 변수에 객체 할당
 // name 속성: 'jee'
 // email 속성: 'jee@example.com'
-
+currentUser = {
+  name: 'jee',
+  email: 'jee@example.com'
+}
 
 // currentUser 변수 출력
-
+console.log(currentUser, !!currentUser)
 
 // 설명:
 // null은 "나중에 값이 할당될 것"을 명시적으로 표현할 때 사용합니다.
@@ -188,10 +195,10 @@ console.log(greet('현정'))
 // --------------------------------------------------------------------------
 
 // currentUser 변수를 null로 초기화 (로그아웃)
-
+currentUser = null // 로그아웃 상태로 변경
 
 // currentUser 변수 출력
-
+console.log(currentUser, !!currentUser)
 
 // 설명:
 // null은 값을 초기화할 때도 사용합니다.
@@ -232,6 +239,23 @@ console.log(greet('현정'))
 //   - find 메서드로 id가 일치하는 사용자 찾기
 //   - 사용자를 찾으면 해당 객체 반환, 못 찾으면 null 반환
 
+// 지역으로 들어가면 매번 실행되니 전역으로 들어가 한번만 실행되게 해줌
+const users = [
+  { id: 1, name: '재민' },
+  { id: 2, name: '상우' }
+]
+const findUser = (id) => {
+  // 배열도 객체, 객체는 메서드를 가질 수 있다.
+  // 배열의 능력(메서드,  method)중 하나가 찾는 것 입니다.
+  // 배열.찾는다 [...].find()
+
+  const findedUser = users.find(function(user) {
+    return user.id === Number(id)
+  })
+  // 논리연산자 (조건에 따른 값 반환)
+  return findedUser || null
+}
+console.log(findUser(1))
 
 // findUser 함수 호출 (id: 1 전달) 및 결과 출력
 
