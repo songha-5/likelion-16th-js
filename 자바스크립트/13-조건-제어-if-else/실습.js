@@ -14,12 +14,25 @@
 
 // isLightColorRed 변수에 true 할당
 
-
 // if … else 문 작성
 // 조건: isLightColorRed가 true인 경우
 //   - '신호등 앞에서 멈춰야 합니다.' 출력
 // 조건이 false인 경우
 //   - '좌우를 살피고 건널목을 건넙니다.' 출력
+let isLightColorRed = true
+
+const isLight = isLightColorRed === true
+if (isLight) {
+  console.log('신호등 앞에서 멈춰야 합니다.')
+} else {
+  console.log('좌우를 살피고 건널목을 건넙시다.')
+}
+
+/* if (조건(불리언)) {
+  참일경우
+} else {
+  거짓일경우
+} */
 
 
 // 설명:
