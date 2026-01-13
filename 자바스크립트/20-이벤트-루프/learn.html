@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>이벤트 루프</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/fonts.css" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+
+  <body>
+
+    <main class="prose">
+      <article>
+        <h1>JavaScript 엔진과 이벤트 루프</h1>
+        <p>
+          JavaScript는 <strong>싱글 스레드</strong>로 작동하지만, 브라우저의 <strong>Web <abbr title="Application Programming Interface">API</abbr></strong>와
+          <strong>이벤트 루프</strong> 덕분에 여러 일을 동시에 처리하는 것처럼 보입니다.
+        </p>
+        <section class="visualizer-hint">
+          <h2>실습 가이드</h2>
+          <ul>
+            <li><strong>Call Stack</strong> 프링글스 통 (<abbr title="Last In First Out">LIFO</abbr>)</li>
+            <li><strong>Queue</strong> 버스 정류장 줄 (<abbr title="First In First Out">FIFO</abbr>)</li>
+            <li><strong>Event Loop</strong> 콜 스택(Call Stack)이 비었는지 감시하는 관리자</li>
+          </ul>
+          <button type="button" class="run-button">마법의 주문 실행 (실행 순서 확인)</button>
+        </section>
+        <section>
+          <h2>콘솔 출력 결과</h2>
+          <div class="code-block">
+          </div>
+        </section>
+      </article>
+    </main>
+
+  </body>
+
+</html>
