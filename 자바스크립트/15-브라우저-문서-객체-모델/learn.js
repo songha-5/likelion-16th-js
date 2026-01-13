@@ -10,17 +10,17 @@
 // --------------------------------------------------------------------------
 
 // 1. 최상위 객체인 window를 콘솔에 출력하세요.
-console.log(window)
+// console.log(window)
 
 // 2. window 객체의 navigator 속성을 통해 브라우저 정보를 출력하세요. (점 표기법 사용)
-console.log(window.navigator)
-console.log(window.navigator.userAgent)
+// console.log(window.navigator)
+// console.log(window.navigator.userAgent)
 
 // 대괄호표기법
-console.log(window['navigator']['userAgent'])
+// console.log(window['navigator']['userAgent'])
 
 // 3. 위와 동일한 정보를 window를 생략하고 출력해 보세요. (전역 객체의 특징)
-console.log(navigator.userAgent)
+// console.log(navigator.userAgent)
 
 // 설명:
 // window 객체는 BOM의 뿌리(root)이자 JavaScript 전역 객체입니다.
@@ -33,14 +33,25 @@ console.log(navigator.userAgent)
 
 // 1. 사용자에게 '유튜브 페이지로 이동할까요?'라고 묻는 
 //    확인창을 띄우고 결과를 변수 `userConfirm`에 담으세요.
+function myConfirm(message, confirmValue) {
+  console.log(message)
+  if(confirmValue) return true
+  else return false
+}
 
 
 // 2. 조건문을 작성하세요.
 //    - [참일 때]: '네. 유튜브 페이지로 이동할게요!' 경고창(alert)을 띄우고,
 //      `window.location.href`를 'https://www.youtube.com'으로 변경하세요.
 //    - [거짓일 때]: '페이지 이동을 취소했어요.' 경고창을 띄우세요.
-
-
+const moveToYoutube = window.confirm('유튜브 페이지로 이동할까요?')
+if(moveToYoutube) {
+  window.alert('네 유튜브 페이지로 이동할게요')
+  window.location.href = 'https://www.youtube.com'
+}
+else {
+  window.alert('유튜브 페이지로 이동하지 않을거에요')
+}
 // 설명:
 // confirm()은 확인 시 true, 취소 시 false를 반환합니다.
 // location 객체는 브라우저의 주소창 정보를 제어하는 BOM의 핵심 객체입니다.
