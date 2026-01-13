@@ -5,19 +5,22 @@
 // * DOM : 웹 문서 내부의 내용 관리 (집 안 가구) - document 객체
 // --------------------------------------------------------------------------
 
-
 // --------------------------------------------------------------------------
 // BOM - Window 객체 탐색
 // --------------------------------------------------------------------------
 
 // 1. 최상위 객체인 window를 콘솔에 출력하세요.
-
+console.log(window)
 
 // 2. window 객체의 navigator 속성을 통해 브라우저 정보를 출력하세요. (점 표기법 사용)
+console.log(window.navigator)
+console.log(window.navigator.userAgent)
 
+// 대괄호표기법
+console.log(window['navigator']['userAgent'])
 
 // 3. 위와 동일한 정보를 window를 생략하고 출력해 보세요. (전역 객체의 특징)
-
+console.log(navigator.userAgent)
 
 // 설명:
 // window 객체는 BOM의 뿌리(root)이자 JavaScript 전역 객체입니다.
