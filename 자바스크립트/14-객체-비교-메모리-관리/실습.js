@@ -41,14 +41,19 @@
 
 // 야무 객체 생성
 // isHavingFun 속성: true
-
+const yamoo = {
+  isHavingFun: true
+}
 
 // 지니 객체 생성
 // isHavingFun 속성: true
-
+const jini = {
+  isHavingFun: true
+}
 
 // 야무와 지니를 === 연산자로 비교한 결과 출력
-
+console.log(yamoo == jini)
+console.log(yamoo === jini)
 
 // 설명:
 // 두 객체의 내용은 같지만, 메모리의 서로 다른 위치에 저장되어 있습니다.
@@ -63,19 +68,19 @@
 // --------------------------------------------------------------------------
 
 // name 변수에 '네무' 할당
-
-
+const name1 = '네무'
+console.log(name1)
 // new_name 변수에 name 값 복사
-
-
+let new_name = name1
+console.log(new_name)
 // new_name 변수를 '야무'로 변경
-
+new_name = '야무'
 
 // name 변수 출력
-
+console.log(name1)
 
 // new_name 변수 출력
-
+console.log(new_name)
 
 // 설명:
 // 기본 타입은 스택(Stack)에 값 자체가 저장됩니다.
@@ -93,7 +98,10 @@
 // person 객체 생성
 // name 속성: '성준일'
 // age 속성: 57
-
+const person = {
+  name: '성준일',
+  age: 57,
+}
 
 // new_person 변수에 person 객체 할당 (주소 복사)
 
@@ -123,14 +131,14 @@
 
 // 야무2 객체 생성
 // isHavingFun 속성: true
-
+const yamoo2 = { isHavingFun: true }
 
 // 지니2 객체 생성
 // isHavingFun 속성: true
-
+const jini2 = { isHavingFun: true }
 
 // 야무2와 지니2를 === 연산자로 비교한 결과 출력
-
+console.log(yamoo2 === jini2)
 
 // 설명:
 // 두 객체는 내용이 같지만, 힙 메모리에 각각 별도로 생성되었습니다.
@@ -146,13 +154,13 @@
 
 // 야무3 객체 생성
 // isHavingFun 속성: true
-
+const yammo3 = {isHavingFun : true}
 
 // 지니3 변수에 야무3 객체 할당 (주소 복사)
-
+const jini3 = yammo3
 
 // 야무3와 지니3를 === 연산자로 비교한 결과 출력
-
+console.log(yammo3===jini3)
 
 // 설명:
 // 지니3 변수에 야무3의 주소를 그대로 복사했습니다.
@@ -167,19 +175,19 @@
 // --------------------------------------------------------------------------
 
 // a 변수에 10 할당
-
+let a = 10
 
 // b 변수에 a 값 복사
-
+const b = a
 
 // a 변수를 20으로 변경
-
+a = 20
 
 // a 변수 출력
-
+console.log(a)
 
 // b 변수 출력
-
+console.log(b)
 
 // 설명:
 // 기본 타입은 값이 복사되므로 a를 변경해도 b는 영향을 받지 않습니다.
@@ -196,19 +204,22 @@
 // obj1 객체 생성
 // x 속성: 10
 // y 속성: 24
-
+const obj1 = {
+  x: 10,
+  y: 24
+}
 
 // obj2 변수에 obj1 객체 할당 (주소 복사)
-
+const obj2 = obj1
 
 // obj1 객체의 x 속성을 40으로 변경
-
+obj1.x = 40
 
 // obj1 객체 출력
-
+console.log(obj1)
 
 // obj2 객체 출력
-
+console.log(obj2)
 
 // 설명:
 // 객체는 주소가 복사되므로 obj1을 변경하면 obj2도 함께 변경됩니다.
@@ -257,19 +268,18 @@
 // 배열도 객체 타입입니다 - 주소 복사 확인
 
 // arr1 배열 생성 [1, 2, 3]
-
-
+const arr1 = [1,2,3]
+console.log(arr1)
 // arr2 변수에 arr1 배열 할당 (주소 복사)
-
-
+const arr2 = arr1
+console.log(arr2)
 // arr1 배열의 0번 인덱스를 100으로 변경
-
-
+arr1[0] = 100
 // arr1 배열 출력
-
+console.log(arr1)
 
 // arr2 배열 출력
-
+console.log(arr2)
 
 // 설명:
 // 배열도 객체 타입이므로 주소가 복사됩니다.
@@ -285,16 +295,18 @@
 // greet 함수 선언
 // 매개변수: name
 // 기능: 'Hello, [name]!' 반환
-
+function greet(name) {
+  return 'hello ' + name + '!'
+}
 
 // greet2 변수에 greet 함수 할당 (주소 복사)
-
+const greet2 = greet 
 
 // greet 함수 호출 ('Alice' 전달) 및 결과 출력
-
+console.log(greet('Alice'))
 
 // greet2 함수 호출 ('Bob' 전달) 및 결과 출력
-
+console.log(greet2('hani'))
 
 // greet와 greet2를 === 연산자로 비교한 결과 출력
 
