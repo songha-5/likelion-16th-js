@@ -93,6 +93,12 @@ console.log(musiciansList)
 // 문서의 모든 <li> 요소 중 첫 번째 매칭되는 요소 반환 (없을 경우, null 반환)
 const liElement = document.querySelector('.musicians > li:first-child')
 console.log(liElement)
+
+
+// 게임 목록의 모든 아이템을 찾아 집합으로 반환
+const allMusicicans = musiciansList.querySelectorAll('li')
+console.log(allMusicicans) // NodeList(3) [li, li, li] < 유사배열객체
+
 // --------------------------------------------------------------------------
 // 그 밖의 요소 선택 API (참고)
 // --------------------------------------------------------------------------
