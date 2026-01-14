@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/fonts.css" crossorigin />
     <link rel="stylesheet" href="./assets/styles.css" />
-    <script type="module" src="./learn.js"></script>
+    <script defer  src="./learn.js"></script>
     <link rel="icon" href="./assets/es-logo.png" />
   </head>
 
   <body>
 
-    <main class="prose">
+    <main class="prose" id="content">
       <article>
         <h1 id="id">DOM 요소 선택</h1>
         <p>
@@ -29,6 +29,38 @@
           </p>
         </section>
       </article>
+      <article>
+        <h3>게임</h3>
+        <ul class="games">
+          <li>서든어택</li>
+          <li>동물의 숲</li>
+          <li>리그 오브 레전드</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>뮤지션</h3>
+        <ol class="musicians">
+          <li>드렁큰 타이거</li>
+          <li>다이내믹 듀오</li>
+          <li>소울 딜리버리</li>
+        </ol>
+      </article>
+
+      <table>
+        <caption class="sr-only">눈에 보이지 않아도 청취 가능해요!</caption>
+        <thead>
+          <tr>
+            <!-- 눈에 보이지 않아도 청취 가능해요! 스크린 리더 지원 -->
+            <td scope="col">접근 가능한데이터 테이블</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>표 셀 내용</td>
+          </tr>
+        </tbody>
+      </table>
     </main>
 
   </body>

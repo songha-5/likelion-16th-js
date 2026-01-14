@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev": "bun learn.html"
+    "dev": "live-server --host=localhost --port=3000 --no-browser",
+    "dev:bun": "bun learn.html"
   },
   "dependencies": {
     "live-server": "^1.2.2"

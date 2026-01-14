@@ -21,11 +21,52 @@ console.log(document.querySelector('article'))
 
 // console.log(document.querySelector('head'))
 // 1. ID 선택자를 사용하여 '#chapter' 요소를 선택하고 콘솔에 출력하세요.
+const chapterElement = document.querySelector('#content')
+console.log(chapterElement) // Element 또는 null
+
+// 조건 처리 (문서에 요소가 존재하는지 검토)
+// if (!chapterElement) console.warn('#chapter 요소가 문서에 없습니다.')
+chapterElement || console.warn('#chapter 요소가 문서에 없습니다.')
 
 // 2. 클래스 선택자를 사용하여 '.sr-only' 요소를 선택하고 콘솔에 출력하세요.
+const screenReaderOnlyElement = document.querySelector('.a11y-hidden')
+console.log(screenReaderOnlyElement)
 
+if (screenReaderOnlyElement === null) {
+  console.warn('.a11y-hidden 선택자로 요소를 찾을 수 없습니다.')
+}
 
 // 3. 속성 선택자를 사용하여 title에 'Model'이 포함된([title*="Model"]) 요소를 선택하세요.
+const modelElement = document.querySelector('[title*="modle"]')
+console.log(modelElement)
+
+if(modelElement === null) {
+  console.warn('[title*="modle"] 선택자로 요소를 찾을 수 없습니다.')
+}
+// 실 - 패
+/* const modle = '[title*="modle"]'
+const a11y = '.a11y-hidden'
+const selectElement = document.querySelector(modle)
+
+if (selectElement === null) {
+  console.log( selectElement +'선택자로 요소를 찾을 수 없습니다.')
+} */
+
+// 답지
+// 반복되는 코드를 재사용하기 위해 함수를 작성하기로 했다.
+// 함수(기능)에 걸맞는 이름을 작성하기로 했다.
+// 기능: 문서에 요소가 존재하는지 확인한 후, 존재하지 않을 경우 콘솔에 경고하기로 했다.
+// 목적: 현재 어떤 상황의 문제가 발생했는지 개발자에게 알리고자 한다.
+function checkElementWarn(element, selector) {
+  // 요소가 문서에 존재하는지 검증
+  // 문서에 요소가 없다면? 콘솔에 경고
+  if(element === null) {
+    console.warn( selector + ' 선택자로 요소를 찾을 수 없습니다...')
+  }
+}
+
+console.log(checkElementWarn(chapterElement, '#chapter'))
+console.log(checkElementWarn(modelElement, '[title*="modle"]'))
 
 
 // 설명:
@@ -38,16 +79,20 @@ console.log(document.querySelector('article'))
 // --------------------------------------------------------------------------
 
 // 1. 먼저 부모 요소인 '.musicians'를 찾아 변수 musicianList에 할당하세요.
-
+const musiciansList = document.querySelector('.musicians')
+console.log(musiciansList)
 
 // 2. musicianList 변수(이미 선택된 요소) 내부에서만 'li' 요소를 찾아 출력하세요.
-
+checkElementWarn(musiciansList, 'li:first-child')
+console.log(musiciansList)
 
 // 설명:
 // 특정 서가(부모 요소)를 지정하고 그 안에서 책(자식 요소)을 찾는 방식입니다.
 // 코드의 의도가 명확해지고, 다른 구역의 요소와 충돌할 버그를 예방하며, 성능 면에서도 효율적입니다.
 
-
+// 문서의 모든 <li> 요소 중 첫 번째 매칭되는 요소 반환 (없을 경우, null 반환)
+const liElement = document.querySelector('.musicians > li:first-child')
+console.log(liElement)
 // --------------------------------------------------------------------------
 // 그 밖의 요소 선택 API (참고)
 // --------------------------------------------------------------------------
