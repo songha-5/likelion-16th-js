@@ -99,6 +99,10 @@ console.log(liElement)
 const allMusicicans = musiciansList.querySelectorAll('li')
 console.log(allMusicicans) // NodeList(3) [li, li, li] < 유사배열객체
 
+// name 속성 값이 'email'인 요소들을 수집
+const emails = document.getElementsByName('email')
+console.log(emails)
+
 // --------------------------------------------------------------------------
 // 그 밖의 요소 선택 API (참고)
 // --------------------------------------------------------------------------
