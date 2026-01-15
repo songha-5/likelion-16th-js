@@ -1,0 +1,41 @@
+.practice { 
+	max-width: 600px; 
+	margin: 0 auto; 
+	padding: 20px; 
+}
+
+.title { 
+	margin-block-end: 20px; 
+	font-size: 1.5rem; 
+	font-weight: bold;
+	color: #1f2937;
+}
+
+p { 
+  margin: 8px 0; 
+  border: 1px solid #e5e7eb; 
+  padding: 12px;
+  border-radius: 6px; 
+  transition: all 0.2s ease-in-out; 
+  line-height: 1.5;
+  
+  &:hover {
+	  border-color: #4f46e5;
+  }
+}
+
+.text-indigo-600 { color: #4f46e5; }
+.text-red-500 { color: #ef4444; }
+.text-green-500 { color: #10b981; }
+.text-blue-500 { color: #3b82f6; }
+.text-purple-500 { color: #8b5cf6; }
+
+.bg-yellow-100 { background-color: #fef3c7; }
+.bg-gray-100 { background-color: #f3f4f6; }
+.bg-blue-100 { background-color: #dbeafe; }
+.bg-green-100 { background-color: #dcfce7; }
+
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.text-lg { font-size: 1.125rem; }
+.rounded-lg { border-radius: 8px; }
