@@ -4,6 +4,7 @@
 // * 지팡이(JavaScript)로 직접 색칠하기보다 옷(CSS Class)을 갈아입히는 것이 효율적입니다.
 // * add / remove / replace / contains / toggle 주문을 익혀봅시다.
 // --------------------------------------------------------------------------
+console.log('HI')
 
 
 // --------------------------------------------------------------------------
@@ -11,14 +12,18 @@
 // --------------------------------------------------------------------------
 
 // [연습] 'text-primary' 클래스를 추가하세요.
-
+const prose = document.querySelector('.prose')
+console.log(prose)
 
 // [연습] 'text-primary'와 'font-bold' 클래스를 동시에 추가하세요.
+const proseHeading = prose.querySelector('h1')
+console.log(proseHeading)
 
+console.log(proseHeading.classList)
 
 // 설명:
 // classList.add()는 기존 클래스를 유지하면서 새로운 클래스를 덧입힙니다.
-
+proseHeading.classList.add('color-gold')
 
 // --------------------------------------------------------------------------
 // 2. 클래스 이름 제거 (remove)
@@ -42,7 +47,11 @@
 
 
 // [연습] 'is-danger' 클래스를 'is-success' 클래스로 교체하세요.
-
+const messageElement = prose.querySelector('.message')
+// messageElement.classList.remove('is-danger')
+// messageElement.classList.add('is-success')
+const repacement = messageElement.classList.replace('is-danger', 'is-success')
+console.log('교체,', repacement)
 
 // 설명:
 // remove()와 add()를 각각 실행하는 것보다 훨씬 간결하고 안전하게 스타일을 전환합니다.
@@ -54,7 +63,21 @@
 
 // [연습] target 요소가 'text-primary' 클래스를 가지고 있는지 조건문(if)으로 확인하세요.
 // 클래스가 있다면 제거하고, 없다면 추가하는 로직을 작성해 보세요.
+const targetElement = prose.querySelector('.target')
+console.log(targetElement)
 
+// 검토할 클래스 이름을 기억하는 변수
+let checkClassName = 'size-xl'
+
+const hasTextPrimaryClass = targetElement.classList.contains(checkClassName)
+console.log(hasTextPrimaryClass)
+
+// 해당 클래스 제거 추가
+if (hasTextPrimaryClass) {
+  targetElement.classList.remove(checkClassName)
+} else {
+  targetElement.classList.add(checkClassName)
+}
 
 // 설명:
 // 결과값으로 true/false를 반환하므로 복잡한 조건부 로직을 짤 때 필수적입니다.
@@ -65,6 +88,23 @@
 // --------------------------------------------------------------------------
 
 // [연습] target 요소에 'active' 클래스를 토글 처리하세요.
+// 토글
+// off>on>off>on
+targetElement.classList.toggle(activeClassName)
+
+// 토글(toggle) => OFF -> ON -> OFF
+
+// 조건문을 사용하는 경우
+// classList.contains, classList.remove, classList.add
+let activeClassName = 'active'
+
+const hasActiveClass = targetElement.classList.contains(activeClassName)
+
+if (hasActiveClass) {
+  targetElement.classList.remove(activeClassName)
+} else {
+  targetElement.classList.add(activeClassName)
+}
 
 
 // 설명:
