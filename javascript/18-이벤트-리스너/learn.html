@@ -44,6 +44,43 @@
           <button type="button">레거시 알람</button>
         </section>
       </article>
+
+
+      <section>
+        <h2>레거시 이벤트 모델</h2>
+        <button
+          type="button"
+          class="legacy-button"
+        >
+          레거시 알람
+        </button>
+        <script>
+          // [레거시 이벤트]
+          // const legacyButton = document.querySelector('.legacy-button')
+          // 변수에 하나의 값만 기억할 수 있는 것처럼
+          // 객체의 속성(변수) 또한 하나의 함수 값만 기억 가능
+          // legacyButton.onclick = handleNotice
+          // 그러므로 가장 마지막에 실행된 함수만 실행
+          // legacyButton.onclick = handleNotice2
+
+          // 레거시 이벤트 모델(Legacy Event Model) 방식
+          // 오늘날 잘 사용되지 않지만, 과거 시대의 코드를 통해 확인 가능
+
+          // [모던이벤트]
+          // 레거시 이벤트와 달리, addEventListener를 사용하면
+          // 여러번 핸들러를 연결하는 것이 가능
+          button.addEventListener('click', handleNotice)
+          button.addEventListener('click', handleNotice2)
+
+          function handleNotice() {
+            console.log('레거시 알람 1')
+          }
+
+          function handleNotice2() {
+            console.log('레거시 알람 2')
+          }
+        </script>
+      </section>
     </main>
 
   </body>

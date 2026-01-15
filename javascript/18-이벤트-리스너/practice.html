@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<body>
+  <button type="button" class="magic-button">배경색 전환</button>
+  <script>
+    const body = document.body
+    const magicButton = document.querySelector('.magic-button')
+
+    magicButton.addEventListener('click', handleChangeBGcolor)
+    function handleChangeBGcolor() {
+      console.log('HI')
+      body.classList.toggle('bg-black')
+    }
+  </script>
+</body>
+</html>
