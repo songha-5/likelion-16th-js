@@ -1,0 +1,22 @@
+.offsite-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: -14rem;
+  width: 14rem;
+  background-color: var(--menu-background-color);
+  transition: all 0.3s ease-in-out;
+
+  &.offsite-open {
+    right: 0;
+  }
+}
+
+.site-container {
+  padding-top: 3rem;
+  padding-left: 2.5rem;
+  max-width: 43rem;
+}
+body {
+  background-color: #333;
+}

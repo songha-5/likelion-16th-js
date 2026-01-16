@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>모달 다이얼로그(Modal Dialog)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/variable/pretendardvariable-dynamic-subset.min.css" as="style" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/variable/pretendardvariable-dynamic-subset.min.css" crossorigin />
+    <link rel="icon" href="/images/ecmascript-logo.png" type="image/png" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script src="/scripts/main.js" defer></script>
+  </head>
+
+  <body class="modal-is-open">
+
+    <main>
+      <div class="wrap">
+        <button type="button" class="button modal-open-button">열기</button>
+        <svg class="point-hand" viewBox="0 0 58 66">
+          <use xlink:href="images/sprite.svg#point-hand" />
+        </svg>
+      </div>
+    </main>
+
+    <div class="modal-overlay is-open">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <svg class="wave-hand" width="112" height="139" viewBox="0 0 112 139">
+            <use xlink:href="images/sprite.svg#wave-hand" />
+          </svg>
+          <button type="button" class="modal-close-button">
+            <svg width="1em" height="1em" viewBox="0 0 18 18">
+              <use xlink:href="images/sprite.svg#close" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </body>
+
+</html>

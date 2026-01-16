@@ -1,6 +1,0 @@
-{
-  "scripts": {
-    "dev": "bun learn.html",
-    "practice": "bun practice.html"
-  }
-}

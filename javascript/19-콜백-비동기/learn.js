@@ -17,15 +17,27 @@ const body        = document.body,
 
 // 클릭 이벤트가 발생했을 때 실행될 "콜백 함수"를 등록합니다.
 // 콜백 함수 : coffeeReadyCallback
+// 클릭 이벤트가 발생했을 때 실행될 "콜백 함수"를 등록합니다.
+// 콜백 함수 : coffeeReadyCallback
 orderButton.addEventListener('click', () => {
-  addLog('점원에게 "따뜻한 라떼"를 주문했습니다.')
-  statusText.textContent = '상태 : 커피 제조 중... (비동기 작업 시작)'
+  console.log('[1] 점원에게 "따뜻한 라떼"를 주문했습니다.') // 
+  console.log('[2] 상태 : 커피 제조 중... (비동기 작업 시작)') // 
   
-  // 3초 뒤에 커피가 완성된다고 가정
+  // 3초(3s === 3,000ms) 뒤에 커피가 완성된다고 가정
   // setTimeout은 대표적인 비동기 함수입니다.
+  window.setTimeout(() => {
+    console.log('[3] 메뉴가 준비되었습니다. ☕️ (비동기 작업 완료)') // 
+  }, 3000)
 
-  addLog('진동벨을 받고 자리로 돌아와 스마트폰을 봅니다. (차단 방지)')
+  console.log('[4] 진동벨을 받고 자리로 돌아와 스마트폰을 봅니다. (차단 방지)') // 
 })
+
+// JavaScript는 싱글 스레드(한 번에 하나의 일만 수행 가능)
+// 동기(sync) 처리
+// 1 → 2 → 3 → 4
+
+// 비동기(async) 처리
+// 1 → 2 → 4 → 3
 
 
 // --------------------------------------------------------------------------
@@ -46,12 +58,31 @@ orderButton.addEventListener('click', () => {
  * 작업을 수행하고 완료되면 콜백을 실행하는 함수
  * @param {Function} callback - 작업 완료 후 실행할 함수
  */
-function completeTask() {
+function completeTask(callback) {
+  console.log('작업 시작(비동기)')
+
+  setTimeout(callback, 2000)
+  console.log('작업 완료(비동기 처리 완료)')
 
 }
 
 // [연습] completeTask를 호출하면서 익명 콜백 함수를 전달해 보세요.
+completeTask(() => {
+  console.log('비동기 처리된 작업이 모두 마무리되었습니다.')
+})
 
+
+function delayClick(element, callback, timeout) {
+  element.addEventListener('click', () => {
+    setTimeout(callback, timeout)
+  })
+}
+
+delayClick(
+  orderButton, 
+  () => { alert('메뉴 주문이 들었습니다!') }, 
+  1500
+)
 
 // --------------------------------------------------------------------------
 // 핵심 요약!

@@ -1,0 +1,19 @@
+html {
+  font-size: 100%;
+}
+
+body {
+  background-color: var(--background-color);
+  background-image: url("/images/ecmascript-logo.png");
+  background-position: 97% 97%;
+  background-repeat: no-repeat;
+  background-size: 172px 172px;
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+h1 {
+  margin-block-end: 1rem;
+  font-weight: 400;
+  line-height: 1.25;
+}

@@ -1,0 +1,11 @@
+.button {
+  border: 2px solid currentColor;
+  
+  &:hover,
+  &:focus,
+  .offsite-is-open button {
+    border-color: var(--text-color);
+    background-color: var(--text-color);
+    color: var(--background-color);
+  }
+}

@@ -5,8 +5,8 @@
   --dark-navy-color: #171c28;
   --deep-yellow-color: #ffcb29;
   --deep-pink-color: #ff2970;
-  --deep-cyan-color: #03a4c8;
-  --deep-purple-color: #5f29ff;
+  --deep-cyan-color: #0c7482;
+  --deep-purple-color: #5237a4;
   --deep-orange-color: #ed9625;
   
   --bg-color: light-dark(var(--white-color), var(--dark-navy-color));
@@ -15,7 +15,7 @@
   --primary-color: light-dark(var(--deep-purple-color), var(--deep-yellow-color));
   --secondary-color: light-dark(var(--deep-cyan-color), var(--deep-orange-color));
 
-  --surface-color: color-mix(in srgb, var(--text-color), transparent 92%);
+  --surface-color: color-mix(in srgb, var(--text-color), transparent 97%);
   --surface-color-bold: color-mix(in srgb, var(--text-color), transparent 80%);
 }
 
@@ -51,11 +51,13 @@ body {
 
   & blockquote {
     margin-block: 1.6rem;
-    padding-left: 1rem;
+    margin-inline: 0.8rem 0;
+    padding-inline: 1.2rem;
+    padding-block: 0.8em;
     border-left: 0.25rem solid var(--primary-color);
     background-color: var(--surface-color);
     color: var(--secondary-color);
-    font-style: italic;
+    font-style: normal;
     font-weight: 500;
   }
 
@@ -98,21 +100,4 @@ body {
   & abbr:not(dfn abbr) {
     font-weight: 500;
   }
-
-  & .is-danger { color: red; }
-  & .is-success { color: green; }
-
-  & .color-gold { color: #ffd700; } 
-  & .color-silver { color: #c0c0c0; }
-
-  & .size-xl { font-size: 4rem; }
-  & .size-lg { font-size: 2rem; }
-  & .size-normal { font-size: 1rem; }
-  & .size-sm { font-size: 0.8rem; }
-  & .size-xs { font-size: 0.6rem; }
-
-  & .text-primary { color: #35afbc; }
-  & .font-bold { font-weight: 700; }
-  
-  & .active { font-weight: 900; padding: 0.75em; border: 3px solid currentColor; }
 }
