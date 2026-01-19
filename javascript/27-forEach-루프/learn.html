@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>배열 순회의 정석: forEach() 메서드</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+
+  <body>
+
+    <main class="prose">
+      <article>
+        <header>
+          <h1>배열 순회의 정석: forEach() 메서드</h1>
+          <p>모든 배열 객체는 <code>forEach()</code>라는 강력한 도구를 가지고 있습니다. 이 메서드를 사용하면 복잡한 인덱스 계산 없이도 호텔의 모든 방을 우아하게 방문할 수 있습니다.</p>
+        </header>
+
+        <section aria-labelledby="section-syntax">
+          <h2 id="section-syntax">1. 콜백 함수와 매개변수</h2>
+          <p><code>forEach()</code> 메서드에 할일을 적은 '레시피(콜백 함수)'를 전달하면, 자바스크립트는 세 가지 정보를 요리 재료로 제공합니다.</p>
+
+          <div class="code-example">
+            <code>array.forEach((item, index, array) =&gt; { /* 실행 코드 */ })</code>
+          </div>
+
+          <dl>
+            <dt>item</dt>
+            <dd>현재 방문한 방에 있는 손님(항목)입니다.</dd>
+            <dt>index</dt>
+            <dd>현재 방문 중인 방 번호(인덱스)입니다.</dd>
+            <dt>array</dt>
+            <dd>순회 중인 장부(배열) 그 자체입니다.</dd>
+          </dl>
+
+          <aside class="tip-box">
+            <p><strong>지배인 메모:</strong> 번호(index)나 전체 장부(array)가 필요 없다면 손님(item) 이름만 적어서 간결하게 사용할 수 있습니다.</p>
+          </aside>
+        </section>
+
+        <section aria-labelledby="section-comparison">
+          <h2 id="section-comparison">2. 다양한 순회 방법의 공존</h2>
+          <p>장부를 확인하는 방법은 여러 가지가 있으며, 상황에 맞는 도구를 선택하는 것이 중요합니다.</p>
+
+          <table>
+            <caption>배열 순회 방법별 특징 비교</caption>
+            <thead>
+              <tr>
+                <th scope="col">방법</th>
+                <th scope="col">장점</th>
+                <th scope="col">단점</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">for 문</th>
+                <td>유연하고 세밀한 제어 가능</td>
+                <td>코드가 길어 가독성이 떨어짐</td>
+              </tr>
+              <tr>
+                <th scope="row">for...of 문</th>
+                <td>간결하고 직관적임</td>
+                <td>인덱스를 다루기 어려움</td>
+              </tr>
+              <tr>
+                <th scope="row">forEach 메서드</th>
+                <td>문법이 간단하고 가독성 좋음</td>
+                <td>break, continue 사용 불가</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section aria-labelledby="section-example">
+          <h2 id="section-example">3. 실무 활용 예시</h2>
+          <p>과일 바구니에 담긴 모든 과일을 하나씩 꺼내어 인사하는 가장 현대적인 방법입니다.</p>
+          <blockquote>
+            <code>
+            fruitBasket.forEach((fruit) =&gt; { <br />
+            &nbsp;&nbsp;console.log('과일 바구니 안의 과일에는 "' + fruit + '"이 포함되어 있습니다.') <br />
+            })
+          </code>
+          </blockquote>
+        </section>
+
+        <footer class="practice-zone">
+          <h2>🚀 학습 요약</h2>
+          <ul>
+            <li>함수형 스타일의 반복 작업이 필요할 때는 <strong>forEach</strong>를 사용하세요.</li>
+            <li>중간에 멈춰야(break) 한다면 <strong>for</strong>나 <strong>for...of</strong>가 정답입니다.</li>
+            <li>인덱스 번호가 굳이 필요 없다면 <strong>for...of</strong>가 가장 읽기 쉽습니다.</li>
+          </ul>
+        </footer>
+      </article>
+    </main>
+
+    <div aria-live="polite" class="sr-only">
+      forEach 메서드 학습 내용이 로드되었습니다.
+    </div>
+
+  </body>
+
+</html>

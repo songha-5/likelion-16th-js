@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>배열(Array)의 기초</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+
+  <body>
+
+    <main class="prose">
+      <article>
+        <header>
+          <h1>Array 호텔 지배인 가이드</h1>
+          <p>JavaScript 마을의 Array 호텔에 오신 것을 환영합니다. 지율 지배인이 꼭 알아야 할 호텔 운영 규칙(배열의 원리)을 정리했습니다.</p>
+        </header>
+
+        <section>
+          <h2>1. 호텔의 시작: 0번 방의 법칙</h2>
+          <p>Array 호텔의 가장 중요한 규칙은 첫 번째 방 번호가 <strong>0번</strong>이라는 점입니다.</p>
+
+          <div class="tip-box">
+            <p><strong>지배인 메모:</strong> 손님이 3명일 때(length = 3), 마지막 손님은 3번 방이 아닌 2번 방(length - 1)에 계십니다.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2>2. 손님 목록(배열) 작성하기</h2>
+          <dl>
+            <dt>대괄호([ ]) 방식</dt>
+            <dd>가장 대중적인 방법입니다. <code>const cart = ['두부', '양파'];</code></dd>
+
+            <dt>생성자(Array) 방식</dt>
+            <dd>정석적인 객체 생성 방법입니다. <code>new Array('두부', '양파');</code></dd>
+          </dl>
+        </section>
+
+        <section>
+          <h2>3. 마스터 키(at)와 인덱스</h2>
+          <p>특정 손님을 찾을 때는 주소(Index)를 사용하며, 최신 마스터 키인 <code>at()</code> 메서드를 사용하면 편리합니다.</p>
+
+          <table>
+            <caption>배열 항목 접근 방법 요약</caption>
+            <thead>
+              <tr>
+                <th scope="col">찾는 항목</th>
+                <th scope="col">전통적인 방식</th>
+                <th scope="col">최신 방식 (at)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>마지막 항목</td>
+                <td><code>arr[arr.length - 1]</code></td>
+                <td><code>arr.at(-1)</code></td>
+              </tr>
+              <tr>
+                <td>뒤에서 두 번째</td>
+                <td><code>arr[arr.length - 2]</code></td>
+                <td><code>arr.at(-2)</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="warning-zone">
+          <h2>⚠️ 지배인 금지 사항 (Anti-Pattern)</h2>
+          <p>배열의 크기보다 훨씬 큰 인덱스에 값을 강제로 할당하지 마세요.</p>
+          <blockquote>
+            <code>numberList[9] = '아홉'</code> 처럼 중간 방을 비워두면, 스크린 리더는 비어있는 방들을 <strong>undefined</strong>로 읽게 되어 사용자에게 혼란을 줍니다.
+          </blockquote>
+        </section>
+      </article>
+    </main>
+
+    <div aria-live="polite" class="sr-only">
+      배열 학습 내용이 화면에 표시되었습니다.
+    </div>
+
+  </body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>여러 요소 선택: querySelectorAll()과 컬렉션(HTMLCollection)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+
+  <body>
+
+    <main class="prose">
+      <article>
+        <header>
+          <h1>호텔 다중 객실 관리: querySelectorAll()</h1>
+          <p>호텔 내 여러 개의 방을 한꺼번에 선택하여 일괄 청소하거나 정보를 수정해야 할 때, <code>querySelectorAll()</code>은 가장 완벽한 마스터 키가 됩니다.</p>
+        </header>
+
+        <section>
+          <h2>1. 일괄 선택과 NodeList</h2>
+          <p>CSS 선택자를 사용하여 조건에 맞는 모든 요소를 한 번에 수집합니다. 결과물은 <strong>NodeList</strong>라는 객체 형태로 반환됩니다.</p>
+
+          <div class="code-example">
+            <code>const paragraphs = document.querySelectorAll('.life-tips p')</code>
+          </div>
+
+          <aside class="tip-box">
+            <p><strong>지배인 메모:</strong> NodeList는 배열과 매우 유사합니다. <code>length</code> 속성을 가지며, 0번부터 시작하는 인덱스로 각 방(요소)에 접근할 수 있습니다.</p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>2. 선택된 요소 일괄 처리 (Loop)</h2>
+          <p>수집된 여러 방을 하나씩 돌며 작업할 때는 <code>for...of</code> 문이나 <code>forEach()</code> 메서드를 사용합니다.</p>
+
+          <blockquote>
+            <code>
+            paragraphs.forEach((paragraph) =&gt; { <br />
+            &nbsp;&nbsp;paragraph.classList.add('color-primary') <br />
+            })
+          </code>
+          </blockquote>
+        </section>
+
+        <section>
+          <h2>3. 라이브(Live) vs 정적(Static) 컬렉션</h2>
+          <p>요소를 선택하는 방법에 따라, 나중에 추가된 방이 장부에 자동으로 반영되는지 여부가 결정됩니다.</p>
+
+          <table>
+            <caption>컬렉션 타입별 특징 비교</caption>
+            <thead>
+              <tr>
+                <th scope="col">항목</th>
+                <th scope="col">querySelectorAll (정적)</th>
+                <th scope="col">getElementsBy... (라이브)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">반환 타입</th>
+                <td>NodeList</td>
+                <td>HTMLCollection</td>
+              </tr>
+              <tr>
+                <th scope="row">자동 갱신</th>
+                <td>변화 없음 (고정)</td>
+                <td>DOM 변화 자동 반영 (실시간)</td>
+              </tr>
+              <tr>
+                <th scope="row">사용 빈도</th>
+                <td>매우 높음 (권장)</td>
+                <td>특수한 경우에만 사용</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="warning-zone">
+            <p><strong>⚠️ 주의사항:</strong> 라이브 컬렉션은 실시간으로 업데이트되어 유용해 보이지만, 새로 추가된 요소에 이벤트 리스너가 자동으로 연결되지는 않습니다. 따라서 <strong>이벤트 위임(Event Delegation)</strong> 기법을 사용하는 것이 더 효율적입니다.</p>
+          </div>
+        </section>
+
+        <footer class="practice-zone">
+          <h2>🚀 지배인 실무 요약</h2>
+          <dl>
+            <dt>querySelectorAll</dt>
+            <dd>가장 직관적이며 CSS 선택자를 자유롭게 활용할 수 있는 현대적인 선택 도구입니다.</dd>
+
+            <dt>NodeList의 특징</dt>
+            <td><code>forEach()</code>를 지원하지만, 완전한 배열은 아니므로 필요 시 <code>Array.from()</code>으로 변환하여 사용하세요.</td>
+
+            <dt>객체 유사성</dt>
+            <td>문자열이나 NodeList처럼 숫자로 된 키와 length를 가진 객체를 '배열과 유사한 객체'라고 부릅니다.</td>
+          </dl>
+        </footer>
+      </article>
+    </main>
+
+    <div aria-live="polite" class="sr-only">
+      다중 요소 선택 및 컬렉션 학습 가이드가 업데이트되었습니다.
+    </div>
+
+  </body>
+
+</html>

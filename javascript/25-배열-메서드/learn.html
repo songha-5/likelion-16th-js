@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+  <meta charset="UTF-8" />
+  <title>배열(Array) 조작 방법</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+<body>
+
+  <main class="prose">
+    <article>
+      <header>
+        <h1>Array 호텔 장부 관리 가이드</h1>
+        <p>손님의 위치를 찾고, 새로운 손님을 맞이하거나 떠나보내는 등 장부를 자유자재로 관리하는 방법을 익힙니다.</p>
+      </header>
+
+      <section>
+        <h2>1. 손님 위치 찾기 (indexOf)</h2>
+        <p>특정 손님이 몇 번 방에 있는지 확인할 때는 <code>indexOf()</code>를 사용합니다.</p>
+        <ul>
+          <li><strong>인덱스 반환:</strong> 해당 손님이 있는 방 번호를 알려줍니다.</li>
+          <li><strong>-1 반환:</strong> 해당 손님이 호텔에 계시지 않음을 의미합니다.</li>
+        </ul>
+        <div class="code-example">
+          <code>const index = fruitBasket.indexOf('워터멜론'); // 2</code>
+        </div>
+      </section>
+
+      
+      <section>
+        <h2>2. 체크인과 체크아웃 (추가/제거)</h2>
+        <p>손님이 오고 가는 위치에 따라 사용하는 마법의 주문(메서드)이 다릅니다.</p>
+        
+        <table>
+          <caption>방 위치에 따른 데이터 관리 메서드</caption>
+          <thead>
+            <tr>
+              <th scope="col">작업 위치</th>
+              <th scope="col">손님 추가 (추가)</th>
+              <th scope="col">손님 배웅 (제거)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">호텔 입구 (시작)</th>
+              <td><code>unshift()</code></td>
+              <td><code>shift()</code></td>
+            </tr>
+            <tr>
+              <th scope="row">호텔 끝방 (마지막)</th>
+              <td><code>push()</code></td>
+              <td><code>pop()</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>3. 만능 장부 수정 도구: splice()</h2>
+        <p><code>splice()</code>는 중간에 있는 손님을 관리할 수 있는 가장 강력한 도구입니다.</p>
+        <div class="tip-box">
+          <p><strong>주문 공식:</strong> <code>splice(시작번호, 제거개수, 추가할손님)</code></p>
+        </div>
+        <blockquote>
+          중간 위치에 새로운 손님을 모시거나, 특정 구간의 손님 명단을 한꺼번에 수정할 때 매우 효율적입니다.
+        </blockquote>
+      </section>
+
+      <section>
+        <h2>4. 안전한 장부 사본 만들기 (slice)</h2>
+        <p>원본 장부를 건드리지 않고 똑같은 사본을 만들어 별도로 관리하고 싶을 때는 <code>slice()</code>를 사용하세요.</p>
+        
+        <div class="code-example">
+          <code>const copiedLog = originalLog.slice(); // 새로운 장부 탄생!</code>
+        </div>
+      </section>
+
+      <footer class="warning-zone">
+        <h2>💡 지배인을 위한 최종 요약</h2>
+        <dl>
+          <dt>값의 존재 여부 확인</dt>
+          <dd>기본 데이터는 <code>indexOf</code>, 복잡한 객체는 추후 배울 <code>findIndex</code>를 사용하세요.</dd>
+          
+          <dt>메모리 낭비 방지</dt>
+          <dd>중간에 빈 방을 만들지 않도록 <code>splice</code>를 활용해 목록을 촘촘하게 관리하세요.</dd>
+        </dl>
+      </footer>
+    </article>
+  </main>
+
+  <div aria-live="polite" class="sr-only">
+    배열 조작 학습 가이드가 업데이트되었습니다.
+  </div>
+
+</body>
+</html>

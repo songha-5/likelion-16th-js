@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>반복문(Loop)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+
+  <body>
+
+    <main class="prose">
+      <article>
+        <header>
+          <h1>호텔 자동화 시스템: 반복문(Loop) 마스터</h1>
+          <p>수백 명의 손님에게 일일이 인사하기 힘드신가요? 루프(Loop)를 사용하면 반복되는 업무를 단 몇 줄의 코드로 자동화할 수 있습니다.</p>
+        </header>
+
+        <section>
+          <h2>1. 루프(Loop)란 무엇인가?</h2>
+          <p>명령어를 프로그램 내에서 일정하게 반복해서 실행하는 것을 말합니다. 조건이 충족될 때까지 멈추지 않고 일합니다.</p>
+          <aside class="tip-box">
+            <p><strong>지배인 주의:</strong> 조건이 항상 참(true)이면 호텔 시스템이 멈추지 않는 '무한 루프'에 빠지게 되니 주의하세요!</p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>2. 상황별 반복문 선택 가이드</h2>
+
+          <table>
+            <caption>반복문의 유형 및 특징</caption>
+            <thead>
+              <tr>
+                <th scope="col">유형</th>
+                <th scope="col">특징</th>
+                <th scope="col">적합한 상황</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">while</th>
+                <td>조건 평가 후 실행</td>
+                <td>반복 횟수가 불명확할 때</td>
+              </tr>
+              <tr>
+                <th scope="row">do ... while</th>
+                <td>실행 후 조건 평가</td>
+                <td>최소 1회 실행이 보장되어야 할 때</td>
+              </tr>
+              <tr>
+                <th scope="row">for</th>
+                <td>선언, 조건, 증감을 한곳에</td>
+                <td>정해진 횟수나 배열 순회 시 (가장 대중적)</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2>3. 업무 흐름 제어하기</h2>
+          <p>반복 업무 도중 예외 상황이 발생하면 다음 도구를 사용합니다.</p>
+          <ul>
+            <li><strong>continue:</strong> 현재 손님은 건너뛰고 바로 다음 손님으로 넘어가기</li>
+            <li><strong>break:</strong> 즉시 업무를 중단하고 루프 밖으로 나가기</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>4. 장부(배열/객체) 전용 반복문</h2>
+
+          <dl>
+            <dt><code>for ... of</code> (배열 전용)</dt>
+            <dd>방 번호(인덱스)보다 손님 이름(값) 자체가 중요할 때 사용합니다. 가독성이 매우 좋습니다.</dd>
+
+            <dt><code>for ... in</code> (객체 전용)</dt>
+            <dd>손님의 정보(속성:값)를 하나씩 꺼내볼 때 사용합니다. 배열에는 성능상 권장하지 않습니다.</dd>
+          </dl>
+        </section>
+
+        <footer class="practice-zone">
+          <h2>🚀 지배인 실습 과제</h2>
+          <p>자동화 시스템 구축을 위해 아래 항목을 코드로 구현해 보세요.</p>
+          <ol>
+            <li>1~100 사이의 짝수 룸 넘버 출력하기</li>
+            <li>마지막 방부터 1번 방까지 역순으로 점검하기</li>
+            <li>비밀번호 매칭 시스템 (do...while)</li>
+            <li>VIP 손님(특정 조건) 발견 시 반복 중단하기 (break)</li>
+          </ol>
+        </footer>
+      </article>
+    </main>
+
+    <div aria-live="polite" class="sr-only">
+      반복문 학습 가이드가 로드되었습니다.
+    </div>
+
+  </body>
+
+</html>
