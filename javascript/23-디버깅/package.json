@@ -1,5 +1,10 @@
 {
   "scripts": {
     "dev": "bunx live-server --host=localhost --port=3000 --no-browser"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "eslint": "^9.39.2",
+    "globals": "^17.0.0"
   }
 }

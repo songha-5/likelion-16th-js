@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/fonts.css" />
     <link rel="stylesheet" href="./assets/styles.css" />
+    <script defer src="./learn.js"></script>
   </head>
 
   <body>
@@ -38,6 +39,16 @@
             <li><strong>반복의 과정</strong><br />시도, 실패, 그리고 수정을 통한 발전</li>
           </ul>
         </section>
+
+        <button type="button" id="save-button">저장</button>      
+        <button type="button" class="alarm-button">알림</button>
+        <button type="button" class="submit-button">제출</button>
+        <div data-id="cart">
+          <p>상품 가격: <span data-id="price">100,000</span>원</p>
+          <p>수량: <span data-id="quantity">10</span>개</p>
+          <button type="button" data-id="calc-button">총 합계 계산하기</button>
+          <p>결과: <span data-id="total-result">0</span>원</p>
+        </div>
       </article>
     </main>
 

@@ -25,9 +25,11 @@
 // ⚠️ 잘못된 접근: rooms[3]은 빈 방(undefined)입니다. 인덱스는 0, 1, 2뿐이기 때문이죠.
 
 // 방법 A: 전통적인 계산 방식 (총 인원 - 1)
+const members = [101, 102]
+console.log(members[members.length - 1])
 
 // 방법 B: 만능 마스터 키 at() 사용 (추천)
-
+console.log(members.at(-1))
 
 // --------------------------------------------------------------------------
 // [시나리오 03] 방 정보 수정 및 주의사항
@@ -59,3 +61,12 @@
 
 // // ⚠️ 여기서 린터가 'no-const-assign' 경고를 보냅니다.
 // shoppingCart = ['계란', '우유']
+
+
+const instructors = [
+  '야무', '슬비'
+]
+
+instructors[0] = 'yamoo9'
+instructors[1] = '김데리사'
+console.log(instructors)

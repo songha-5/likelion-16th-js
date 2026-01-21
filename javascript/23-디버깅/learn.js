@@ -22,8 +22,47 @@
 // 훌륭한 개발자가 되기 위해 필요한 핵심 역량은 '완벽한 코드 작성'이 아닙니다.
 // 오히려 자신의 실수를 빠르게 인정하고, 브라우저가 주는 메시지(단서)를 바탕으로
 // 문제를 해결해 나가는 '태도'와 '기술'이 실력을 결정짓습니다.
+const saveButton = document.querySelector('#save-button')
 
+saveButton.addEventListener('click', () => {
+  alert('저장되었습니다!')
+})
 
+const alarmButton = document.querySelector('.alarm-button')
+
+// =============================== 3번
+alarmButton.addEventListener('click', handleRing)
+
+function handleRing() {
+  alert('알림!')
+}
+
+// =============================== 4번
+const submitButton = document.querySelector('.submit-button')
+
+submitButton.addEventListener('click', () => {
+  console.log('제출 완료!')
+})
+
+console.log('hi')
+
+const cart = document.querySelector('[data-id="cart"]')
+const price = cart.querySelector('[data-id="price"]').textContent
+const quantity = cart.querySelector('[data-id="quantity"]').textContent
+const calcButton = cart.querySelector('[data-id="calc-button"]')
+const resultDisplay = cart.querySelector('[data-id="total-result"]')
+
+calcButton.addEventListener('click', () => {
+  console.log(price, typeof price)
+  console.log(quantity, typeof quantity)
+  const total = price + quantity
+  resultDisplay.textContent = total
+})
+
+var start = 1
+
+function get () {
+}
 // --------------------------------------------------------------------------
 // 핵심 요약!
 // --------------------------------------------------------------------------
