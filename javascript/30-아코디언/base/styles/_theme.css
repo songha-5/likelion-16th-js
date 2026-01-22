@@ -1,0 +1,37 @@
+:root {
+  /* foreground / background */
+  --text-color: light-dark(var(--stone-950), var(--stone-50));
+  --background-color: light-dark(var(--yellow-500), var(--blue-950));
+
+  /* body gradient */
+  --body-gradient: linear-gradient(135deg, var(--yellow-500), var(--pink-500));
+  
+  /* link */
+  --link-color: var(--blue-600);
+  --link-color-dark: var(--blue-900);
+
+  /* Accordion */
+  [data-theme="cheese"] {
+    --background-color: var(--yellow-500);
+    --link-color: var(--yellow-800);
+    --text-color: var(--yellow-950);
+  }
+
+  [data-theme="lettuce"] {
+    --background-color: var(--green-600);
+    --link-color: var(--green-800);
+    --text-color: var(--green-900);
+  }
+
+  [data-theme="tomato"] {
+    --background-color: var(--red-400);
+    --link-color: var(--red-800);
+    --text-color: var(--red-900);
+  }
+
+  [data-theme="beef"] {
+    --background-color: var(--orange-600);
+    --link-color: var(--orange-800);
+    --text-color: var(--orange-900);
+  }
+}

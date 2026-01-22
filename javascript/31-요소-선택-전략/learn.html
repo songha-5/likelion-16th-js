@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>효율적인 요소 선택 전략: ID, Class, Tag, Attribute</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+
+    <main class="prose">
+      <article>
+        <header>
+          <h1>호텔 관리 마스터 키: 상황별 요소 선택 전략</h1>
+          <p>호텔 내 특정 방을 찾을 때 호수(ID)를 볼지, 객실 등급(Class)을 볼지 결정해야 합니다. 어떤 선택자를 언제 사용하는 것이 가장 효율적인지 알아봅시다.</p>
+        </header>
+
+        <section>
+          <h2>1. 선택의 기준: HTML 제어권과 수량</h2>
+          <p>어떤 선택자를 사용할지는 크게 두 가지 요인에 따라 달라집니다.</p>
+          <ul>
+            <li><strong>HTML 제어 가능 여부:</strong> 직접 마크업을 수정할 수 없다면 현재 있는 속성으로 접근해야 합니다.</li>
+            <li><strong>선택할 요소의 개수:</strong> 단일 요소를 정밀하게 타격할지, 여러 요소를 일괄 제어할지에 따라 도구가 달라집니다.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>2. 단일 요소 vs 다수 요소</h2>
+          <p>상황에 따라 가장 적합한 명찰(속성)을 사용하는 것이 좋습니다.</p>
+
+          <h3>단일 요소 선택 (ID 사용)</h3>
+          <p>요소가 문서 내에서 오직 하나만 존재한다면 <code>id</code> 속성을 사용하는 것이 가장 좋습니다. 고유한 식별자이기 때문입니다.</p>
+          <div class="code-example">
+            <pre><code>const title = document.getElementById('main-title');</code></pre>
+          </div>
+
+          <h3>다수 요소 선택 (Class, Attribute)</h3>
+          <p>여러 요소를 한 번에 다뤄야 할 때는 클래스나 속성을 사용합니다. 태그 선택자는 너무 광범위하므로 자제하는 것이 좋습니다.</p>
+          <div class="code-example">
+            <pre><code>// 클래스로 선택
+const components = document.querySelectorAll('.component');
+
+// 특정 속성으로 선택
+const classes = document.querySelectorAll('[class]');</code></pre>
+          </div>
+
+          <aside class="tip-box">
+            <p><strong>지배인 메모:</strong> 태그(예: <code>&lt;div&gt;</code>)는 너무 일반적입니다. "모든 방을 청소해"라고 말하는 것보다 "스위트룸(클래스)을 청소해"라고 말하는 것이 훨씬 정확한 지시가 됩니다.</p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>3. JavaScript 훅(Hook): js- 접두사</h2>
+          <p>스타일을 위한 클래스와 기능을 위한 클래스를 구분하면 유지보수가 훨씬 쉬워집니다. 자바스크립트로 조작할 요소에는 <code>js-</code> 접두사를 붙여보세요.</p>
+
+          <div class="code-example">
+            <pre><code>&lt;div class="notification js-notification"&gt;...&lt;/div&gt;</code></pre>
+          </div>
+          <p>이를 통해 동료 개발자는 "아, 이 요소는 자바스크립트 기능이 연결되어 있구나!"라고 즉시 인지할 수 있습니다.</p>
+        </section>
+
+        <section>
+          <h2>4. 요약 및 가이드</h2>
+
+          <table>
+            <caption>상황별 추천 선택자</caption>
+            <thead>
+              <tr>
+                <th scope="col">조건</th>
+                <th scope="col">추천 선택자</th>
+                <th scope="col">이유/설명</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">HTML 제어 불가</th>
+                <td>속성 선택자</td>
+                <td>구조나 클래스 변경 없이 선택 가능</td>
+              </tr>
+              <tr>
+                <th scope="row">요소가 1개인 경우</th>
+                <td>ID</td>
+                <td>고유함 보장, 접근 속도 빠름</td>
+              </tr>
+              <tr>
+                <th scope="row">요소가 여러 개인 경우</th>
+                <td>클래스/속성</td>
+                <td>태그보다 명확한 필터링 가능</td>
+              </tr>
+              <tr>
+                <th scope="row">JS 조작 예정 요소</th>
+                <td>js- 접두사</td>
+                <td>유지보수 및 협업 시 용도 명시</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <footer class="practice-zone">
+          <h2>🚀 지배인 실무 연습</h2>
+          <p>아래 상황에 맞춰 적절한 코드를 작성해 보세요.</p>
+
+          <h3>실습 1: 선택자 활용</h3>
+          <div class="code-example">
+            <pre><code>&lt;h1 id="main-title"&gt;안녕하세요!&lt;/h1&gt;
+&lt;p class="description"&gt;설명입니다.&lt;/p&gt;
+&lt;button data-role="confirm"&gt;확인&lt;/button&gt;</code></pre>
+          </div>
+
+          <h3>실습 2: JS 훅과 이벤트</h3>
+          <div class="code-example">
+            <pre><code>&lt;div class="notification js-notification"&gt;알림!&lt;/div&gt;
+&lt;button class="js-hide-btn"&gt;숨기기&lt;/button&gt;</code></pre>
+          </div>
+        </footer>
+      </article>
+    </main>
+
+    <div aria-live="polite" class="sr-only">
+      효율적인 요소 선택 전략 가이드가 업데이트되었습니다.
+    </div>
+
+  </body>
+
+</html>

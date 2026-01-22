@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>노드(Node) vs 요소(Element) 이해하기</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+
+    <main class="prose">
+      <article>
+        <header>
+          <h1>호텔의 구조물과 방: 노드(Node)와 요소(Element)</h1>
+          <p>DOM을 처음 접하면 노드와 요소라는 용어가 헷갈릴 수 있습니다. 호텔 전체를 지탱하는 뼈대(노드)와 손님이 머무는 실제 객실(요소)의 차이를 알아봅시다.</p>
+        </header>
+
+        <section>
+          <h2>1. 노드(Node)란 무엇인가?</h2>
+          <p>DOM을 트리 다이어그램(Tree Diagram)으로 시각화했을 때, 각 줄기와 잎(Leaf) 하나하나를 <strong>노드(Node)</strong>라고 부릅니다. DOM은 이 노드들이 모여 이룬 전체 지도와 같습니다.</p>
+
+          <p>위 이미지와 같은 트리 구조에서 우리는 다양한 노드를 발견할 수 있습니다.</p>
+          <ul>
+            <li><code>&lt;html&gt;</code>: 루트 요소 노드 (Root Element Node)</li>
+            <li><code>&lt;body&gt;</code>, <code>&lt;h1&gt;</code>, <code>&lt;a&gt;</code>: 요소 노드 (Element Node)</li>
+            <li>"Link text": 텍스트 노드 (Text Node)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>2. 노드의 종류</h2>
+          <p>노드는 단순히 태그만을 의미하지 않습니다. 다음 코드를 실행하면 시스템에서 정의된 다양한 노드 유형을 확인할 수 있습니다.</p>
+
+          <div class="code-example">
+            <pre><code>for (const key in document) {
+  if (key.includes('NODE')) console.log(key)
+}</code></pre>
+          </div>
+
+          <p>현재 웹 표준에서 주로 다루는 노드 목록은 다음과 같습니다. (일부는 더 이상 사용되지 않습니다.)</p>
+          <ul>
+            <li><strong>Element node (요소 노드)</strong></li>
+            <li>Text node (텍스트 노드)</li>
+            <li>Document node / Document type node</li>
+            <li>Comment node (주석 노드)</li>
+            <li><del>Attribute node / CDATA section node (Deprecated)</del></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>3. 노드의 주요 속성과 메서드</h2>
+          <p>모든 노드는 공통의 도구를 가지고 있습니다. 그중 실무에서 가장 자주 쓰이는 핵심 도구 두 가지를 기억하세요.</p>
+
+          <dl>
+            <dt>Node.parentElement</dt>
+            <dd>현재 노드를 감싸고 있는 부모 요소를 찾습니다. 없으면 <code>null</code>을 반환합니다.</dd>
+
+            <dt>Node.textContent</dt>
+            <dd>해당 노드와 그 자식 노드들에 포함된 모든 텍스트 내용을 가져오거나 수정합니다.</dd>
+          </dl>
+        </section>
+
+        <section>
+          <h2>4. 요소(Element): 특별한 노드</h2>
+          <p><strong>요소(Element)</strong>는 노드의 한 종류이지만, 매우 특별합니다. 노드가 가진 모든 능력을 물려받으면서도, HTML 태그로서 가질 수 있는 <code>classList</code>, <code>getAttribute</code>와 같은 전용 무기를 추가로 가지고 있습니다.</p>
+
+          <aside class="tip-box">
+            <p><strong>지배인 메모:</strong> "모든 요소는 노드이지만, 모든 노드가 요소는 아닙니다." 주석이나 단순한 텍스트는 노드일 뿐, '요소'라고 부르지 않습니다.</p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>5. 요약 및 비교</h2>
+          <table>
+            <caption>노드와 요소의 차이점 요약</caption>
+            <thead>
+              <tr>
+                <th scope="col">항목</th>
+                <th scope="col">노드 (Node)</th>
+                <th scope="col">요소 (Element)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">정의</th>
+                <td>DOM 트리를 구성하는 모든 단위</td>
+                <td>HTML 태그로 표현되는 특정 노드</td>
+              </tr>
+              <tr>
+                <th scope="row">포함 범위</th>
+                <td>텍스트, 주석, 문서 등 전체 포함</td>
+                <td>노드의 하위 개념 (특수한 노드)</td>
+              </tr>
+              <tr>
+                <th scope="row">주요 메서드</th>
+                <td><code>parentElement</code>, <code>textContent</code></td>
+                <td><code>classList</code>, <code>querySelector</code></td>
+              </tr>
+              <tr>
+                <th scope="row">사용 빈도</th>
+                <td>기본 구조 이해용 (비교적 적음)</td>
+                <td>실제 DOM 조작의 대부분 (매우 높음)</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <footer class="practice-zone">
+          <h2>🚀 학습 마무리</h2>
+          <p>우리가 자바스크립트로 화면을 바꿀 때 건드리는 대부분의 대상은 <strong>요소(Element)</strong>입니다. 하지만 그 요소를 감싸는 부모를 찾거나 텍스트만 쏙 뽑아낼 때는 <strong>노드(Node)</strong>의 기본 기능을 사용한다는 점을 잊지 마세요!</p>
+        </footer>
+      </article>
+    </main>
+
+    <div aria-live="polite" class="sr-only">
+      노드와 요소의 차이점에 대한 학습 가이드가 업데이트되었습니다.
+    </div>
+
+  </body>
+
+</html>

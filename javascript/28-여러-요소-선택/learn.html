@@ -6,18 +6,32 @@
     <title>여러 요소 선택: querySelectorAll()과 컬렉션(HTMLCollection)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/styles.css" />
+    <script defer src="./learn.js" defer></script>
   </head>
 
   <body>
 
     <main class="prose">
+      <div id="star-wars">
+        <div class="character" data-type="good-guy">루크 스카이워커</div>
+        <div class="character" data-type="good-guy">요다</div>
+        <div class="character" data-type="villain">다스 베이더</div>
+      </div>
+
       <article>
         <header>
           <h1>호텔 다중 객실 관리: querySelectorAll()</h1>
           <p>호텔 내 여러 개의 방을 한꺼번에 선택하여 일괄 청소하거나 정보를 수정해야 할 때, <code>querySelectorAll()</code>은 가장 완벽한 마스터 키가 됩니다.</p>
         </header>
 
-        <section>
+        <section class="region life-tips">
+          <h2>생활 상식</h2>
+          <p>배터리를 오래 쓰고 싶다면 100% 충전보다는 80~90%에서 사용을 멈추는 것이 좋습니다.</p>
+          <p>전자레인지에 금속 용기를 넣으면 화재 위험이 있으니 절대 사용하지 마세요.</p>
+          <p>흰 셔츠의 얼룩은 세탁 전에 식초나 베이킹소다로 미리 처리하면 잘 지워집니다.</p>
+        </section>
+
+        <section class="region">
           <h2>1. 일괄 선택과 NodeList</h2>
           <p>CSS 선택자를 사용하여 조건에 맞는 모든 요소를 한 번에 수집합니다. 결과물은 <strong>NodeList</strong>라는 객체 형태로 반환됩니다.</p>
 
@@ -30,7 +44,7 @@
           </aside>
         </section>
 
-        <section>
+        <section class="region">
           <h2>2. 선택된 요소 일괄 처리 (Loop)</h2>
           <p>수집된 여러 방을 하나씩 돌며 작업할 때는 <code>for...of</code> 문이나 <code>forEach()</code> 메서드를 사용합니다.</p>
 
@@ -43,7 +57,7 @@
           </blockquote>
         </section>
 
-        <section>
+        <section class="region">
           <h2>3. 라이브(Live) vs 정적(Static) 컬렉션</h2>
           <p>요소를 선택하는 방법에 따라, 나중에 추가된 방이 장부에 자동으로 반영되는지 여부가 결정됩니다.</p>
 

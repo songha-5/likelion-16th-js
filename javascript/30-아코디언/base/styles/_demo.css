@@ -1,0 +1,27 @@
+html {
+  font-size: 120%;
+}
+
+body {
+  background-image: var(--body-gradient);
+  color: var(--text-color);
+  min-height: 100vh;
+  padding: 3em;
+}
+
+h1 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+a {
+  color: var(--link-color);
+  text-underline-offset: 3px;
+
+  &:hover,
+  &:active {
+    color: var(--link-color-dark);
+  }
+}

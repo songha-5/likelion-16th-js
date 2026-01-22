@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "dev": "bunx live-server --host=localhost --port=3000 --entry-file=learn.html --no-browser"
+  }
+}
