@@ -23,8 +23,6 @@ console.log('부모 요소 노드: ', list.parentElement)
 console.log('자식 노드들: ', list.childNodes)
 // 모든 자식 노드들
 console.log('모든 자식 요소 노드들 :', list.children)
-console.groupEnd()
-
 // 모든 자식 요소 노드들
 console.log('모든 자식 요소 노드들: ', list.children)
 // console.log(list.children.forEach) // 사용 못함 ❌
@@ -44,12 +42,31 @@ for (const child of list.children) {
 Array.from(list.children).forEach((child) => {
   console.log('*', child)
 })
+console.groupEnd()
+
 // [실습] 텍스트 노드(Text Node) 조작하기
 // 1. 첫 번째 p 태그의 첫 번째 자식 노드를 찾아 변수 'textNode'에 할당하세요.
 // 2. 해당 노드의 nodeType을 출력하여 '3'이 나오는지 확인하세요.
 // 3. 'textNode.textContent'를 이용해 내용을 "수정된 텍스트입니다"로 변경해 보세요.
 console.group('3. 텍스트 노드 직접 조작')
 // 이곳에 코드를 작성하세요.
+
+const firstParagraph = document.querySelector('p')
+
+// object 타입
+const textNode = firstParagraph.firstChild
+// const textNodeType = textNode.nodeType
+// console.log(textNodeType, textNodeType === document.TEXT_NODE)
+
+// string 
+const textNodeContent = textNode.textContent //텍스트노드값읽기
+console.log(textNodeContent, typeof textNode, typeof textNodeContent)
+
+// 문자값 쓰기
+setTimeout(() => {
+  textNode.textContent = '수정된 텍스트'
+}, 1000)
+
 
 console.groupEnd()
 
