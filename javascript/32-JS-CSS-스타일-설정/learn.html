@@ -10,23 +10,87 @@
     <script src="./learn.js" defer></script>
   </head>
   <style>
-    .box {
+    /* .box {
+      --border-color: #191919;
+      --background-color: #fff;
+      --width: 320px;
+      --height: 142px;
+
       display: flex;
       justify-content: center;
       align-items: center;
-      inline-size: 320px;
-      block-size: 142px;
+      inline-size: var(--width);
+      block-size: var(--height);
       margin-block: 20px;
-      border: 6px solid currentColor;
+      background-color: var(--width);
+      border: 6px solid var(--border-color);
       border-radius: 12px;
       font-size: 1.27rem;
       font-weight: 600;
-    }
+    } */
+  
+   .boxItem {
+	      width: 100px;
+	      height: 100px;
+	      margin-bottom: 10px;
+	      border: 1px solid #ccc;
+	      padding: 20px;
+	      transition: all 0.3s;
+	    }
+
+      :root {
+	      --theme-color: #0652dd;
+	    }
+	
+	    .themed-box {
+	      background-color: var(--theme-color);
+	      color: #fff;
+	      padding: 20px;
+	      transition: background-color 0.3s;
+	    }
+
+       .progress-container {
+	      width: 100%;
+	      background-color: #e0e0e0;
+	      border-radius: 8px;
+	      overflow: hidden;
+	      margin-bottom: 20px;
+	    }
+	    
+	    .progress-bar {
+	      width: 10%; /* 초기값 */
+	      height: 30px;
+	      background-color: #4caf50;
+	      text-align: center;
+	      line-height: 30px;
+	      color: white;
+	      transition: width 0.5s ease;
+	    }
   </style>
 
   <body>
 
     <main class="prose">
+
+      <!-- 1번 -->
+      <p class="boxItem" title="이 텍스트의 스타일이 바뀔 거예요!">BOX</p>
+      <button type="button" class="change-style-button">스타일 변경</button>
+	
+      <!-- 2번 -->
+      <div class="themed-box">CSS 변수로 배경색을 설정했어요!</div>
+	    <button type="button" class="change-theme-button">색상 변경</button>
+      
+      <!-- 3번 -->
+      <h3>파일 다운로드 진행률</h3>
+	  
+      <div class="progress-container">
+        <div class="progress-bar">10%</div>
+      </div>
+	
+      <button type="button" id="button-50">50% 설정</button>
+      <button type="button" id="button-100">100% 설정</button>
+	
+
       <button class="button change-style-buttn" type="button">요소 스타일 조작</button>
       <div class="box">
         box박스

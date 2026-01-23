@@ -13,13 +13,13 @@
 const box = document.querySelector('.box')
 const changeStyleButton = document.querySelector('.button')
 
-changeStyleButton.addEventListener(('click'), () => {
+/* changeStyleButton.addEventListener(('click'), () => {
   // box.style['background-color'] = '#ed4c67'
   box.style.backgroundColor = '#ed4c67'
   box.style.color = 'white'
   box.style.width = 15 + 'px'
   box.style.height = 150 + 'px'
-})
+}) */
 
 console.groupCollapsed('1. 기본 스타일 설정 (CamelCase)')
 
@@ -33,6 +33,14 @@ console.groupEnd()
 // 1. '.change-theme-button' 버튼과 '.themed-box' 요소를 선택하세요.
 // 2. 버튼 클릭 시 setProperty()를 사용하여 '--theme-color'를 '#A3CB38'로 변경하세요.
 console.groupCollapsed('2. 사용자 정의 속성 설정 (Hyphen-case)')
+  // box.style.backgroundColor = '#ed4c67'
+  box.style.setProperty('color', '#fff')
+  // box.style.color = 'white'
+  box.style.setProperty('background-color', '#ed4c67', 'important')
+  // box.style.width = 15 + 'px'
+  box.style.setProperty('width', 160 + 'px')
+  // box.style.height = 150 + 'px'
+  box.style.setProperty('height', 160 + 'px')
 
 // 이곳에 코드를 작성하세요.
 
@@ -60,3 +68,45 @@ console.groupEnd()
 // 3. setProperty()의 강점: CSS 변수(--)를 제어할 수 있고, 하이픈 케이스를 그대로 사용합니다.
 // 4. 우선순위: JS로 설정한 스타일은 HTML의 style 속성에 직접 삽입되어 CSS 파일보다 우선순위가 높습니다.
 // --------------------------------------------------------------------------
+
+
+
+// 1. `.box`요소의 글자색(`color`)을 변경합니다.
+// 2. `.box`요소의 배경색(`backgroundColor`)을 변경합니다.
+// 3. `.box`요소의 너비(`width`)를**단위를 포함하여**변경합니다. (예:`'200px'`)
+// 4. `.box`요소의 높이(`height`)를 변경합니다.
+const boxItem = document.querySelector('.boxItem')
+boxItem.style.setProperty('background-color', 'greenYellow')
+boxItem.style.setProperty('width', 200+'px')
+boxItem.style.setProperty('height', 200+'px')
+
+// 버튼을 클릭해 :root 또는 특정 요소에 선언된 CSS 변수를 변경해 보세요.
+const themeButton = document.querySelector('.change-theme-button')
+const themeBox = document.querySelector('.themed-box')
+themeButton.addEventListener('click', () => {
+  themeBox.style.setProperty('--theme-color', 'green')
+})
+
+// 실무에서 파일 업로드나 로딩 화면을 구현할 때 자주 사용하는 패턴입니다.
+// 버튼을 누르면 진행률 바의 너비가 변경되도록 구현해봅니다.
+const progressContainer = document.querySelector('.progress-container')
+const progressBar = progressContainer.querySelector('.progress-bar')
+const button50 = document.getElementById('button-50')
+const button100 = document.getElementById('button-100')
+button50.addEventListener('click', () => {
+  const nextValue = 50 + '%'
+  progressBar.style.setProperty('width', 50 + '%')
+  progressBar.textContent = nextValue
+  progressBar.style.setProperty('background-color', '#4caf50')
+})
+button100.addEventListener('click', () => {
+  const nextValue = 100 + "%"
+  progressBar.style.setProperty('width', 100 + '%')
+  progressBar.textContent = nextValue
+  progressBar.style.setProperty('background-color', '#2196f3')
+})
+//     - `.progress-bar`의 텍스트 내용을 `'50%'`로 변경합니다.
+// 2. `id`가 `button-100`인 버튼을 클릭하면
+//     - `.progress-bar`의 너비를 `'100%'`로 설정합니다.
+//     - `.progress-bar`의 텍스트 내용을 `'완료!'`로 변경합니다.
+//     - 배경색을 파란색(`#2196f3`)으로 변경해봅니다.
