@@ -1,0 +1,6 @@
+{
+  "dependencies": {},
+  "devDependencies": {
+    "htmlhint": "^1.8.0"
+  }
+}

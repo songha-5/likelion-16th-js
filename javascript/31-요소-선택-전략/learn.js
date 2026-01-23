@@ -38,3 +38,65 @@ console.groupEnd()
 // 5. JS 조작용 클래스에 'js-' 접두사를 붙이면 스타일과 기능을 명확히 분리할 수 있습니다.
 // 6. JavaScript 훅을 사용하면 유지보수 시 기능 손상을 예방하고 협업 효율을 높입니다.
 // --------------------------------------------------------------------------
+
+/* ## . 선택자를 활용해 요소 선택
+
+다음 코드를 복사, 붙여넣은 후 연습을 진행합니다.
+
+
+
+1. `id` 속성으로 요소를 선택한 후, 콘솔에 출력합니다.
+2. `class` 속성으로 요소를 선택한 후, 콘솔에 출력합니다.
+3. `button` 태그 이름으로 모든 요소를 선택한 후, 콘솔에 출력합니다.
+4. `data-role` 속성으로 요소를 선택한 후, 콘솔에 출력합니다. */
+
+const choiceId = document.getElementById('main-title')
+console.log(choiceId)
+
+const choiceClass = document.querySelector('.description')
+console.log(choiceClass)
+
+const choiceButtonAll = document.querySelectorAll('button')
+console.log(choiceButtonAll)
+
+const choiceData = document.querySelector("[data-role=confirm]")
+console.log(choiceData)
+
+// ## 2. JS 훅을 활용해 요소 선택
+// 다음 코드를 복사, 붙여넣은 후 연습을 진행합니다.
+
+// 1. JS 훅을 사용해 요소를 선택합니다.
+// 2. `"알림 숨기기"` 버튼을 사용자가 누르면 알림 내용(`notification`)이 감춰지도록 설정합니다.
+const hideText = document.querySelector('.js-notification')
+const hideButton = document.querySelector('.js-hide-button')
+
+hideButton.addEventListener('click', () => {
+  hideText.classList.add('hide')
+})
+
+// ## 3. 쇼핑 카트 '전체 선택'
+
+// 쇼핑몰 장바구니에서 흔히 볼 수 있는 **"전체 선택"** 기능을 구현해봅니다.
+// 하나의 버튼(`id`)을 클릭했을 때, 여러 개의 상품 요소(`class`)들이 동시에 변경되어야 합니다.
+
+// 다음 코드를 복사, 붙여넣은 후 연습을 진행합니다.
+
+
+// 1. 'id`를 사용하여"전체 선택" 버튼을 선택하세요.
+const allSelcet = document.getElementById('btn-select-all')
+
+// 2. `class`를 사용하여 모든 "상품 아이템(.cart-item)"을 한 번에 선택하세요.
+const cartItem = document.querySelectorAll('.cart-item')
+
+allSelcet.addEventListener('click', () => {
+  for (let i = 0, l = cartItem.length; i < l; i++) {
+    const item = cartItem[i]
+    item.classList.add('selected')
+  }
+})
+// 3. 버튼을 클릭하면, 모든 상품 아이템에'selected'클래스가 추가되도록 코드를 작성하세요.
+/* allSelcet.addEventListener('click', () => {
+  cartItem.forEach((item) => {
+    item.classList.add('selected')
+  })
+}) */

@@ -6,61 +6,18 @@
     <title>효율적인 요소 선택 전략: ID, Class, Tag, Attribute</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/styles.css" />
-    <!-- SEO추가하기 -->
-    <meta name="description" content="이 페이지는 HTML 학습을 위한 페이지입니다. 기초부터 심화까지 다룹니다.">
     <script src="./learn.js" defer></script>
-
-    <style>
-	    .cart-item {
-	      padding: 10px;
-	      border: 1px solid #ddd;
-	      margin-bottom: 5px;
-	      cursor: pointer;
-	
-	      /* 선택되었을 때 적용할 스타일 */
-		    &.selected {
-		      background-color: #e3f2fd;
-		      border-color: #2196f3;
-		      font-weight: bold;
-		    }
-	    }
-	    
-	    .button-group { margin-top: 20px; }
-      .hide { display: none ;}
-	</style>
-
   </head>
 
   <body>
 
     <main class="prose">
-
-
-        <h1 id="main-title">안녕하세요!</h1>
-        <p class="description">이것은 설명입니다.</p>
-        <button type="button" data-role="confirm">확인</button>
-        <button type="button" class="button">클릭</button>
-	
-        <div class="notification js-notification">📢 중요한 알림입니다!</div>
-        <button type="button" class="js-hide-button">알림 숨기기</button>
-
       <article>
         <header>
           <h1>호텔 관리 마스터 키: 상황별 요소 선택 전략</h1>
           <p>호텔 내 특정 방을 찾을 때 호수(ID)를 볼지, 객실 등급(Class)을 볼지 결정해야 합니다. 어떤 선택자를 언제 사용하는 것이 가장 효율적인지 알아봅시다.</p>
         </header>
 
-
-        <h3>🛒 장바구니</h3>
-        <div class="cart-list">
-          <div class="cart-item">🍎 사과</div>
-          <div class="cart-item">🍌 바나나</div>
-          <div class="cart-item">🥛 우유</div>
-        </div>
-    
-      <div class="button-group">
-        <button type="button" id="btn-select-all">전체 선택</button>
-      </div>
         <section>
           <h2>1. 선택의 기준: HTML 제어권과 수량</h2>
           <p>어떤 선택자를 사용할지는 크게 두 가지 요인에 따라 달라집니다.</p>
