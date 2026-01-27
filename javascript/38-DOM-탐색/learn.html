@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>DOM 마스터: 탐색(Traversal)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+    <a href="#main-content" class="sr-only">본문 바로가기</a>
+
+    <main id="main-content" class="prose">
+      <header>
+        <h1>DOM 탐색 (Traversal)</h1>
+        <p>
+          기준 요소에서 <strong>부모, 자식, 형제 요소</strong>로 직접 이동하여 원하는 대상을 효율적으로 선택하는 방법을 배웁니다.
+        </p>
+      </header>
+
+      <section aria-labelledby="traversal-direction">
+        <h2 id="traversal-direction">탐색 방향별 주요 메서드</h2>
+        <table>
+          <caption>방향에 따른 DOM 탐색 속성 및 메서드 요약</caption>
+          <thead>
+            <tr>
+              <th scope="col">방향</th>
+              <th scope="col">주요 속성 및 메서드</th>
+              <th scope="col">특징</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">아래로 (자식)</th>
+              <td><code>children</code>, <code>firstElementChild</code></td>
+              <td>직계 자식 요소 탐색</td>
+            </tr>
+            <tr>
+              <th scope="row">위로 (부모)</th>
+              <td><code>parentElement</code>, <code>closest()</code></td>
+              <td>부모 또는 가장 가까운 조상 탐색</td>
+            </tr>
+            <tr>
+              <th scope="row">옆으로 (형제)</th>
+              <td><code>nextElementSibling</code>, <code>previousElementSibling</code></td>
+              <td>이전/다음 형제 요소 탐색</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section aria-labelledby="defensive-coding">
+        <h2 id="defensive-coding">방어적 프로그래밍</h2>
+        <p>탐색 결과가 존재하지 않을 경우 <code>null</code>을 반환하므로, 반드시 존재 여부를 확인하는 습관이 중요합니다.</p>
+        <pre><code class="language-javascript">if (element.closest('.container')) { /* 로직 실행 */ }</code></pre>
+      </section>
+
+      <aside role="note" style="border-left: 4px solid #007bff; padding: 1em; background: #f0f7ff;">
+        <strong>💡 핵심 팁</strong>
+        <ul>
+          <li><strong>children</strong>은 HTMLCollection을 반환하므로 순회 시 배열 변환이 필요할 수 있습니다.</li>
+          <li><strong>item()</strong> 메서드는 범위를 벗어날 때 <code>null</code>을 반환하여 안전한 에러 처리를 돕습니다.</li>
+        </ul>
+      </aside>
+    </main>
+  </body>
+
+</html>

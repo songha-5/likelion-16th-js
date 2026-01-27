@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>로직 마스터: 논리 연산자(Logical Operators)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+    <a href="#main-content" class="sr-only">본문 바로가기</a>
+
+    <main id="main-content" class="prose">
+      <header>
+        <h1>논리 연산자로 조건 처리</h1>
+        <p>
+          복잡한 여러 조건을 <strong>&& (AND)</strong>와 <strong>|| (OR)</strong> 연산자로 연결하여 코드를 간결하고 명확하게 만드는 방법을 배웁니다.
+        </p>
+      </header>
+
+      <section aria-labelledby="operator-comparison">
+        <h2 id="operator-comparison">논리 연산자 핵심 비교</h2>
+        <table>
+          <caption>AND 연산자와 OR 연산자의 작동 방식 비교</caption>
+          <thead>
+            <tr>
+              <th scope="col">구분</th>
+              <th scope="col">&& (AND 연산자)</th>
+              <th scope="col">|| (OR 연산자)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">의미</th>
+              <td>"그리고" (모두 참이어야 참)</td>
+              <td>"또는" (하나만 참이어야 참)</td>
+            </tr>
+            <tr>
+              <th scope="row">평가 중단 지점</th>
+              <td><strong>거짓</strong>을 만났을 때</td>
+              <td><strong>참</strong>을 만났을 때</td>
+            </tr>
+            <tr>
+              <th scope="row">반환 값</th>
+              <td>첫 번째 거짓 값 또는 마지막 값</td>
+              <td>첫 번째 참 값 또는 마지막 값</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section aria-labelledby="short-circuit">
+        <h2 id="short-circuit">단락 평가 (Short-circuit Evaluation)</h2>
+        <p>JavaScript는 효율성을 위해 결과가 결정되는 즉시 나머지 평가를 생략합니다.</p>
+        <pre><code class="language-javascript">// userName이 없으면 '익명'을 할당 (OR 활용)
+const name = userName || '익명';
+
+// user가 존재할 때만 프로필 출력 (AND 활용)
+user && console.log(user.profile);</code></pre>
+      </section>
+
+      <section>
+        <h2>요약</h2>
+        <p>논리 연산자는 단순한 참/거짓 판별을 넘어 <strong>값의 선택과 실행 제어</strong>에도 널리 쓰입니다. 단락 평가의 원리를 이해하면 훨씬 세련된 코드를 작성할 수 있습니다.</p>
+      </section>
+    </main>
+  </body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>이벤트 마스터: 이벤트 위임(Delegation)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+    <a href="#main-content" class="sr-only">본문 바로가기</a>
+
+    <main id="main-content" class="prose">
+      <header>
+        <h1>이벤트 위임 (Event Delegation)</h1>
+        <p>
+          개별 요소가 아닌 <strong>상위 요소에 단 하나의 리스너</strong>를 등록하여 다수의 하위 요소를 효율적으로 제어하는 기법을 배웁니다.
+        </p>
+      </header>
+
+      <section aria-labelledby="delegation-logic">
+        <h2 id="delegation-logic">이벤트 위임의 작동 원리</h2>
+        <ul>
+          <li><strong>버블링 활용:</strong> 하위 요소에서 발생한 이벤트는 부모 요소로 전파됩니다.</li>
+          <li><strong>대상 확인:</strong> <code>e.target</code>을 통해 실제 클릭된 지점을 파악합니다.</li>
+          <li><strong>조건 검사:</strong> <code>matches()</code>나 <code>closest()</code>로 원하는 대상인지 확인합니다.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="nested-elements">
+        <h2 id="nested-elements">중첩된 요소 처리 방법</h2>
+        <p>링크(a) 내부에 아이콘이나 텍스트가 있을 때, 항상 링크 요소가 선택되도록 보장하는 방법입니다.</p>
+
+        <table>
+          <caption>중첩 요소 클릭 문제 해결 방식 비교</caption>
+          <thead>
+            <tr>
+              <th scope="col">방법</th>
+              <th scope="col">기술</th>
+              <th scope="col">특징</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">JavaScript</th>
+              <td><code>closest('a')</code></td>
+              <td>가장 가까운 조상 링크를 찾아 안전하게 참조</td>
+            </tr>
+            <tr>
+              <th scope="row">CSS</th>
+              <td><code>pointer-events: none</code></td>
+              <td>자식 요소가 마우스 이벤트를 무시하고 통과시킴</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>요약</h2>
+        <p>이벤트 위임은 <strong>성능 최적화와 동적 UI 구현</strong>을 위한 필수 기법입니다. <code>e.target</code>과 <code>closest()</code>의 조합을 잘 활용하는 것이 핵심입니다.</p>
+      </section>
+    </main>
+  </body>
+
+</html>

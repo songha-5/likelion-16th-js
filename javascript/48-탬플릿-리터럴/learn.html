@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>템플릿 리터럴 & 태그드 템플릿</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+    <a href="#main-content" class="sr-only">본문 바로가기</a>
+
+    <main id="main-content" class="prose">
+      <header>
+        <h1>더 스마트한! 템플릿 리터럴</h1>
+        <p>
+          백틱(<code>`</code>)을 사용하여 <strong>동적인 문자열 생성</strong>과 <strong>멀티라인 마크업</strong>을 직관적으로 처리하는 방법을 배웁니다.
+        </p>
+      </header>
+
+      <section aria-labelledby="template-literal-features">
+        <h2 id="template-literal-features">템플릿 리터럴의 특징</h2>
+        <ul>
+          <li><strong>문자열 보간:</strong> <code>${expression}</code> 구문으로 변수와 연산 결과 삽입 가능</li>
+          <li><strong>멀티라인:</strong> 별도의 이스케이프 문자(<code>\n</code>) 없이 줄바꿈 유지</li>
+          <li><strong>직관성:</strong> 복잡한 따옴표 결합(<code>+</code>)이 없어 가독성이 뛰어남</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="tagged-template">
+        <h2 id="tagged-template">고급 기법: 태그드 템플릿</h2>
+        <p>함수를 이용해 템플릿 리터럴의 내용을 분해하고 재구성할 수 있습니다.</p>
+
+        <table>
+          <caption>태그 함수 인자 구조</caption>
+          <thead>
+            <tr>
+              <th scope="col">인자 순서</th>
+              <th scope="col">데이터 타입</th>
+              <th scope="col">내용</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">첫 번째 인수</th>
+              <td>배열 (Array)</td>
+              <td><code>${}</code>를 제외한 순수 문자열 조각들</td>
+            </tr>
+            <tr>
+              <th scope="row">나머지 인수</th>
+              <td>개별 값 (Values)</td>
+              <td><code>${}</code> 안에 담긴 표현식의 평가 결과값</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>요약</h2>
+        <p>템플릿 리터럴은 현대 자바스크립트의 필수 요소입니다. 단순히 변수를 넣는 것을 넘어 <strong>태그 함수</strong>를 활용해 문자열을 제어하는 고급 수준까지 도전해 보세요!</p>
+      </section>
+    </main>
+  </body>
+
+</html>

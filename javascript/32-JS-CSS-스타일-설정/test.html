@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <style>
+        .security-card {
+            width: 200px;
+            height: 100px;
+            border: 2px solid #333;
+            background-color: #eee; /* 기본 회색 */
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ⚠️ JS가 읽어야 할 정보는 여기 숨어있음! */
+        .security-card::after {
+            content: "Safe"; /* 또는 "Warning"으로 바뀔 수 있음 */
+            position: absolute;
+            bottom: -30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="security-card">시스템 상태</div>
+    <button id="check-btn">상태 점검</button>
+
+    <script>
+        const card = document.querySelector('.security-card');
+        const btn = document.querySelector('#check-btn');
+
+        btn.addEventListener('click', () => {
+            // 여기에 코드를 작성하세요!
+        });
+    </script>
+</body>
+</html>

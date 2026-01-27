@@ -1,11 +1,12 @@
 {
-  "scripts": {
-    "dev": "bunx live-server --host=localhost --port=300 --entry-file=learn.html --no-browser"
-  },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "eslint": "^9.39.2",
     "globals": "^17.0.0",
     "htmlhint": "^1.8.0"
+  },
+  "scripts": {
+    "dev": "bunx live-server --host=localhost --port=3000 --entry-file=learn.html --no-browser",
+    "remind": "bunx live-server --host=localhost --port=3002 --entry-file=remind.html --no-browser"
   }
 }

@@ -8,6 +8,16 @@
 console.groupCollapsed('1. 속성 읽기 검토 (getAttribute)')
 
 // 이곳에 코드를 작성하세요.
+{
+  const data = document.querySelector('.class-class')
+  console.log(getAttr(data, 'data-category'))
+  console.log(getAttr(data, 'id'))
+  console.log(getAttr(data, 'class'))
+
+  function getAttr(element, attributeName) {
+    return element.getAttribute(attributeName)
+  }
+}
 
 
 console.groupEnd()
@@ -17,10 +27,17 @@ console.groupEnd()
 // 1. HTML에 'checked="false"'로 작성된 체크박스 요소를 선택하세요.
 // 2. getAttribute('checked')의 값과 해당 요소의 .checked 프로퍼티(true/false) 값을 비교하여 출력하세요.
 // 3. (관찰) 왜 "false"라고 적었는데 브라우저에서는 체크된 상태로 보이는지 생각해보세요.
-console.groupCollapsed('2. checked 속성 특징 검토')
+console.group('2. checked 속성 특징 검토')
 
 // 이곳에 코드를 작성하세요.
+const checkbox = document.querySelector('input')
+const checkboxClass = document.querySelector('.checked')
+console.log(checkbox.getAttribute('checked'))
+console.log(checkboxClass.getAttribute('checked')) // ???? 이거 왜 안될까?
 
+function setAttr (element, attrName, attrValue) {
+  element.setAttribute(attrName, attrValue)
+}
 
 console.groupEnd()
 
@@ -30,7 +47,13 @@ console.groupEnd()
 // 2. element.dataset 객체를 콘솔에 출력하여 속성명이 어떻게 변환되었는지 확인하세요.
 // 3. dataset을 사용하여 해당 값을 '읽기'와 '쓰기' 해보세요.
 console.groupCollapsed('3. dataset 이름 변환 규칙 검토')
+{
+  const button = document.querySelector('.button')
 
+  console.log(button.dataset)
+  button.dataset.button = 'button-Button'
+  console.log(button.dataset)
+}
 // 이곳에 코드를 작성하세요.
 
 
@@ -43,7 +66,9 @@ console.groupEnd()
 console.groupCollapsed('4. 속성 설정 및 제거 검토')
 
 // 이곳에 코드를 작성하세요.
-
+const remove = document.querySelector('.delete')
+remove.setAttribute('data-title', '타이틀 추가')
+delete remove.removeAttribute('data-category')
 
 console.groupEnd()
 
@@ -55,3 +80,47 @@ console.groupEnd()
 // 2. dataset 변환: data-user-id(HTML) → dataset.userId(JS)로 카멜 케이스 변환이 일어납니다.
 // 3. 불리언 속성: checked, disabled 등은 값이 무엇이든 '존재'하는 것만으로 참(true)이 됩니다.
 // --------------------------------------------------------------------------
+
+console.group('setAttr() 함수 작성')
+
+setAttr(strong, 'id', 'powerful')
+setAttr(strong, 'data-id', 'emphasis element')
+
+function setAttr(element, attributeName, attributeValue) {
+  element.setAttribute(attributeName, attributeValue)
+}
+
+console.groupEnd()
+
+console.group('attr() 함수 작성')
+
+// 속성 추가(쓰기)
+attr(prose, 'id', 'main-container')
+attr(prose, 'data-id', 'main-element')
+
+// 속성 확인(읽기)
+const proseId = attr(prose, 'id')
+const proseDataId = attr(prose, 'data-id')
+console.log(proseId, proseDataId)
+
+// 속성 제거(삭제)
+setTimeout(() => {
+  // 2.4초 뒤에 제거
+  attr(prose, 'id', null)
+  attr(prose, 'data-id', null)
+  console.log('prose 요소의 id, data-id 속성 모두 삭제')
+}, 4000)
+
+function attr(element, attributeName, attributeValue) {
+  if (attributeValue === undefined) {
+    return getAttr(element, attributeName)
+  }
+
+  if (attributeValue === null) {
+    return removeAttr(element, attributeName)
+  }
+
+  setAttr(element, attributeName, attributeValue)
+}
+
+console.groupEnd()

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>속성 마스터: 요소의 크기와 위치 측정</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+    <a href="#main-content" class="sr-only">본문 바로가기</a>
+
+    <main id="main-content" class="prose">
+      <header>
+        <h1>요소의 크기와 위치 측정</h1>
+        <p>
+          자바스크립트의 <code>getBoundingClientRect()</code> 메서드를 활용하여 
+          요소의 <strong>뷰포트 기준 위치와 크기</strong>를 계산하는 방법을 학습합니다.
+        </p>
+      </header>
+
+      <section aria-labelledby="section-method">
+        <h2 id="section-method">1. getBoundingClientRect() 메서드</h2>
+        <p>이 메서드는 엘리먼트의 크기와 뷰포트(현재 보이는 화면)를 기준으로 한 상대적 위치 정보를 제공합니다.</p>
+        <pre><code class="language-javascript">const elRect = element.getBoundingClientRect();</code></pre>
+      </section>
+
+      <section aria-labelledby="section-properties">
+        <h2 id="section-properties">2. DOMRect 속성 상세</h2>
+        <table>
+          <caption>DOMRect 객체가 반환하는 주요 속성 목록</caption>
+          <thead>
+            <tr>
+              <th scope="col">구분</th>
+              <th scope="col">속성</th>
+              <th scope="col">설명</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" rowspan="3">위치</th>
+              <td>top / y</td>
+              <td>화면 상단에서 요소 상단까지의 거리</td>
+            </tr>
+            <tr>
+              <td>left / x</td>
+              <td>화면 좌측에서 요소 좌측까지의 거리</td>
+            </tr>
+            <tr>
+              <td>bottom / right</td>
+              <td>상단/좌측 기준 요소의 끝 지점 거리</td>
+            </tr>
+            <tr>
+              <th scope="row">크기</th>
+              <td>width / height</td>
+              <td>요소의 전체 크기 (Padding, Border 포함)</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </body>
+
+</html>

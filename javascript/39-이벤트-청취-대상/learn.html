@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>이벤트 마스터: 요소 참조 방식</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+    <a href="#main-content" class="sr-only">본문 바로가기</a>
+
+    <main id="main-content" class="prose">
+      <header>
+        <h1>이벤트 핸들러 내 요소 참조</h1>
+        <p>
+          이벤트 리스너 콜백 함수 내에서 <strong>이벤트를 수신한 요소</strong>를 변수 이름에 의존하지 않고 안전하게 참조하는 방법을 배웁니다.
+        </p>
+      </header>
+
+      <section aria-labelledby="reference-methods">
+        <h2 id="reference-methods">요소 참조 방법 비교</h2>
+        <table>
+          <caption>이벤트 참조 방식인 this와 e.currentTarget 비교</caption>
+          <thead>
+            <tr>
+              <th scope="col">구분</th>
+              <th scope="col">설명</th>
+              <th scope="col">주의사항</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><code>this</code></th>
+              <td>일반 함수에서 이벤트를 수신한 요소를 가리킴</td>
+              <td>화살표 함수에서는 사용 불가 (Window 객체 참조)</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>e.currentTarget</code></th>
+              <td>이벤트 리스너가 등록된 요소를 명확히 참조</td>
+              <td>함수 형태와 관계없이 항상 안전하게 사용 가능</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section aria-labelledby="arrow-function-warning">
+        <h2 id="arrow-function-warning">화살표 함수 사용 시 주의사항</h2>
+        <p>화살표 함수는 자신만의 <code>this</code>를 가지지 않고 상위 스코프의 <code>this</code>를 계승합니다.</p>
+        <aside role="alert" style="border: 2px solid #d93025; padding: 1em; border-radius: 8px; background: #fdf2f2;">
+          <strong>⚠️ 경고</strong>
+          <p>화살표 함수 내부에서 이벤트를 수신한 요소에 접근해야 한다면, <code>this</code> 대신 반드시 <strong><code>e.currentTarget</code></strong>을 사용하세요.</p>
+        </aside>
+      </section>
+
+      <section>
+        <h2>요약</h2>
+        <p>변수 이름을 변경하더라도 코드가 망가지지 않도록 <strong>유연한 참조 방식</strong>을 선택하는 것이 유지보수가 쉬운 코드를 만드는 비결입니다.</p>
+      </section>
+    </main>
+  </body>
+
+</html>

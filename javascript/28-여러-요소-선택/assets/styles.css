@@ -26,6 +26,10 @@ body {
   font: 1rem/1.5 "Spoqa Han Sans Neo", ui-sans-serif, system-ui, sans-serif;
 }
 
+.color--primary {
+  color: var(--primary-color)
+}
+
 .prose {
   max-width: 65ch;
   margin: 1.75rem;
@@ -100,8 +104,4 @@ body {
   & abbr:not(dfn abbr) {
     font-weight: 500;
   }
-}
-
-.color--primary {
-  color: red;
 }

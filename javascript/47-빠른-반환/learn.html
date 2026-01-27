@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>클린 코드: 빠른 반환(Early Return)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+    <a href="#main-content" class="sr-only">본문 바로가기</a>
+
+    <main id="main-content" class="prose">
+      <header>
+        <h1>빠른 반환 (Early Return)</h1>
+        <p>
+          복잡한 중첩 구조를 깨고, <strong>조건이 맞지 않을 때 즉시 종료</strong>하여 코드의 가독성과 품질을 높이는 기법을 배웁니다.
+        </p>
+      </header>
+
+      <section aria-labelledby="benefits">
+        <h2 id="benefits">빠른 반환의 장점</h2>
+        <table>
+          <caption>일반 조건문과 빠른 반환 패턴 비교</caption>
+          <thead>
+            <tr>
+              <th scope="col">비교 항목</th>
+              <th scope="col">일반 조건문 (Nested)</th>
+              <th scope="col">빠른 반환 (Early Return)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">들여쓰기(Depth)</th>
+              <td>중첩될수록 깊어짐</td>
+              <td>항상 얕은 깊이 유지</td>
+            </tr>
+            <tr>
+              <th scope="row">논리 흐름</th>
+              <td>끝까지 읽어야 결과 파악 가능</td>
+              <td>예외 상황을 입구에서 즉시 파악</td>
+            </tr>
+            <tr>
+              <th scope="row">유지보수</th>
+              <td>복잡한 <code>else</code> 구조 분석 필요</td>
+              <td>독립적인 <code>if</code>문으로 관리 용이</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>요약</h2>
+        <p>빠른 반환은 단순히 코드를 짧게 만드는 것이 아니라, <strong>생각의 흐름을 단순하게</strong> 만드는 도구입니다. 복잡한 <code>else if</code>의 늪에서 벗어나 더 깔끔한 코드를 작성해 보세요!</p>
+      </section>
+    </main>
+  </body>
+
+</html>

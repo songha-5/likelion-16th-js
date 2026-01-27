@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>이벤트 마스터: 고급 옵션(Passive & Signal)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+    <a href="#main-content" class="sr-only focusable">본문 바로가기</a>
+
+    <main id="main-content" class="prose">
+      <header>
+        <h1>이벤트 리스너 고급 옵션</h1>
+        <p>
+          스크롤 성능을 비약적으로 향상시키는 <strong>passive</strong> 옵션과
+          이벤트를 스마트하게 일괄 제거하는 <strong>signal</strong> 옵션에 대해 배웁니다.
+        </p>
+      </header>
+
+      <section aria-labelledby="scroll-optimization">
+        <h2 id="scroll-optimization">스크롤 성능 최적화 (passive)</h2>
+        <p>브라우저가 스크롤 시 <code>preventDefault()</code> 호출 여부를 기다리지 않게 하여 화면 버벅임을 방지합니다.</p>
+      </section>
+
+      <section aria-labelledby="external-removal">
+        <h2 id="external-removal">외부에서의 일괄 제거 (signal)</h2>
+        <p><code>AbortController</code>를 사용하면 함수 참조를 일일이 기억하지 않아도 여러 리스너를 한 번에 중단할 수 있습니다.</p>
+        <pre><code class="language-javascript">// 신호 하나로 모든 연결된 리스너 제거
+controller.abort();</code></pre>
+      </section>
+
+      <section aria-labelledby="options-summary">
+        <h2 id="options-summary">핵심 옵션 요약</h2>
+        <table>
+          <caption>주요 이벤트 리스너 옵션 비교</caption>
+          <thead>
+            <tr>
+              <th scope="col">옵션</th>
+              <th scope="col">목적</th>
+              <th scope="col">주요 특징</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><code>passive</code></th>
+              <td>성능 최적화</td>
+              <td>모바일 스크롤/터치 이벤트의 버벅임 해소</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>signal</code></th>
+              <td>관리 편의성</td>
+              <td>익명 함수도 포함하여 리스너 일괄 제거 가능</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>마치며</h2>
+        <p>
+          고급 옵션을 적재적소에 활용하는 것은 <strong>성능과 유지보수</strong>라는
+          두 마리 토끼를 모두 잡는 방법입니다. 특히 사용자 경험(UX)에 직결되는 성능 최적화 습관을 들여보세요.
+        </p>
+      </section>
+
+      <hr style="margin-block: 40px; border: 0; border-bottom: 0.5px solid" />
+
+      <section class="experiment-box">
+        <h3>Passive 옵션 테스트</h3>
+
+        <label class="toggle-switch">
+          <input type="checkbox" id="check-passive" aria-checked="false" />
+          <span class="slider"></span>
+          <span class="label-text">Passive: true 활성화 (스크롤 차단 불가)</span>
+        </label>
+
+        <div
+          class="scroll-box"
+          id="target-box"
+          tabindex="0"
+          role="region"
+          aria-label="스크롤 테스트 영역"
+        >
+          <div class="content">
+            <p>이 박스 위에서 <strong>마우스 휠이나 방향키</strong>를 사용해 보세요.</p>
+          </div>
+        </div>
+
+        <div id="log" aria-live="polite">상태: 대기 중</div>
+      </section>
+
+      <section class="container">
+        <div class="controls" role="group" aria-label="추적 컨트롤러">
+          <button id="button-start" class="button button--primary">추적 시작</button>
+          <button id="button-stop" class="button button--danger" disabled>
+            추적 중지 (Signal Abort)
+          </button>
+        </div>
+
+        <div class="tracker-area" role="region" aria-labelledby="tracker-title">
+          <h3 id="tracker-title" class="sr-only">좌표 추적 결과</h3>
+          <p id="status-text" aria-live="polite">시작 버튼을 눌러주세요.</p>
+          <div id="coordinates" aria-live="quiet">X: 0, Y: 0</div>
+        </div>
+      </section>
+    </main>
+  </body>
+
+</html>

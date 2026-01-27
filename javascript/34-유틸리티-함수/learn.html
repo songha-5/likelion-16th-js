@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="ko-KR">
 
   <head>
@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <main class="prose">
+    <main class="prose" style="color: red;">
       <article>
         <header>
           <h1>스타일 유틸리티 함수: getStyle, setStyle, css</h1>
@@ -139,4 +139,220 @@ function css(element, property, value) {
     </main>
   </body>
 
+</html> -->
+
+<!DOCTYPE html>
+<html lang="ko-KR">
+	<head>
+	  <meta charset="UTF-8" />
+	  <title>레인지 인풋으로 글자 크기 변경</title>
+	  <style>
+	    .text {
+	      font-size: 16px;
+	      color: #2d3436;
+	    }
+	
+	    .slider-container {
+	      margin-top: 1rem;
+	    }
+	
+	    label {
+	      font-size: 14px;
+	      margin-right: 8px;
+	    }
+      /*  */
+      .text {
+	      padding: 1rem;
+	      font-size: 1.5rem;
+	      text-align: center;
+	      color: #000000;
+	      background-color: #ffffff;
+	    }
+	
+	    .controls {
+	      margin-top: 2rem;
+	      display: flex;
+	      gap: 2rem;
+	      justify-content: center;
+	      align-items: center;
+	    }
+	
+	    label {
+	      font-size: 14px;
+	    }
+	
+	    input[type="color"] {
+	      width: 60px;
+	      height: 30px;
+	      border: none;
+	      padding: 0;
+	      cursor: pointer;
+	    }
+       body {
+	      display: flex;
+	      justify-content: center;
+	      align-items: center;
+	      height: 100vh;
+	      margin: 0;
+	      transition: all 0.3s ease;
+	    }
+	    
+	    .card {
+	      width: 300px;
+	      padding: 2rem;
+	      border-radius: 1rem;
+	      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+	      text-align: center;
+	      transition: all 0.3s ease;
+	      
+	      /* 초기 스타일 (라이트 모드) */
+	      background-color: #fff;
+	      color: #333;
+	      border: 2px solid #e0e0e0;
+	    }
+	
+	    button[data-feature="theme-button"] {
+	      cursor: pointer;
+	      margin-top: 1rem;
+	      padding: 0.5rem 1rem;
+	    }
+
+	  </style>
+	</head>
+	<body>
+
+    <div class="card">
+	    <h2>테마 변경</h2>
+	    <p>버튼을 눌러 다크 모드로 바꿔보세요.</p>
+	    <button type="button" data-feature="theme-button">
+		    다크 모드 켜기
+		  </button>
+	  </div>
+    <div class="element">ss</div>
+    <!-- 컬러(color) 인풋 값이 변경되면 .text 요소의 글자 및 배경 색상이 변경되도록 구현합니다. -->
+    <!-- <div class="controls">
+	    <label for="text-color">
+	      글자색
+	      <input type="color" id="text-color" value="#000" />
+	    </label>
+	
+	    <label for="background-color">
+		    배경색
+	      <input type="color" id="background-color" value="#fff" />
+	    </label>
+	  </div>
+	  
+	  <p class="text">이 텍스트의 글자 및 배경 색상을 조절해 보세요!</p> -->
+
+    <!-- 레인지(range) 인풋 값이 변경되면 .text 요소의 글자 크기가 변경되도록 구현합니다. -->
+	  <!-- <p class="text">이 텍스트의 글자 크기를 조절해 보세요!</p>
+	  <div class="slider-container">
+	    <label for="font-size-slider">글자 크기</label>
+	    <input type="range" id="font-size-slider" min="12" max="48" value="16" />
+	    <output id="font-size-value">16px</output>
+	  </div> -->
+
+    <script>
+      const card = document.querySelector('.card')
+      const button = card.querySelector('[data-feature="theme-button"]')
+
+      button.addEventListener('click', () => {
+        css(card, {
+          'background-color': '#000',
+          'color': '#fff'
+        })
+      })
+
+
+
+      const element = document.querySelector('.element')
+
+      // 기존 방식 (여러 번 호출)
+      // 리팩토링 전: 매번 함수를 따로 호출 (번거로움)
+
+      // 개선된 방식 (한 번 호출로 여러 스타일 변경)
+      // 리팩토링 후: 객체를 받아 내부에서 알아서 처리하도록 개선
+      css(element, {
+        'color': '#000',
+        'font-size': '20px',
+        'font-weight': 'bold',
+      })
+
+      function css(element, propName, propValue) {
+        // 값이 널이 아니여야하고 배열이 아니여야하고 타입이 오브젝트여야함
+        if( typeof propName  === 'object' && propName && !Array.isArray(propName)){
+          for( key in propName ) {
+            const value = propName[key]
+            css(element, key, value)
+          }
+          return
+        }
+        if(propValue === undefined) {
+          getStyle(element, propName)
+        }
+        if(propValue === null) {
+          removeStyle(element, propName)
+        }
+        setStyle(element, propName, propValue)
+      }
+      function getStyle(element, propName) {
+        if (element === null || element.nodeType !== document.ELEMENT_NODE ) {
+          console.warn('element값이 유효하지 않습니다')
+          return null
+        }
+        if (!propName) {
+          console.warn('propName값이 유효하지 않습니다')
+          return null
+        }
+        element.style.getPropertyValue(propName)
+      }
+      function setStyle(element, propName, propValue) {
+        if (element === null || element.nodeType !== document.ELEMENT_NODE) {
+          console.warn('element값이 유효하지 않습니다')
+          return null
+        }
+        if (!propName || !propValue) {
+          console.warn('propName또는 propValue값이 유효하지 않습니다')
+          return null
+        }
+        element.style.setProperty(propName, propValue)
+      }
+      function removeStyle(element, propName) {
+        if (element === null || element.nodeType !== document.ELEMENT_NODE) {
+          console.warn('element값이 유효하지 않습니다')
+          return null
+        }
+        if (!propName) {
+          console.warn('propName이 유효하지 않습니다')
+          return null
+        }
+        element.style.removeProperty(propName)
+      }
+
+
+
+      // const controls = document.querySelector('.controls')
+      // const textColor = document.getElementById('text-color')
+      // const backgroundColor = document.getElementById('background-color')
+      // const text = document.querySelector('.text')
+      
+      // textColor.addEventListener('input', () => {
+      //   console.log(textColor.value)
+      //   text.style.setProperty('color', textColor.value)
+      // })
+
+      // backgroundColor.addEventListener('input', () => {
+      //   text.style.setProperty('background-color', backgroundColor.value)
+      // })
+
+      // const container = document.querySelector('.slider-container')
+      // const input = document.getElementById('font-size-slider')
+      // const text = document.querySelector('.text')
+      // 글자크기변동 > element.getPropertyStyle('font-size', '사이즈'+px)
+      // input.addEventListener('input', () => {
+      //   console.log(input.value)
+      //   text.style.setProperty('font-size', input.value + 'px')
+      // })
+    </script>
+	</body>
 </html>

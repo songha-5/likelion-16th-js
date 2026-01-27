@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>함수 마스터: 기본 매개변수 & 객체 패턴</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+    <a href="#main-content" class="sr-only">본문 바로가기</a>
+
+    <main id="main-content" class="prose">
+      <header>
+        <h1>함수를 유연하게! 기본 매개변수</h1>
+        <p>
+          인수가 누락되어도 안전하게 작동하고, <strong>객체 패턴</strong>을 통해 복잡한 인수를 깔끔하게 관리하는 기법을 배웁니다.
+        </p>
+      </header>
+
+      <section>
+        <h2>기본 매개변수의 장점</h2>
+        <ul>
+          <li><strong>안정성:</strong> 인수가 전달되지 않아도 <code>undefined</code>로 인한 에러를 방지합니다.</li>
+          <li><strong>가독성:</strong> 해당 매개변수가 어떤 역할을 하는지 기본값을 통해 힌트를 제공합니다.</li>
+          <li><strong>유연성:</strong> 필수가 아닌 '선택적 인수'를 정의하기에 매우 적합합니다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>매개변수 전달 패턴 비교</h2>
+        <table>
+          <caption>객체 매개변수 vs 구조 분해 변수</caption>
+          <thead>
+            <tr>
+              <th scope="col">구분</th>
+              <th scope="col">객체 매개변수 (Object)</th>
+              <th scope="col">구조 분해 변수 (Destructured)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">가독성</th>
+              <td>객체 전체의 맥락 파악 용이</td>
+              <td>함수 내부 코드가 매우 간결함</td>
+            </tr>
+            <tr>
+              <th scope="row">접근 방식</th>
+              <td><code>userInfo.email</code> (점 표기법)</td>
+              <td><code>email</code> (직접 접근)</td>
+            </tr>
+            <tr>
+              <th scope="row">추천 상황</th>
+              <td>객체 원본을 유지하거나 전달할 때</td>
+              <td>특정 속성들만 골라서 사용할 때</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>요약</h2>
+        <p>기본 매개변수와 객체 패턴은 <strong>사용자 정의 함수를 더 견고하게</strong> 만듭니다. 인수의 순서에 얽매이지 않고 이름으로 소통하는 스마트한 개발자로 성장해 보세요!</p>
+      </section>
+    </main>
+  </body>
+
+</html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="ko-KR">
 
   <head>
@@ -18,6 +18,58 @@
         </p>
       </header>
     </main>
+  </body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>속성 설정, 읽기, 제거 실습</title>
+    <style>
+      .product {
+        border: 1px solid #ccc;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+      }
+
+      .button {
+        margin-right: 0.5rem;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="product" data-name="Red Sneakers" data-stock="3">
+      🛍️ 제품: <span class="name">레드 스니커스</span><br />
+      📦 재고: <span class="stock">3</span>
+    </div>
+
+    <button type="button" class="button" id="read">속성 읽기</button>
+    <button type="button" class="button" id="update">재고 수정</button>
+    <button type="button" class="button" id="remove">속성 제거</button>
+
+    <script>
+      const readButton = document.getElementById('read')
+      const updateButton = document.getElementById('update')
+      const removeButton = document.getElementById('remove')
+      const product = document.querySelector('.product')
+
+      removeButton.addEventListener('click', () => {
+        console.log(product.getAttribute('data-name'))
+        console.log(product.getAttribute('data-stock'))
+      })
+      updateButton.addEventListener('click', () => {
+        console.log('l');
+      })
+      readButton.addEventListener('click', () => {
+        console.log('l');
+      })
+    </script>
   </body>
 
 </html>
