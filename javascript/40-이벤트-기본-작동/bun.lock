@@ -3,13 +3,11 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "dependencies": {
-        "htmlhint": "^1.8.0",
-      },
       "devDependencies": {
         "@eslint/js": "^9.39.2",
         "eslint": "^9.39.2",
         "globals": "^17.0.0",
+        "htmlhint": "^1.8.0",
         "live-server": "^1.2.2",
       },
     },

@@ -1,3 +1,65 @@
+// ## 1. 보기 전환 버튼 그룹
+
+// `e.currentTarget`을 사용해 다음 요구사항을 구현합니다.
+
+// 1. 버튼 중 하나를 클릭하면 활성 상태로 전환하고, 다른 버튼은 비활성 상태로 전환됩니다.
+// 2. 사용자에 의해 선택된 뷰(view)가 무엇인 지, 콘솔 패널에 출력합니다.
+// 3. `aria-pressed` 속성을 사용해 눌려진 버튼 상태를 명시합니다.
+
+{
+  // 보기 전환 버튼 그룹
+  const viewToggleGroup = document.querySelector('.view-toggle')
+  const toggleButtons = viewToggleGroup.querySelectorAll('[type="button"]')
+
+  // 수집된 버튼 집합을 순환해서 각각의 버튼에 이벤트 리스너 추가
+  toggleButtons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      // `e.currentTarget`을 사용해 다음 요구사항을 구현합니다.
+      const selectedButton = e.currentTarget
+      // console.log('사용자가 선택한 버튼\n', selectedButton)
+      
+      // 이전에 활성화 상태였던 버튼
+      const beforeActivedButton = viewToggleGroup.querySelector('.active')
+
+      // 1-1. 현재 활성 상태였던 버튼을 비활성 상태로 전환
+      beforeActivedButton.classList.remove('active')
+      // 1-2. 버튼 중 하나를 클릭하면 활성 상태로 전환하고, 다른 버튼은 비활성 상태로 전환됩니다.
+      selectedButton.classList.add('active')
+
+      // 2. 사용자에 의해 선택된 뷰(view)가 무엇인 지, 콘솔 패널에 출력합니다.
+      // 2-1. getAttribute로 data-로 시작하는 속성 값 가져오기
+      console.log(selectedButton.getAttribute('data-view'))
+      // 2-1. 요소의 dataset 속성을 사용해 data-로 시작하는 속성 값 가져오기
+      console.log(selectedButton.dataset.view)
+      
+      // 3. `aria-pressed` 속성을 사용해 눌려진 버튼 상태를 명시합니다.
+      // 이전 활성 상태였던 버튼(beforeActivedButton)은 aria-pressed="false"로 전환
+      beforeActivedButton.setAttribute('aria-pressed', 'false')
+      // 현재 활성 상태인 버튼(selectedButton)은 aria-pressed="true"로 전환
+      selectedButton.setAttribute('aria-pressed', 'true')
+    })
+  })
+
+}
+
+const toggleButton = document.querySelector('.js-button-toggle')
+const thiss = document.querySelector('.thiss')
+
+thiss.addEventListener('click', handleCangeBGColor)
+
+function handleCangeBGColor(e) {
+  this.style.setProperty('background-color', "#155151")
+
+  togglePrassState(this)
+}
+function togglePrassState(button) {
+  if(button.getAttribute('aria-pressed') === 'false') {
+    button.setAttribute('aria-pressed', 'true')
+  } else {
+    button.setAttribute('aria-pressed', 'false')
+  }
+}
+
 // --------------------------------------------------------------------------
 // 실습: 이벤트 핸들러 내 요소 참조 (Event Target)
 // --------------------------------------------------------------------------

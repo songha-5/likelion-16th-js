@@ -1,6 +1,7 @@
 {
   "scripts": {
     "dev": "live-server --host=localhost --port=3000 --entry-file=learn.html --no-browser",
+    "practice": "live-server --host=localhost --port=3000 --entry-file=practice.html --no-browser",
     "lint": "eslint .",
     "hint": "htmlhint **/*.html"
   },
@@ -8,9 +9,7 @@
     "@eslint/js": "^9.39.2",
     "eslint": "^9.39.2",
     "globals": "^17.0.0",
-    "live-server": "^1.2.2"
-  },
-  "dependencies": {
+    "live-server": "^1.2.2",
     "htmlhint": "^1.8.0"
   }
 }

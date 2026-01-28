@@ -8,7 +8,43 @@
 // 3. firstElementChild와 lastElementChild를 사용해 첫 번째와 마지막 자식에 접근하세요.
 console.groupCollapsed('아래로 탐색 실습')
 
+const targetElement = document.querySelector('[data-target]')
+console.log(targetElement, targetElement.dataset.target)
+
+const captionElement = targetElement.querySelector('caption')
+// console.log(captionElement)
+const thElements = targetElement.querySelectorAll('th')
+// console.log(thElements)
+
+console.log('childNodes\n', targetElement.childNodes)
+// 텍스트 노드와 엘리먼트 노드가 섞인 nodelist에서 엘리먼트 노드만 수집한 배열을 필요로 한다면?
+const onlyElements = []
+
+for (const node of targetElement.childNodes) {
+  if(node.nodeType === document.ELEMENT_NODE) {
+    onlyElements.push(node)
+  }
+}
+// HTMLCollection -> [Array.from()] -> Array(배열화)
+// 배열전환 > 배열의 다양한 능력 활용을 위해
+const targetChilderenArray = Array.from(targetElement.children)
+
+// 텍스트 노드와 엘리먼트 노드가 섞인 NodeList에서
+// 엘리먼트 노드만 수집한 배열을 필요로 한다면?
+/* const onlyElements = [] // [h2, table]
+
+for (const node of targetElement.childNodes) {
+  if(node.nodeType === document.ELEMENT_NODE) {
+    onlyElements.push(node)
+  }
+} */
+
+
+console.log(onlyElements)
 // 이곳에 코드를 작성하세요.
+
+console.log('children\n', targetElement.children)
+
 
 console.groupEnd()
 
@@ -19,8 +55,24 @@ console.groupEnd()
 // 3. 찾고자 하는 상위 요소가 없을 경우(null)를 대비한 방어적 코드(if문)를 작성하세요.
 console.groupCollapsed('위로 탐색 실습')
 
-// 이곳에 코드를 작성하세요.
+// parentNode | parentElement
+console.log(targetElement) // 기준점
 
+const parentNode = targetElement.parentNode 
+console.log('parentNode\n', parentNode)
+
+const parentElement = targetElement.parentElement 
+console.log('parentElement\n', parentElement)
+
+const rootElement = document.documentElement // 또 다른 기준점 <html>
+console.log(rootElement.localName) // 'html'
+console.log(rootElement.nodeName) // 'HTML'
+
+// 
+
+const anotherTarget = targetElement.querySelector('th:nth-of-type(2)')
+const grandParent = anotherTarget.parentElement.parentElement.parentElement.parentElement
+console.log(grandParent)
 console.groupEnd()
 
 
@@ -28,8 +80,10 @@ console.groupEnd()
 // 1. nextElementSibling과 previousElementSibling을 사용하여 형제 요소 사이를 이동하세요.
 // 2. parentElement와 children 조합을 사용하여 특정 인덱스의 형제 요소에 접근하세요.
 // 3. Array.from().at(-1)을 사용하여 마지막 형제 요소를 선택하는 로직을 작성하세요.
-console.groupCollapsed('옆으로 탐색 실습')
+console.group('옆으로 탐색 실습')
 
+const targetStrong = document.querySelector('[data-list-type="ordered-list"] li:last-child strong')
+console.log(targetStrong)
 // 이곳에 코드를 작성하세요.
 
 console.groupEnd()

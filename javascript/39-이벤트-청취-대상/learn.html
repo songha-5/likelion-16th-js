@@ -7,6 +7,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/styles.css" />
     <script src="./learn.js" defer></script>
+    <style>
+      .button {
+        margin-block: 12px;
+        cursor: pointer;
+        background: #fff;
+        border: 1px solid currentColor;
+        border-radius: 3px;
+        padding: 0.3em 0.96em;
+        color: #111;
+
+        &:hover {
+          background-color: #ededed;
+        }
+      } 
+      .view-toggle button {
+        cursor: pointer;
+        margin-inline-end: 6px;
+        padding: 8px 16px;
+        border: 1px solid #ccc;
+        background: #fff;
+        
+        &.active {
+          border-color: #1e88e5;
+          background-color: #42a5f5;
+          color: white;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -15,6 +43,40 @@
     <main id="main-content" class="prose">
       <header>
         <h1>이벤트 핸들러 내 요소 참조</h1>
+        
+        <div role="group" class="view-toggle">
+          <button 
+            type="button"
+            data-view="list"
+            aria-pressed="false"
+          >
+            리스트 보기
+          </button>
+          <button 
+            type="button"
+            data-view="grid"
+            aria-pressed="true"
+            class="active"
+          >
+            그리드 보기
+          </button>
+          <button 
+            type="button"
+            data-view="table"
+            aria-pressed="false"
+          >
+            테이블 보기
+          </button>
+      </div>
+
+
+        <button type="button" class="button js-button-toggle" data-toggle-button aria-pressed="false">
+          배경 색상 토글
+        </button>
+        <button type="button" class="button thiss" data-toggle-button aria-pressed="false">
+          tihs?
+        </button>
+
         <p>
           이벤트 리스너 콜백 함수 내에서 <strong>이벤트를 수신한 요소</strong>를 변수 이름에 의존하지 않고 안전하게 참조하는 방법을 배웁니다.
         </p>

@@ -8,6 +8,22 @@
 console.groupCollapsed('getBoundingClientRect() 기본 측정')
 
 // 이곳에 코드를 작성하세요.
+const box = document.querySelector('.get-bounding-client-rect')
+box.style.cssText =`
+  position: relative;
+  background-color: white;
+  top: 40px;
+  left: 120px;
+`
+let randomX = getRandomInt(24, 81), randomY = getRandomInt(37, 79)
+console.log('randomX =', randomX)
+console.log('randomY =', randomY)
+
+// 난수(random inteager)를 반환하는 함수 (추상화)
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min
+}
+
 
 console.groupEnd()
 

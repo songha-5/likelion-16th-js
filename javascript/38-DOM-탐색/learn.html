@@ -7,11 +7,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/styles.css" />
     <script src="./learn.js" defer></script>
+    <style>
+      /* 눌린 상태일 때 스타일 변화 */
+	    button[aria-pressed="true"] {
+	      background-color: #0056b3;
+	      color: #fff;
+	      font-weight: bold;
+	    }
+	  </style>
   </head>
 
   <body>
     <a href="#main-content" class="sr-only">본문 바로가기</a>
 
+    <section>
+	      <p>오늘의 추천 게시물입니다.</p>
+	      <!-- 초기 상태: 눌리지 않음 (false) -->
+	      <button type="button" class="like-button" aria-pressed="false">
+	        좋아요
+	      </button>
+	    </section>
+
+
+    <script>
+        const likeButton = document.querySelector('.like-button')
+        
+        likeButton.addEventListener('click', () => {
+          // [실습 1] 현재 버튼의 aria-pressed 상태 값을 읽어오세요.
+          let isPressed = likeButton.getAttribute('aria-pressed')
+          
+          // [실습 2] 읽어온 값이 'true'인지 확인하여 새로운 상태(반대 값)를 결정하세요.
+          let newState = isPressed === 'true' ? false : true
+          
+          /* 여기에 코드 작성 */
+          likeButton.setAttribute('aria-pressed', newState)
+        })
+    </script>
     <main id="main-content" class="prose">
       <header>
         <h1>DOM 탐색 (Traversal)</h1>
@@ -20,7 +51,7 @@
         </p>
       </header>
 
-      <section aria-labelledby="traversal-direction">
+      <section data-target="here" aria-labelledby="traversal-direction">
         <h2 id="traversal-direction">탐색 방향별 주요 메서드</h2>
         <table>
           <caption>방향에 따른 DOM 탐색 속성 및 메서드 요약</caption>
@@ -49,6 +80,19 @@
             </tr>
           </tbody>
         </table>
+      </section>
+
+      <section data-list-type="ordered-list">
+        <h2 class="sr-only">순차 목록</h2>
+        <ol>
+          <li><strong>하나</strong></li>
+          <li><strong>둘</strong></li>
+          <li><strong>셋</strong></li>
+          <li><strong>넷</strong></li>
+          <li><strong>다섯</strong></li>
+          <li><strong>여섯</strong></li>
+          <li><strong>일곱</strong></li>
+        </ol>
       </section>
 
       <section aria-labelledby="defensive-coding">
