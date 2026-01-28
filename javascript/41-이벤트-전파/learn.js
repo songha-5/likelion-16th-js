@@ -1,3 +1,4 @@
+
 // --------------------------------------------------------------------------
 // 실습: 이벤트 전파 (Event Propagation)
 // --------------------------------------------------------------------------
@@ -6,9 +7,32 @@
 // 1. 중첩된 박스 요소들(.box1, .box2, .box3)에 각각 클릭 이벤트를 연결하세요.
 // 2. e.eventPhase 속성을 사용해 현재 단계(1:캡처, 2:타겟, 3:버블)를 출력하세요.
 // 3. { capture: true } 옵션을 사용했을 때 콘솔에 찍히는 순서 변화를 확인하세요.
-console.groupCollapsed('이벤트 단계 및 전파 순서 확인')
+console.group('이벤트 단계 및 전파 순서 확인')
 
 // 이곳에 코드를 작성하세요.
+const boxList = document.querySelectorAll('.box')
+console.log(boxList)
+
+boxList.forEach((box) => {
+  box.addEventListener('click', (e) => {
+    const currentBox = e.currentTarget
+    const boxLabel = currentBox.dataset.name
+    console.log(" '' " + boxLabel+ ' "box" ')
+  }, true)
+})
+
+const checkboxLabel = document.querySelector('.checkbox-input')
+const checkboxInput = checkboxLabel.querySelector('input')
+const checkboxSpan = checkboxLabel.querySelector('span')
+
+checkboxInput.addEventListener('change', (e) => {
+  const input = e.currentTarget
+  if(input.checked) {
+    checkboxSpan.textContent = '캡쳐링(Capturing) 단계'
+  } else {
+    checkboxSpan.textContent = '버블링(Bubbling) 단계'
+  }
+})
 
 console.groupEnd()
 

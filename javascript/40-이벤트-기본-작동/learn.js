@@ -1,3 +1,10 @@
+const registerForm = document.querySelector('.form')
+
+registerForm.addEventListener('click', (e) => {
+  e.preventDefault()
+  console.log('폼 전송 하지마');
+})
+
 const checkbox = document.querySelector('.prevent-default-demo-checkbox [type="checkbox"]')
 
 checkbox.addEventListener('click', (e) => {

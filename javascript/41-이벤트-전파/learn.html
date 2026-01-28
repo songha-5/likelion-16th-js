@@ -7,11 +7,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/styles.css" />
     <script src="./learn.js" defer></script>
+    <style>
+      .box {
+        padding: 32px;
+        border: 6px solid currentColor;
+      }
+      .layout-flex {
+        display: flex;
+        gap:24px;
+
+      }
+      .box {
+        display: grid;
+        place-content: conter;
+        flex:1;
+        font-size: 20px;
+        font-weight: 800;
+
+        &:hover {
+          background-color: rgba(0 30 60 / 0.15);
+        }
+      }
+    </style>
   </head>
 
   <body>
     <a href="#main-content" class="sr-only">본문 바로가기</a>
 
+    <label class="checkbox-input" style="display: flex; align-items: center; margin: 12px; user-select: none;">
+      <input type="checkbox" />
+      <span data-label>이벤트 전파 단계 출력</span>
+    </label>
+
+    <div class="box" data-name="wapper">
+      <div class="box layout-flex" data-name="layout">
+        <div class="box" data-name="x">box 1</div>
+        <div class="box" data-name="z">box 2</div>
+      </div>
+    </div>
+    
     <main id="main-content" class="prose">
       <header>
         <h1>이벤트 전파 (Event Propagation)</h1>
