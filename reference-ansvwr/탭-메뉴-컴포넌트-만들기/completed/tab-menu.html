@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>금융 대시보드 - 탭 메뉴 컴포넌트</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/assets/budget.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/fonts/noto-sans-kr.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/styles/main.css" />
+    <script src="/assets/scripts/main.js" defer></script>
+  </head>
+
+  <body>
+    <h1 class="sr-only">금융 대시보드</h1>
+
+    <main class="dashboard">
+
+      <nav class="tab-nav" role="tablist" aria-label="금융 정보 탭 메뉴">
+        <button
+          type="button"
+          class="tab-nav__button tab-nav__button--active"
+          id="tab-account"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-account"
+          data-target="panel-account">
+          <i class="tab-nav__icon fa-solid fa-wallet" aria-hidden="true"></i> 계좌 조회
+        </button>
+
+        <button
+          type="button"
+          class="tab-nav__button"
+          id="tab-invest"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-invest"
+          data-target="panel-invest">
+          <i class="tab-nav__icon fa-solid fa-chart-line" aria-hidden="true"></i> 투자 현황
+        </button>
+
+        <button
+          type="button"
+          class="tab-nav__button"
+          id="tab-history"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-history"
+          data-target="panel-history">
+          <i class="tab-nav__icon fa-solid fa-file-invoice" aria-hidden="true"></i> 거래 내역
+        </button>
+
+        <button
+          type="button"
+          class="tab-nav__button"
+          id="tab-card"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-card"
+          data-target="panel-card">
+          <i class="tab-nav__icon fa-regular fa-credit-card" aria-hidden="true"></i> 카드 관리
+        </button>
+      </nav>
+
+      <div class="dashboard__content">
+
+        <section
+          id="panel-account"
+          class="tab-panel tab-panel--active"
+          role="tabpanel"
+          aria-labelledby="tab-account"
+          tabindex="0">
+          <h2 class="tab-panel__title">계좌 정보</h2>
+
+          <article class="account-card">
+            <h3 class="account-card__title">입출금 계좌</h3>
+            <p class="account-card__number">123-456-789012</p>
+            <p class="account-card__amount u-text-blue">12,345,678 원</p>
+          </article>
+
+          <article class="account-card">
+            <h3 class="account-card__title">예금 계좌</h3>
+            <p class="account-card__number">987-654-321098</p>
+            <p class="account-card__amount u-text-green">45,678,901 원</p>
+          </article>
+        </section>
+
+        <section
+          id="panel-invest"
+          class="tab-panel"
+          role="tabpanel"
+          aria-labelledby="tab-invest"
+          tabindex="0"
+        >
+          <h2 class="tab-panel__title">투자 포트폴리오</h2>
+          <ul class="data-list">
+            <li class="list-row">
+              <div class="list-row__info-group">
+                <strong class="list-row__title">국내 주식</strong>
+                <span class="list-row__sub">10종목 보유</span>
+              </div>
+              <div class="list-row__value-group">
+                <strong class="list-row__amount">23,456,789 원</strong>
+                <span class="list-row__rate u-text-green" aria-label="수익률 5.2% 증가">+5.2%</span>
+              </div>
+            </li>
+
+            <li class="list-row">
+              <div class="list-row__info-group">
+                <strong class="list-row__title">해외 주식</strong>
+                <span class="list-row__sub">5종목 보유</span>
+              </div>
+              <div class="list-row__value-group">
+                <strong class="list-row__amount">15,234,567 원</strong>
+                <span class="list-row__rate u-text-red" aria-label="수익률 2.1% 감소">-2.1%</span>
+              </div>
+            </li>
+
+            <li class="list-row">
+              <div class="list-row__info-group">
+                <strong class="list-row__title">펀드</strong>
+                <span class="list-row__sub">3개 상품</span>
+              </div>
+              <div class="list-row__value-group">
+                <strong class="list-row__amount">8,123,456 원</strong>
+                <span class="list-row__rate u-text-green" aria-label="수익률 3.7% 증가">+3.7%</span>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section
+          id="panel-history"
+          class="tab-panel"
+          role="tabpanel"
+          aria-labelledby="tab-history"
+          tabindex="0"
+        >
+          <h2 class="tab-panel__title">최근 거래</h2>
+          <ul class="data-list">
+            <li class="list-row">
+              <div class="list-row__info-group">
+                <time class="list-row__sub" datetime="2026-01-22">2026.01.22</time>
+                <strong class="list-row__title">스타벅스 강남점</strong>
+              </div>
+              <div class="list-row__value-group">
+                <strong class="list-row__amount u-text-red">-6,500 원</strong>
+              </div>
+            </li>
+
+            <li class="list-row">
+              <div class="list-row__info-group">
+                <time class="list-row__sub" datetime="2026-01-22">2026.01.22</time>
+                <strong class="list-row__title">급여 입금</strong>
+              </div>
+              <div class="list-row__value-group">
+                <strong class="list-row__amount u-text-blue">+3,500,000 원</strong>
+              </div>
+            </li>
+
+            <li class="list-row">
+              <div class="list-row__info-group">
+                <time class="list-row__sub" datetime="2026-01-21">2026.01.21</time>
+                <strong class="list-row__title">GS25 편의점</strong>
+              </div>
+              <div class="list-row__value-group">
+                <strong class="list-row__amount u-text-red">-12,300 원</strong>
+              </div>
+            </li>
+
+            <li class="list-row">
+              <div class="list-row__info-group">
+                <time class="list-row__sub" datetime="2026-01-21">2026.01.21</time>
+                <strong class="list-row__title">카카오페이 송금</strong>
+              </div>
+              <div class="list-row__value-group">
+                <strong class="list-row__amount u-text-red">-50,000 원</strong>
+              </div>
+            </li>
+
+            <li class="list-row">
+              <div class="list-row__info-group">
+                <time class="list-row__sub" datetime="2026-01-20">2026.01.20</time>
+                <strong class="list-row__title">쿠팡 결제</strong>
+              </div>
+              <div class="list-row__value-group">
+                <strong class="list-row__amount u-text-red">-89,000 원</strong>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section
+          id="panel-card"
+          class="tab-panel"
+          role="tabpanel"
+          aria-labelledby="tab-card"
+          tabindex="0"
+        >
+          <h2 class="tab-panel__title">보유 카드</h2>
+
+          <article class="payment-card payment-card--theme-shinhan">
+            <h3 class="payment-card__name">신한카드</h3>
+            <p class="payment-card__number" aria-label="카드번호 1234 5678 9012 3456">1234 5678 9012 3456</p>
+            <div class="payment-card__footer">
+              <div class="payment-card__usage">
+                <span class="payment-card__label">이번 달 사용액</span>
+                <strong class="payment-card__amount">1,234,560 원</strong>
+              </div>
+              <span class="payment-card__brand">VISA</span>
+            </div>
+          </article>
+
+          <article class="payment-card payment-card--theme-kb">
+            <h3 class="payment-card__name">KB국민카드</h3>
+            <p class="payment-card__number" aria-label="카드번호 9876 5432 1098 7654">9876 5432 1098 7654</p>
+            <div class="payment-card__footer">
+              <div class="payment-card__usage">
+                <span class="payment-card__label">이번 달 사용액</span>
+                <strong class="payment-card__amount">567,890 원</strong>
+              </div>
+              <span class="payment-card__brand">Mastercard</span>
+            </div>
+          </article>
+        </section>
+
+      </div>
+    </main>
+
+  </body>
+
+</html>

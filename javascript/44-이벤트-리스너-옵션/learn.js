@@ -2,6 +2,23 @@
 // 실습: 이벤트 리스너 고급 옵션 (Advanced Options)
 // --------------------------------------------------------------------------
 
+globalThis.addEventListener('scroll', (e) => {
+  const globalObject = e.currentTarget
+  const scrollY = globalObject.scrollY
+  console.log('scroll Y : '+scrollY)
+})
+globalThis.addEventListener(
+  'scroll',
+  function listener(e) {
+    const globalObject = e.currentTarget
+    const scrollY = globalObject.scrollY
+    console.log({ y: scrollY })
+    
+    if (scrollY > 300) {
+      globalThis.removeEventListener('scroll', listener)
+    }
+  }
+)
 // [실습] passive 옵션을 이용한 스크롤 성능 최적화
 // 1. window 객체에 'wheel' 또는 'touchmove' 이벤트를 등록하세요.
 // 2. { passive: true } 옵션을 설정하여 브라우저의 렌더링 대기 시간을 줄이세요.
