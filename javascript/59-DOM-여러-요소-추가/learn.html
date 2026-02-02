@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>효율적인 요소 추가</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+    <a href="#main-content" class="sr-only focusable">본문 바로가기</a>
+
+    <main id="main-content" class="prose">
+      <header>
+        <h1>성능 최적화: 효율적인 DOM 조작</h1>
+        <p>
+          반복적인 리플로우(Reflow)를 방지하고 <strong>innerHTML</strong>과 <strong>DocumentFragment</strong>를 활용하는 고성능 렌더링 기법을 배웁니다.
+        </p>
+      </header>
+
+      <section>
+        <h2>렌더링 방식 비교</h2>
+
+        <table>
+          <caption>DOM 추가 방식 비교</caption>
+          <thead>
+            <tr>
+              <th scope="col">방법</th>
+              <th scope="col">특징</th>
+              <th scope="col">적합한 상황</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">innerHTML</th>
+              <td>문자열로 한 번에 교체</td>
+              <td>전체 초기 렌더링</td>
+            </tr>
+            <tr>
+              <th scope="row">DocumentFragment</th>
+              <td>메모리 바구니 활용</td>
+              <td>기존 요소 유지하며 대량 추가</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr />
+
+      <section id="practice1">
+        <h2>🔍 사용자 정보 검색</h2>
+        <form class="user-search-form">
+          <input type="text" aria-label="사용자 이름" placeholder="예) 이수진" class="search-input" />
+          <button type="submit">추가</button>
+        </form>
+        <p class="guide">
+          <strong>💡 입력 가능 이름:</strong> 김민수, 이수진, 박지훈, 최유리 등
+        </p>
+        <ul class="user-list"></ul>
+      </section>
+
+      <section id="practice2">
+        <h2>🍽️ 오늘의 메뉴</h2>
+        <button type="button" class="btn-load-menu">오늘의 메뉴 불러오기</button>
+        <ul class="menu"></ul>
+        <p class="info">📌 버튼을 눌러 메뉴를 확인하세요.</p>
+      </section>
+
+      <section id="practice3">
+        <h2>💬 상품 리뷰</h2>
+        <button type="button" class="btn-load-reviews">리뷰 불러오기</button>
+        <ul class="comments">
+          <li>배송도 빠르고 포장도 꼼꼼했어요. 맛도 기대 이상입니다!</li>
+          <li>양이 많고 간도 딱 좋네요. 가족끼리 먹기 좋아요.</li>
+        </ul>
+      </section>
+
+    </main>
+  </body>
+
+</html>

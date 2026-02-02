@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>화살표 함수의 암묵적 반환</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+    <a href="#main-content" class="sr-only focusable">본문 바로가기</a>
+
+    <main id="main-content" class="prose">
+      <header>
+        <h1>화살표 함수의 마법! 암묵적 반환 (Implicit Return)</h1>
+        <p>
+          함수 본문이 한 줄일 때 <strong>return</strong> 키워드 없이도 값을 반환하는 <strong>암묵적 반환</strong>의 규칙과 활용법을 배웁니다.
+        </p>
+      </header>
+
+      <section>
+        <h2>반환 방식 비교</h2>
+
+        <table>
+          <caption>반환 방식에 따른 차이점</caption>
+          <thead>
+            <tr>
+              <th scope="col">항목</th>
+              <th scope="col">명시적 반환 (Explicit)</th>
+              <th scope="col">암묵적 반환 (Implicit)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">중괄호 `{}`</th>
+              <td>사용함 (반드시 작성)</td>
+              <td>사용하지 않음</td>
+            </tr>
+            <tr>
+              <th scope="row">return 키워드</th>
+              <td>필요함</td>
+              <td>필요 없음 (자동 반환)</td>
+            </tr>
+            <tr>
+              <th scope="row">객체 반환 시</th>
+              <td><code>return { key: value }</code></td>
+              <td><code>({ key: value })</code> 괄호 필수</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>학습 포인트</h2>
+        <ul>
+          <li><strong>객체 반환의 핵심:</strong> 객체 리터럴을 반환할 때는 중괄호를 코드 블록으로 오해하지 않도록 소괄호 <code>()</code>로 감싸야 합니다.</li>
+          <li><strong>코드 가독성:</strong> <code>map</code>이나 <code>filter</code> 같은 고차 함수와 결합할 때 코드가 훨씬 간결해집니다.</li>
+          <li><strong>조건부 반환:</strong> 비교 연산자(예: <code>age &gt;= 20</code>) 자체가 <code>true</code> 또는 <code>false</code>를 암묵적으로 반환합니다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>실습 예제 미리보기</h2>
+        <p>
+          배열 데이터를 객체로 변환하거나, 조건에 맞는 성인 회원을 필터링하고,
+          과일 목록을 <code>&lt;li&gt;</code> 태그로 동적 렌더링하는 실습을 진행합니다.
+        </p>
+        <ul id="fruitList"></ul>
+      </section>
+
+      <section>
+        <h2>요약</h2>
+        <p>
+          JavaScript 엔진에게 중괄호가 '함수의 몸통'인지 '데이터 객체'인지
+          정확히 알려주는 것이 중요합니다. <strong>소괄호(())</strong>를 잊지 마세요!
+        </p>
+      </section>
+    </main>
+  </body>
+
+</html>

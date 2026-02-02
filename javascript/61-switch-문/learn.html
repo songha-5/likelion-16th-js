@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>함수 마스터: 조건 스위치(Switch)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+    <a href="#main-content" class="sr-only focusable">본문 바로가기</a>
+
+    <main id="main-content" class="prose">
+      <header>
+        <h1>분기 제어: switch 문</h1>
+        <p>
+          복잡한 <strong>if...else if</strong> 구조를 특정 값에 따라 명확하게 나누는 <strong>switch</strong> 활용법을 배웁니다.
+        </p>
+      </header>
+
+      <section>
+        <h2>switch 문 구조 요약</h2>
+
+        <table>
+          <caption>switch 문 구성 요소</caption>
+          <thead>
+            <tr>
+              <th scope="col">구성</th>
+              <th scope="col">역할</th>
+              <th scope="col">비고</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">case '값':</th>
+              <td>입력값과 일치하는지 확인</td>
+              <td>엄격한 비교(===) 수행</td>
+            </tr>
+            <tr>
+              <th scope="row">break</th>
+              <td>블록 실행 중단 및 탈출</td>
+              <td>생략 시 다음 case까지 실행(Fall-through)</td>
+            </tr>
+            <tr>
+              <th scope="row">default:</th>
+              <td>일치하는 값이 없을 때 실행</td>
+              <td>else와 유사한 역할</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr />
+
+      <section id="practice1">
+        <h2>📆 요일 별, 메시지 출력</h2>
+        <div>
+          <label for="day">요일 선택</label>
+          <input type="text" id="day" placeholder="예: 월요일" class="day-input" />
+        </div>
+        <button type="button" class="btn-check-day">메시지 출력</button>
+        <output class="day-output">{이모지 및 메시지 출력}</output>
+      </section>
+
+      <section id="practice2">
+        <h2>🍽 음식 별, 이모지 출력</h2>
+        <select aria-label="음식 종류" class="food-select">
+          <option value="">종류 선택</option>
+          <option value="한식">한식</option>
+          <option value="일식">일식</option>
+          <option value="중식">중식</option>
+          <option value="양식">양식</option>
+        </select>
+        <output class="food-output">{이모지 및 음식 출력}</output>
+      </section>
+
+      <section id="practice3">
+        <h2>🎯 취미 별, 카테고리 출력</h2>
+        <select aria-label="취미" class="hobby-select">
+          <option value="">취미를 선택하세요</option>
+          <option value="수영">수영</option>
+          <option value="영화 감상">영화 감상</option>
+          <option value="게임">게임</option>
+          <option value="조깅">조깅</option>
+        </select>
+        <output class="hobby-output">{이모지 및 취미 카테고리 출력}</output>
+      </section>
+
+    </main>
+  </body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>전개 구문 & 나머지 매개변수</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+    <a href="#main-content" class="sr-only focusable">본문 바로가기</a>
+
+    <main id="main-content" class="prose">
+      <header>
+        <h1>모으고 펼치기! Spread & Rest</h1>
+        <p>
+          점 세 개(<code>...</code>)의 마법! 상황에 따라 <strong>펼치고(Spread)</strong> 혹은 <strong>주워 담는(Rest)</strong> 유연한 코드 작성법을 배웁니다.
+        </p>
+      </header>
+
+      <section>
+        <h2>전개 구문 vs 나머지 매개변수</h2>
+
+        <table>
+          <caption>문법 위치와 역할에 따른 구분</caption>
+          <thead>
+            <tr>
+              <th scope="col">구분</th>
+              <th scope="col">전개 구문 (Spread)</th>
+              <th scope="col">나머지 매개변수 (Rest)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">핵심 역할</th>
+              <td>뭉쳐있는 것을 <strong>펼침</strong> (One → Many)</td>
+              <td>흩어져 있는 것을 <strong>모음</strong> (Many → One)</td>
+            </tr>
+            <tr>
+              <th scope="row">사용 위치</th>
+              <td>함수 호출 시, 배열/객체 리터럴 내부</td>
+              <td>함수 정의 시 매개변수, 구조 분해 할당 좌항</td>
+            </tr>
+            <tr>
+              <th scope="row">주요 사례</th>
+              <td>배열 합치기, 객체 복사(불변성 유지)</td>
+              <td>가변 인자 함수 만들기, 특정 속성 제외하기</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>학습 포인트</h2>
+        <ul>
+          <li><strong>불변성(Immutability):</strong> 전개 구문을 쓰면 원본을 건드리지 않고 새로운 복사본을 만들기 쉬워집니다.</li>
+          <li><strong>유연한 함수:</strong> 나머지 매개변수를 쓰면 인수가 몇 개가 들어오든 배열로 안전하게 처리할 수 있습니다.</li>
+          <li><strong>가독성:</strong> <code>.concat()</code>이나 <code>Array.from()</code>보다 훨씬 직관적인 코드를 작성할 수 있습니다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>요약</h2>
+        <p>
+          할당 연산자(<code>=</code>)를 기준으로 <strong>오른쪽(우항)</strong>에서 펼치면 <strong>Spread</strong>,
+          <strong>왼쪽(좌항)</strong>이나 매개변수 자리에서 담으면 <strong>Rest</strong>입니다.
+          이 두 문법을 자유자재로 다루면 복잡한 데이터 가공도 한 줄의 코드로 우아하게 해결할 수 있습니다!
+        </p>
+      </section>
+    </main>
+  </body>
+
+</html>

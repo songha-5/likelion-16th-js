@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>요소 생성 및 추가</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+    <a href="#main-content" class="sr-only focusable">본문 바로가기</a>
+
+    <main id="main-content" class="prose">
+      <header>
+        <h1>DOM 동적 제어: 생성과 삽입</h1>
+        <p>
+          메모리에 요소를 만드는 <strong>createElement</strong>와 화면에 배치하는 <strong>추가 메서드</strong>들을 학습합니다.
+        </p>
+      </header>
+
+      <section>
+        <h2>요소 추가 메서드 비교</h2>
+
+        <table>
+          <caption>DOM 추가 메서드 요약</caption>
+          <thead>
+            <tr>
+              <th scope="col">메서드</th>
+              <th scope="col">설명</th>
+              <th scope="col">특징</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">appendChild()</th>
+              <td>마지막 자식으로 추가</td>
+              <td>기존 요소 전달 시 위치가 이동됨</td>
+            </tr>
+            <tr>
+              <th scope="row">insertBefore()</th>
+              <td>특정 요소 앞에 삽입</td>
+              <td>기준이 되는 자식 요소가 필요함</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr />
+
+      <section id="practice1">
+        <h2>📋 오늘의 할 일</h2>
+        <form class="todo-form">
+          <input type="text" aria-label="할 일" placeholder="할 일 작성" class="todo-input" />
+          <button type="submit">추가</button>
+        </form>
+        <ul class="todo-list"></ul>
+      </section>
+
+      <section id="practice2">
+        <h2>🍜 라면 레시피</h2>
+        <button type="button" class="btn-insert">"면을 넣고" 앞에 추가</button>
+        <ol class="recipe-list">
+          <li>물을 냄비에 붓고 끓입니다.</li>
+          <li class="ref-item">면을 넣고 3~4분간 끓입니다.</li>
+        </ol>
+      </section>
+
+      <section id="practice3">
+        <h2>과일 선호도 관리</h2>
+        <button type="button" class="btn-move">다른 목록으로 이동</button>
+
+        <h3>🍉 좋아하는 과일</h3>
+        <ol class="fruits-i-like">
+          <li>수박</li>
+          <li class="mango">망고</li>
+        </ol>
+
+        <h3>🍇 안 좋아하는 과일</h3>
+        <ol class="fruits-i-dont-like">
+          <li>포도</li>
+        </ol>
+      </section>
+
+    </main>
+  </body>
+
+</html>

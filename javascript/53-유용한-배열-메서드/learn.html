@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>배열 고차 함수</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+    <a href="#main-content" class="sr-only focusable">본문 바로가기</a>
+
+    <main id="main-content" class="prose">
+      <header>
+        <h1>데이터의 마법! 배열 핵심 메서드</h1>
+        <p>
+          배열을 순회하며 찾고(Find), 거르고(Filter), 변형(Map)하는 <strong>현대적인 자바스크립트 데이터 핸들링</strong> 기법을 배웁니다.
+        </p>
+      </header>
+
+      <section>
+        <h2>핵심 메서드 4종 요약</h2>
+
+        <table>
+          <caption>배열 메서드 비교</caption>
+          <thead>
+            <tr>
+              <th scope="col">메서드</th>
+              <th scope="col">반환값</th>
+              <th scope="col">핵심 역할</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">.findIndex()</th>
+              <td>숫자 (인덱스)</td>
+              <td>조건에 맞는 첫 번째 요소의 위치 탐색 (없으면 -1)</td>
+            </tr>
+            <tr>
+              <th scope="row">.find()</th>
+              <td>요소 자체</td>
+              <td>조건에 맞는 첫 번째 요소 반환 (없으면 undefined)</td>
+            </tr>
+            <tr>
+              <th scope="row">.filter()</th>
+              <td><strong>새로운 배열</strong></td>
+              <td>조건에 맞는 모든 요소를 모아 새 배열 생성</td>
+            </tr>
+            <tr>
+              <th scope="row">.map()</th>
+              <td><strong>새로운 배열</strong></td>
+              <td>모든 요소를 가공하여 동일한 길이의 새 배열 생성</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>메서드 체이닝 (Chaining)</h2>
+        <p>
+          <code>filter()</code>와 <code>map()</code>처럼 배열을 반환하는 메서드들은 마침표(.)로 연결하여
+          연속적인 데이터 가공 파이프라인을 만들 수 있습니다. 이를 통해 복잡한 로직을 매우 간결하게 표현할 수 있습니다.
+        </p>
+      </section>
+
+      <section>
+        <h2>요약</h2>
+        <p>단순 순회가 목적이라면 <code>forEach</code>를, 데이터를 기반으로 <strong>새로운 결과물</strong>을 만들어야 한다면 <code>map</code>이나 <code>filter</code>를 선택하세요. 원본 배열을 수정하지 않는 '불변성'을 지키는 것이 현대 자바스크립트의 핵심입니다!</p>
+      </section>
+    </main>
+  </body>
+
+</html>

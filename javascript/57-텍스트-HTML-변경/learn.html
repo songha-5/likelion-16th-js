@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>텍스트 및 HTML 변경</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+    <a href="#main-content" class="sr-only focusable">본문 바로가기</a>
+
+    <main id="main-content" class="prose">
+      <header>
+        <h1>DOM 콘텐츠 제어: textContent vs innerHTML</h1>
+        <p>
+          요소의 단순한 <strong>텍스트</strong>를 바꿀 때와 <strong>HTML 구조</strong>를 동적으로 생성할 때의 차이를 배웁니다.
+        </p>
+      </header>
+
+      <section>
+        <h2>속성 비교 요약</h2>
+        <table>
+          <caption>콘텐츠 변경 속성 비교</caption>
+          <thead>
+            <tr>
+              <th scope="col">속성</th>
+              <th scope="col">용도</th>
+              <th scope="col">HTML 해석</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">textContent</th>
+              <td>텍스트만 변경</td>
+              <td>❌ (태그도 글자로 출력)</td>
+            </tr>
+            <tr>
+              <th scope="row">innerHTML</th>
+              <td>HTML 구조 포함 변경</td>
+              <td>✅ (태그를 해석하여 렌더링)</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr />
+
+      <section id="practice1">
+        <h2>오늘의 생활 수칙</h2>
+        <p class="headline-display">버튼을 눌러 수칙을 확인하세요</p>
+        <button type="button" class="btn-change">메시지 변경</button>
+      </section>
+
+      <section id="practice2">
+        <h2>프로필 카드 렌더링</h2>
+        <button type="button" class="btn-add">카드 추가</button>
+        <div class="card-container">
+        </div>
+      </section>
+
+      <hr />
+
+      <section>
+        <h2>학습 포인트</h2>
+        <ul>
+          <li><strong>보안성:</strong> 단순 텍스트라면 <code>textContent</code>를 쓰는 것이 성능과 보안(XSS 방지) 측면에서 더 안전합니다.</li>
+          <li><strong>템플릿 리터럴:</strong> <code>innerHTML</code>을 쓸 때는 백틱(<code>`</code>)을 활용해 가독성 있는 HTML 구조를 만드세요.</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+
+</html>
