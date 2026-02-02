@@ -62,6 +62,18 @@
         <p>템플릿 리터럴은 현대 자바스크립트의 필수 요소입니다. 단순히 변수를 넣는 것을 넘어 <strong>태그 함수</strong>를 활용해 문자열을 제어하는 고급 수준까지 도전해 보세요!</p>
       </section>
     </main>
+
+    <script>
+      highlight`
+      background-color:#ff0;
+      ${document.body}
+      `
+      function highlight(string, element) {
+        console.log(string)
+        console.log(element)
+        element.style.cssText = string.join('')
+      }
+    </script>
   </body>
 
 </html>

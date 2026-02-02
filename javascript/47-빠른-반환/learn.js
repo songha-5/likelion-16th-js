@@ -2,6 +2,30 @@
 // 실습: 빠른 반환 (Early Return) 패턴
 // --------------------------------------------------------------------------
 
+const practice3 = document.querySelector('.practice3')
+function isNull() {
+  const isValue = practice3.value
+  if (!isValue) {
+    return console.warn('어? 빈값임') 
+  }
+}
+
+
+function getScore(score) {
+	if(score > 90) {
+    return 'A'
+  } else if ( score >= 75) {
+    return 'B'
+  } else if ( score >= 60) {
+    return 'C'
+  } else {
+    return 'F'
+  }
+}
+
+getScore(92)
+console.log(getScore(92))
+
 // [실습] 중첩된 코드 줄이기 (이벤트 처리)
 // 1. 가상의 리스트 요소(container)에 클릭 이벤트를 설정하세요.
 // 2. e.target.closest('li')를 사용하여 클릭된 대상을 찾으세요.
