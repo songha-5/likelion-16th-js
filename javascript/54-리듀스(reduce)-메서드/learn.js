@@ -1,3 +1,52 @@
+const prices = [12_000, 45_000, 3200, 9900]
+
+// 배열의 요소들을 모두 합한 값 (최종 결과 값 = 누산된 값)
+// 총합 = 0 + 12000 + 45000 + 3200 + 9900
+console.log(prices)
+
+// for문 사용 예시
+{
+  let initialValue = 0
+  let accumulator = initialValue
+  for (let i = 0, l = prices.length; i < l; i++) {
+    const price = prices.at(i)
+    accumulator += price
+  }
+
+  console.log(accumulator)
+}
+
+// for...of문 메서드 사용 예시
+{
+  let initialValue = 0
+  let accumulator = initialValue
+  for (const price of prices) {
+    accumulator += price
+  }
+
+  console.log(accumulator)
+}
+
+
+// forEach() 메서드 사용 예시
+{
+  let initialValue = 0
+  let accumulator = initialValue
+  prices.forEach((price) => (accumulator += price))
+
+  console.log(accumulator)
+}
+
+// reduce() 메서드 사용 예시
+{
+  // 최종적으로 누산된 값을 구하는 함수(배열의 메서드)
+  const totalPrice = prices.reduce((acc, price) => acc += price, 0)
+
+  console.log(totalPrice)
+  console.log(`${totalPrice.toLocaleString()}원`)
+}
+
+
 // --------------------------------------------------------------------------
 // 실습: 배열 -> 숫자 (합계 구하기)
 // --------------------------------------------------------------------------
