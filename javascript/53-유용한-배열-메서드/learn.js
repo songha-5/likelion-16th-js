@@ -1,92 +1,124 @@
-// --------------------------------------------------------------------------
-// 실습: 탐색 메서드 (findIndex & find)
-// --------------------------------------------------------------------------
-
-// [실습 1] 거주지 일치 인덱스 출력
-// 1. users 배열에서 사용자가 입력한 거주지(location)와 일치하는 첫 번째 인덱스를 찾으세요.
-// 2. findIndex를 활용하고, 결과가 없을 시 -1이 나오는지 확인하세요.
-console.groupCollapsed('1. findIndex 실습')
-
-// 이곳에 코드를 작성하세요
-const people = [
-	{id  : 'id-1', name: '이름1', location: '서울' },
-	{id  : 'id-2', name: '이름2', location: '이천'  },
-	{id  : 'id-3', name: '이름3', location: '원주' },
+// 버튼 데이터
+const buttonData = [
+  { id: 'button-register', type: 'submit', label: '회원가입', message: '성공적으로 회원가입되었습니다.' },
+  { id: 'button-login', type: 'submit', label: '로그인', message: '사용자 계정으로 로그인되었습니다.' },
+  { id: 'button-login', type: 'reset', label: '초기화', message: '입력 내용을 모두 초기화했습니다.' },
+  { id: 'button-readmore', type: 'button', label: '더보기', message: '감춰진 데이터를 더보기합니다.' },
 ]
-// 검색한 위치에 거주하는 사용자의 인덱스를 찾아 반환
-// 단계 1
-const findLocation = '서울'
-const userInSeoulIndex = user.findIndex((user, index) =>)
-	if(user.location.includes('서울') return true
-}
 
-// 단계 2
-userInSeoulIndex = users.findIndex((user) => {
-  return user.location.includes(findLocation)
+const buttonMap = buttonData.map(({id, type, label, message}) => {
+  const markup =`
+    <button type=${type} label=${label}>${message}</button>
+  `
+  return markup
 })
 
-console.log(userInSeoulIndex) //1
-if (userInSeoulIndex > -1 ) { // 값이 맞을경우만 반환
-	console.log(userInSeoulIndex.name) //이름1
-}
+
+const buttonMapJoin = buttonMap.join('')
+const dynamicMarkupContainer = document.querySelector('[data-text]')
+
+dynamicMarkupContainer.innerHTML = buttonMapJoin
+
+const dynamicButtons = Array.from(dynamicMarkupContainer.children)
+console.log('s?')
+
+dynamicButtons.forEach((button) => {
+   button.addEventListener('click', (e) => {
+    const buttonElement = e.currentTarget
+    const message = buttonElement.dataset.message
+    alert(message)
+  })
+})
+
+// // --------------------------------------------------------------------------
+// // 실습: 탐색 메서드 (findIndex & find)
+// // --------------------------------------------------------------------------
+
+// // [실습 1] 거주지 일치 인덱스 출력
+// // 1. users 배열에서 사용자가 입력한 거주지(location)와 일치하는 첫 번째 인덱스를 찾으세요.
+// // 2. findIndex를 활용하고, 결과가 없을 시 -1이 나오는지 확인하세요.
+// console.groupCollapsed('1. findIndex 실습')
+
+// // 이곳에 코드를 작성하세요
+// const people = [
+// 	{id  : 'id-1', name: '이름1', location: '서울' },
+// 	{id  : 'id-2', name: '이름2', location: '이천'  },
+// 	{id  : 'id-3', name: '이름3', location: '원주' },
+// ]
+// // 검색한 위치에 거주하는 사용자의 인덱스를 찾아 반환
+// // 단계 1
+// const findLocation = '서울'
+// const userInSeoulIndex = user.findIndex((user, index) =>
+// 	if(user.location.includes('서울') return true
+// }
+
+// // 단계 2
+// userInSeoulIndex = users.findIndex((user) => {
+//   return user.location.includes(findLocation)
+// })
+
+// console.log(userInSeoulIndex) //1
+// if (userInSeoulIndex > -1 ) { // 값이 맞을경우만 반환
+// 	console.log(userInSeoulIndex.name) //이름1
+// }
 
 
-console.groupEnd()
+// console.groupEnd()
 
 
-// [실습 2] 국적 일치 사용자 이름 출력
-// 1. users 배열에서 특정 국적(nationality)을 가진 첫 번째 사용자를 찾으세요.
-// 2. find를 활용해 객체를 찾고, 해당 객체의 name만 출력해 보세요.
-console.groupCollapsed('2. find 실습')
+// // [실습 2] 국적 일치 사용자 이름 출력
+// // 1. users 배열에서 특정 국적(nationality)을 가진 첫 번째 사용자를 찾으세요.
+// // 2. find를 활용해 객체를 찾고, 해당 객체의 name만 출력해 보세요.
+// console.groupCollapsed('2. find 실습')
 
-// 이곳에 코드를 작성하세요
+// // 이곳에 코드를 작성하세요
 
-console.groupEnd()
-
-
-// --------------------------------------------------------------------------
-// 실습: 가공 및 필터링 (filter & map)
-// --------------------------------------------------------------------------
-
-// [실습 3] 국적 일치 사용자 그룹 출력
-// 1. filter를 사용하여 특정 국적을 가진 모든 사용자를 모은 새 배열을 만드세요.
-// 2. JSON.stringify(result, null, 2)를 사용하여 화면에 예쁘게 출력해 보세요.
-console.groupCollapsed('3. filter 실습')
-
-// 이곳에 코드를 작성하세요
-
-console.groupEnd()
+// console.groupEnd()
 
 
-// [실습 4] 고유 ID 설정 (데이터 변형)
-// 1. map을 사용하여 모든 사용자의 id 앞에 접두사(prefix)를 붙인 새 배열을 만드세요.
-// 2. 예: 1 -> 'user_1' (템플릿 리터럴 활용)
-console.groupCollapsed('4. map 실습')
+// // --------------------------------------------------------------------------
+// // 실습: 가공 및 필터링 (filter & map)
+// // --------------------------------------------------------------------------
 
-// 이곳에 코드를 작성하세요
+// // [실습 3] 국적 일치 사용자 그룹 출력
+// // 1. filter를 사용하여 특정 국적을 가진 모든 사용자를 모은 새 배열을 만드세요.
+// // 2. JSON.stringify(result, null, 2)를 사용하여 화면에 예쁘게 출력해 보세요.
+// console.groupCollapsed('3. filter 실습')
 
-console.groupEnd()
+// // 이곳에 코드를 작성하세요
 
-
-// --------------------------------------------------------------------------
-// 실습: 심화 체이닝 및 이벤트 위임
-// --------------------------------------------------------------------------
-
-// [실습 5] 국적 일치 & 고유 ID 설정 (체이닝)
-// 1. filter로 특정 국적 유저를 먼저 거르고, map으로 ID를 변형하는 체이닝을 구현하세요.
-// 2. 이벤트 위임을 활용해 컨테이너 하나에서 모든 입력을 처리해 보세요.
-console.groupCollapsed('5. 메서드 체이닝 실습')
-
-// 이곳에 코드를 작성하세요
-
-console.groupEnd()
+// console.groupEnd()
 
 
-// --------------------------------------------------------------------------
-// 핵심 요약!
-// --------------------------------------------------------------------------
-// 1. 반환값 확인: find 계열은 단일값(혹은 인덱스), map/filter는 항상 배열을 반환합니다.
-// 2. 불변성: 이 메서드들은 원본 배열을 변경하지 않고 항상 새로운 값을 반환해 안전합니다.
-// 3. 체이닝: 배열을 반환하는 메서드끼리는 기차처럼 연결하여 복잡한 로직을 한 줄로 끝낼 수 있습니다.
-// 4. forEach vs map: 값을 반환하여 다음 단계로 넘겨야 한다면 무조건 map을 사용하세요!
-// --------------------------------------------------------------------------
+// // [실습 4] 고유 ID 설정 (데이터 변형)
+// // 1. map을 사용하여 모든 사용자의 id 앞에 접두사(prefix)를 붙인 새 배열을 만드세요.
+// // 2. 예: 1 -> 'user_1' (템플릿 리터럴 활용)
+// console.groupCollapsed('4. map 실습')
+
+// // 이곳에 코드를 작성하세요
+
+// console.groupEnd()
+
+
+// // --------------------------------------------------------------------------
+// // 실습: 심화 체이닝 및 이벤트 위임
+// // --------------------------------------------------------------------------
+
+// // [실습 5] 국적 일치 & 고유 ID 설정 (체이닝)
+// // 1. filter로 특정 국적 유저를 먼저 거르고, map으로 ID를 변형하는 체이닝을 구현하세요.
+// // 2. 이벤트 위임을 활용해 컨테이너 하나에서 모든 입력을 처리해 보세요.
+// console.groupCollapsed('5. 메서드 체이닝 실습')
+
+// // 이곳에 코드를 작성하세요
+
+// console.groupEnd()
+
+
+// // --------------------------------------------------------------------------
+// // 핵심 요약!
+// // --------------------------------------------------------------------------
+// // 1. 반환값 확인: find 계열은 단일값(혹은 인덱스), map/filter는 항상 배열을 반환합니다.
+// // 2. 불변성: 이 메서드들은 원본 배열을 변경하지 않고 항상 새로운 값을 반환해 안전합니다.
+// // 3. 체이닝: 배열을 반환하는 메서드끼리는 기차처럼 연결하여 복잡한 로직을 한 줄로 끝낼 수 있습니다.
+// // 4. forEach vs map: 값을 반환하여 다음 단계로 넘겨야 한다면 무조건 map을 사용하세요!
+// // --------------------------------------------------------------------------

@@ -1,3 +1,6 @@
+
+
+
 const number = [1,2,3,4,5,6,7,8,9,10,33]
 
 // 3의배수 나눠서 나머지 0가지기
@@ -68,6 +71,60 @@ const users = [
 
   console.log(neoUsers)
 }
+
+// 카드 데이터 (배열)
+const cards = [
+  { id: 'card-naver', title: '네이버', link: 'https://naver.com' },
+  { id: 'card-google', title: '구글', link: 'https://google.com' },
+  { id: 'card-daum', title: '다음', link: 'https://daum.net' },
+  { id: 'card-coupang', title: '쿠팡', link: 'https://coupang.com' },
+]
+
+
+// 카드 데이터를 순환해 카드 마크업을 포함하는 새로운 배열
+// 카드 배열의 각 요소를 순환해 동적 렌더링을 위한 마크업 코드 생성 
+const cardMarkups = cards.map((card) => {
+  const markup = `
+    <div class="card" data-id="${card.id}">
+      <a href="${card.link}" target="_blank" rel="noopener noreferrer">
+        <svg width="16" height="16" viewBox="0 0 16 16">...</svg>
+        ${card.title}
+      </a>
+    </div>
+  `
+  return markup
+})
+
+
+
+console.log(cardMarkups.length)
+console.log(cardMarkups)
+
+
+// 버튼 데이터
+const buttonData = [
+  { id: 'button-register', type: 'submit', label: '회원가입', message: '성공적으로 회원가입되었습니다.' },
+  { id: 'button-login', type: 'submit', label: '로그인', message: '사용자 계정으로 로그인되었습니다.' },
+  { id: 'button-login', type: 'reset', label: '초기화', message: '입력 내용을 모두 초기화했습니다.' },
+  { id: 'button-readmore', type: 'button', label: '더보기', message: '감춰진 데이터를 더보기합니다.' },
+]
+
+// 데이터 순환해 동적으로 HTML 마크업을 JavaScript 프로그래밍으로 생성 -> 새로운 배열
+const buttonMarkups = buttonData.map((button) => {
+  const markup = `
+    <button
+      type="${button.type}"
+      data-id="${button.id}"
+      data-message="${button.message}"
+    >
+      ${button.label}
+    </button>
+  `
+  
+  return markup
+})
+
+console.log(buttonMarkups)
 // --------------------------------------------------------------------------
 // 실습: 속성 할당 단축 (Property Shorthand)
 // --------------------------------------------------------------------------
