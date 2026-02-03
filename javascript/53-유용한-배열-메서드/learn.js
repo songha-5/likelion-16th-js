@@ -8,6 +8,28 @@
 console.groupCollapsed('1. findIndex 실습')
 
 // 이곳에 코드를 작성하세요
+const people = [
+	{id  : 'id-1', name: '이름1', location: '서울' },
+	{id  : 'id-2', name: '이름2', location: '이천'  },
+	{id  : 'id-3', name: '이름3', location: '원주' },
+]
+// 검색한 위치에 거주하는 사용자의 인덱스를 찾아 반환
+// 단계 1
+const findLocation = '서울'
+const userInSeoulIndex = user.findIndex((user, index) =>)
+	if(user.location.includes('서울') return true
+}
+
+// 단계 2
+userInSeoulIndex = users.findIndex((user) => {
+  return user.location.includes(findLocation)
+})
+
+console.log(userInSeoulIndex) //1
+if (userInSeoulIndex > -1 ) { // 값이 맞을경우만 반환
+	console.log(userInSeoulIndex.name) //이름1
+}
+
 
 console.groupEnd()
 
