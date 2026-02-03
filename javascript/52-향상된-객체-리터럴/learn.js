@@ -1,3 +1,73 @@
+const number = [1,2,3,4,5,6,7,8,9,10,33]
+
+// 3의배수 나눠서 나머지 0가지기
+const multplesOf3 = number.filter((number) => number & 3 === 0)
+
+//짝수만 나머지 가지기
+const filtereEven = number.filter((n) => n % 2 === 0)
+
+const users = [
+  { id: 1, name: '지수', age: 20, location: '서울', nationality: '대한민국' },
+  { id: 2, name: '유키', age: 18, location: '오사카', nationality: '일본' },
+  { id: 3, name: '아리아', age: 19, location: '뉴욕', nationality: '미국' },
+  { id: 4, name: '유나', age: 24, location: '부산', nationality: '대한민국' },
+  { id: 5, name: '마테오', age: 28, location: '방콕', nationality: '태국' },
+  { id: 6, name: '올리비아', age: 40, location: '토론토', nationality: '캐나다' },
+  { id: 7, name: '노아', age: 1, location: '베를린', nationality: '독일' },
+  { id: 8, name: '민지', age: 4, location: '인천', nationality: '대한민국' },
+  { id: 9, name: '에이든', age: 9, location: '파리', nationality: '프랑스' },
+  { id: 10, name: '현지', age: 12, location: '대구', nationality: '대한민국' },
+  { id: 11, name: '루카스', age: 18, location: '도쿄', nationality: '일본' },
+  { id: 12, name: '아일라', age: 20, location: '로스앤젤레스', nationality: '미국' },
+  { id: 13, name: '은우', age: 20, location: '광주', nationality: '대한민국' },
+  { id: 14, name: '밀라', age: 20, location: '하노이', nationality: '베트남' },
+  { id: 15, name: '지민', age: 20, location: '제주', nationality: '대한민국' },
+  { id: 16, name: '히로', age: 20, location: '교토', nationality: '일본' },
+  { id: 17, name: '엠마', age: 20, location: '시카고', nationality: '미국' },
+  { id: 18, name: '유토', age: 20, location: '나고야', nationality: '일본' },
+  { id: 19, name: '클로이', age: 20, location: '시드니', nationality: '호주' },
+  { id: 20, name: '지원', age: 20, location: '대전', nationality: '대한민국' },
+  { id: 21, name: '레비', age: 20, location: '런던', nationality: '영국' },
+  { id: 22, name: '서진', age: 20, location: '수원', nationality: '대한민국' },
+  { id: 23, name: '최유키', age: 20, location: '후쿠오카', nationality: '일본' },
+  { id: 24, name: '메이슨', age: 20, location: '멜버른', nationality: '호주' },
+  { id: 25, name: '하나', age: 31, location: '상하이', nationality: '중국' },
+]
+{
+  const LastName = '유키'
+  let namePeople = null
+  namePeople = users.filter(({ name }) => name.slice(1) === LastName)
+  console.log(namePeople.length)
+  console.log(namePeople)
+
+  // 
+  let agePeople = null
+  agePeople = users.filter(({ age }) => age >= 20 && age < 30 )
+  console.log(agePeople.length)
+  console.log(agePeople)
+}
+
+{
+
+  let userEmail = users.map(({email}) => email)
+  console.log(userEmail)
+
+  let uesrName = users.map(({ name }) => name)
+  console.log(uesrName)
+
+  const neoUsers = users.map((user, index) => {
+    // 가공된 새로운 사용자 객체 반환
+    const neoUser = {
+      ...user,
+      index,
+      role: 'GUEST'
+    }
+
+    return neoUser
+  })
+
+  console.log(neoUsers)
+}
 // --------------------------------------------------------------------------
 // 실습: 속성 할당 단축 (Property Shorthand)
 // --------------------------------------------------------------------------
