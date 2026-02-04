@@ -32,6 +32,34 @@ const headlines = [
 
 // 이곳에 코드를 작성하세요
 
+const practice1 = document.getElementById('practice1')
+const display = practice1.querySelector('.headline-display')
+
+practice1.addEventListener('click', (e) => {
+  const button = e.target.closest('.btn-change')
+  if(!button) return
+
+  // 문자열 꺼내기
+  const randomIndex = Math.floor(Math.random() * headlines.length)
+  const randomContent = headlines.at(randomIndex)
+
+  // 문자열 넣기
+  display.textContent = randomContent
+})
+{
+  const practice2 = document.getElementById('practice2')
+  const button = practice2.querySelector('button')
+  const card = practice2.querySelector('.card-container')
+  
+  button.addEventListener('click', () => {
+    const cardHTHML = `
+      <h2>박상현</h2>
+      <p>프론트엔드 개발자</p>
+    `
+    card.innerHTML = cardHTHML
+  })
+}
+
 console.groupEnd()
 
 
