@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>고유 식별자(ID) 생성</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <link rel="icon" href="./assets/es-logo.png" />
+    <style>
+      .control-group {
+        margin-top: 20px;
+      }
+      .log-area {
+        margin-top: 40px; 
+        background: #f8f9fa; 
+        padding: 15px; 
+        border-radius: 8px;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.2.6/purify.min.js"></script>
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+    <a href="#main-content" class="sr-only focusable">본문 바로가기</a>
+
+    <main class="prose">
+      <h1>고유 식별자(ID) 생성 실습</h1>
+      <p>중복되지 않는 이름표를 붙여 데이터 목록을 유연하게 관리해 보세요.</p>
+
+      <hr />
+
+      <section>
+        <h2>웹 기술 목록</h2>
+        <ul class="web-tech-list">
+        </ul>
+
+        <div class="control-group">
+          <input type="text" id="tech-input" placeholder="추가할 기술명 입력" />
+          <button type="button" class="button-add">새 아이템 추가</button>
+        </div>
+      </section>
+
+      <section class="log-area">
+        <h3>방금 생성된 ID 로그</h3>
+        <output id="id-log">아이템을 추가하면 ID가 여기에 표시됩니다.</output>
+      </section>
+    </main>
+  </body>
+
+</html>

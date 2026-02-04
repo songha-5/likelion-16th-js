@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>비동기 통신 마스터: AJAX & XHR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <link rel="icon" href="./assets/es-logo.png" />
+    <style>
+      .control-group {
+        margin-top: 20px;
+      }
+
+      .log-area {
+        margin-top: 40px;
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #e1e4e8;
+      }
+
+      .user-card {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
+
+      .user-card img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.2.6/purify.min.js"></script>
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+    <a href="#main-content" class="sr-only focusable">본문 바로가기</a>
+
+    <main id="main-content" class="prose">
+      <h1>AJAX 비동기 통신 실습</h1>
+      <p>서버와 데이터를 주고받는 <strong>요청(Request)</strong>과 <strong>응답(Response)</strong> 과정을 실습합니다.</p>
+
+      <hr />
+
+      <section>
+        <h2>GitHub 사용자 정보 조회</h2>
+        <div class="control-group">
+          <input type="text" id="github-username" placeholder="GitHub ID 입력 (예: yamoo9)" />
+          <button type="button" class="button-fetch">데이터 가져오기</button>
+        </div>
+      </section>
+
+      <section class="log-area">
+        <h3>서버 응답 결과 (결과 데이터)</h3>
+        <output id="response-log">사용자 이름을 입력하고 버튼을 눌러주세요.</output>
+      </section>
+    </main>
+  </body>
+
+</html>

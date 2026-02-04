@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>보안 실습: XSS 공격과 방어</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <link rel="icon" href="./assets/es-logo.png" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.2.6/purify.min.js"></script>
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+    <a href="#main-content" class="sr-only focusable">본문 바로가기</a>
+
+    <main class="prose">
+      <h1>🛡️ XSS 보안 실습</h1>
+      <p>사용자가 입력한 데이터를 안전하게 출력하는 방법을 배웁니다.</p>
+
+      <section class="attack-simulation">
+        <h2>1. 데이터 입력</h2>
+        <form id="xss-form">
+          <div class="form-field">
+            <label for="user-input">메시지 입력</label>
+            <input type="text" id="user-input" name="content"
+              placeholder="<img src=x onerror=alert(1)> 등을 입력해 보세요"
+              style="width: 100%;" />
+          </div>
+          <button type="submit">데이터 출력</button>
+        </form>
+      </section>
+
+      <hr />
+
+      <section class="output-comparison">
+        <h2>2. 출력 방식별 결과 비교</h2>
+
+        <div class="output-box danger">
+          <h3>⚠️ 위험 (innerHTML)</h3>
+          <div id="output-danger" class="result-area"></div>
+        </div>
+
+        <div class="output-box safe">
+          <h3>✅ 안전 (textContent)</h3>
+          <div id="output-safe" class="result-area"></div>
+        </div>
+
+        <div class="output-box sanitize">
+          <h3>✨ 살균 완료 (DOMPurify)</h3>
+          <div id="output-sanitize" class="result-area"></div>
+        </div>
+      </section>
+
+      <section class="link-protection" style="margin-top: 40px;">
+        <h2>3. URL 기반 XSS 방어</h2>
+        <p>악성 링크(<code>javascript:alert(1)</code>) 생성 방어 테스트</p>
+        <div id="link-area"></div>
+      </section>
+    </main>
+  </body>
+
+</html>

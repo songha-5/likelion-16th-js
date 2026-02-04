@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>폼(Form) 이해하기</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <link rel="icon" href="./assets/es-logo.png" />
+    <script src="./learn.js" defer></script>
+  </head>
+
+  <body>
+    <a href="#main-content" class="sr-only focusable">본문 바로가기</a>
+
+    <main id="main-content" class="prose">
+      <header>
+        <h1>데이터의 관문: 폼(Form)</h1>
+        <p>
+          사용자로부터 정보를 입력받고 전송하는 <strong>폼(Form)</strong>의 구조와 자바스크립트를 통한 <strong>제어 방법</strong>을 배웁니다.
+        </p>
+      </header>
+
+      <section>
+        <h2>폼 요소 및 필드 속성 요약</h2>
+
+        <table>
+          <caption>폼 구성 핵심 속성</caption>
+          <thead>
+            <tr>
+              <th scope="col">속성/요소</th>
+              <th scope="col">역할</th>
+              <th scope="col">비고</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">method</th>
+              <td>정보 전송 방식 결정</td>
+              <td>GET(기본값), POST 등</td>
+            </tr>
+            <tr>
+              <th scope="row">action</th>
+              <td>데이터를 처리할 서버 URL</td>
+              <td>클라이언트 처리 시 생략 가능</td>
+            </tr>
+            <tr>
+              <th scope="row">label & id</th>
+              <td>필드 설명 및 상호작용 연결</td>
+              <td>웹 접근성 향상을 위해 필수</td>
+            </tr>
+            <tr>
+              <th scope="row">name</th>
+              <td>데이터 추출을 위한 키(Key)</td>
+              <td>서버나 JS에서 값 식별 시 사용</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr />
+
+      <section id="practice-form-submit">
+        <h2>📩 폼 제출 및 클라이언트 제어</h2>
+        <p>기본 동작을 방지하고 입력된 데이터를 자바스크립트로 가공해 보세요.</p>
+
+        <form action="/server-url" method="POST" class="user-form">
+          <div class="form-field">
+            <label for="usermail">이메일 주소</label>
+            <input type="email" id="usermail" name="email" placeholder="example@mail.com" required />
+          </div>
+
+          <div class="form-field">
+            <label for="user-message">문의 내용</label>
+            <textarea id="user-message" name="message" placeholder="궁금한 점을 적어주세요"></textarea>
+          </div>
+
+          <div class="button-group">
+            <button type="submit" class="btn-submit">보내기 (Submit)</button>
+            <button type="reset" class="btn-reset">초기화</button>
+          </div>
+        </form>
+
+        <output class="form-output">
+          <p>전송 대기 중...</p>
+        </output>
+      </section>
+
+      <section id="learning-point">
+        <h2>💡 학습 포인트</h2>
+        <ul>
+          <li><strong>e.preventDefault():</strong> 페이지 새로고침을 막고 JS로직을 먼저 실행합니다.</li>
+          <li><strong>폼 제출 방식:</strong> 버튼 클릭뿐만 아니라 input에서 Enter를 눌러도 이벤트가 발생합니다.</li>
+          <li><strong>데이터 처리:</strong> 처리 후 <code>form.submit()</code>을 호출하거나 비동기 통신을 수행합니다.</li>
+        </ul>
+      </section>
+
+    </main>
+  </body>
+
+</html>
