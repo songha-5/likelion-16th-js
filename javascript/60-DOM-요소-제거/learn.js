@@ -1,3 +1,11 @@
+const members = document.querySelector('.members')
+const choi = members.children[2] // 3번째 자식(인덱스 2)
+const removeThis = members.children[1]
+
+// 부모.removeChild(자식)
+members.removeChild(choi)
+members.removeChild(removeThis)
+
 // --------------------------------------------------------------------------
 // 실습: 요소 제거 및 이동 (remove, removeChild, insertBefore)
 // --------------------------------------------------------------------------
