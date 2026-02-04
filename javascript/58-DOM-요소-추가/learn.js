@@ -1,3 +1,33 @@
+{
+  const practice = document.getElementById('practice1')
+  const form = practice.querySelector('.user-search-form')
+  const list = practice.querySelector('.user-list')
+
+  form.addEventListener('submit', (e) => {  
+    e.preventDefault
+
+    // 사용자 입력 값 가져오기
+    const { search } = form.elements
+    const inputedName = search.value.trim().toLowerCase()
+
+    const searchedUser = users.find(({ name }) => name.includes(inputedName))
+
+    if(searchedUser) {
+      const item = document.createElement('li')
+       const { name, age, job } = searchedUser
+      item.textContent = `${job} ${name}(${age})`
+      // 생성된 <li> 요소를 <ul> 안에 마지막 자식 요소로 추가
+      list.appendChild(item)
+    } else {
+      // 검색 결과 사용자가 없다면?
+      // 일치하는 사용자가 없다면 경고 메시지를 출력
+
+    }
+      // 폼 초기화
+    form.reset()
+  })
+}
+
 // --------------------------------------------------------------------------
 // 실습: 요소 생성 및 추가 (createElement, appendChild, insertBefore)
 // --------------------------------------------------------------------------
@@ -8,7 +38,29 @@
 // 3. .todo-list의 마지막 자식으로 추가하세요.
 console.groupCollapsed('1. appendChild 실습 (Todo)')
 
+// 1. <ol> 요소 생성
+const orderdList = document.createElement('ol')
+
+// 2. 리스트에 들어갈 내용들
+const items = ['K팝 노래1', 'K팝 노래2', 'K팝 노래3']
+
+// 3. 반복문을 통해 <li> 생성 및 <ol>에 추가
+items.forEach(text => {
+  const li = document.createElement('li')
+  li.textContent = text
+  orderdList.appendChild(li)
+})
+
 // 이곳에 코드를 작성하세요
+const container = document.querySelector('.container')
+
+container.addEventListener('click', (e) => {
+  const parentElement = e.currentTarget
+  const button = e.target.closest('button')
+  if(!button) return
+
+  parentElement.appendChild(orderdList)
+})
 
 console.groupEnd()
 
@@ -20,7 +72,23 @@ console.groupEnd()
 // 3. insertBefore를 사용하여 "면을 넣고" 항목 앞에 삽입하세요.
 console.groupCollapsed('2. insertBefore 실습 (Recipe)')
 
+const appendButton = container.querySelector('.append-button')
+
+appendButton.click()
 // 이곳에 코드를 작성하세요
+// 자바스크립트 복습 위에 삽입
+const newListItem = document.createElement('li')
+newListItem.textContent = 'K팝 노래 0'
+
+console.log(newListItem.outerHTML)
+
+// 부모 요소와 삽입할 위치의 요소
+const list = container.querySelector('ol')
+const targetListItem = list.firstElementChild
+
+// 부모요소 insertBefore(삽입할 요소, 삽입할 위치의 요소)
+list.insertBefore(newListItem, targetListItem)
+
 
 console.groupEnd()
 
