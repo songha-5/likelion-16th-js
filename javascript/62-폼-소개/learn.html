@@ -12,6 +12,24 @@
 
   <body>
     <a href="#main-content" class="sr-only focusable">본문 바로가기</a>
+    
+    <form id="subscribeForm">
+      <div class="form-field">
+        <label for="userEmail">이메일</label>
+        <input 
+          id="userEmail" 
+          name="userEmail" 
+          type="email" 
+          placeholder="mail@example.com" 
+          required 
+        />
+      </div>
+      <button type="submit">구독</button>
+    </form>
+
+    <div id="messageBox" aria-live="polite"></div>
+
+
 
     <main id="main-content" class="prose">
       <header>
@@ -60,6 +78,7 @@
 
       <hr />
 
+      
       <section id="practice-form-submit">
         <h2>📩 폼 제출 및 클라이언트 제어</h2>
         <p>기본 동작을 방지하고 입력된 데이터를 자바스크립트로 가공해 보세요.</p>

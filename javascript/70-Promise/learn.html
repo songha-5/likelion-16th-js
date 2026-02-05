@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>프로미스(Promise)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/es-logo.png" />
+    <style>
+      .log-area {
+        margin-top: 30px;
+        padding: 20px;
+        background: #fdfdfd;
+        border: 1px dashed #ccc;
+      }
+
+      .finally-status {
+        margin-top: 10px;
+        color: #888;
+        font-style: italic;
+      }
+    </style>
+    <script src="./src/learn.js" type="module"></script>
+  </head>
+
+  <body>
+    <main class="prose">
+      <h1>🤙 프로미스(Promise) 약속 이행 실습</h1>
+      <p>케이크 사오기 약속을 통해 프로미스의 상태 변화를 확인해 보세요.</p>
+
+      <hr />
+
+      <section class="promise-simulation">
+        <div class="control-group">
+          <button type="button" id="btn-success">🎂 블랙 포레스트 요청 (성공 케이스)</button>
+          <button type="button" id="btn-fail">🍰 딸기 케이크 요청 (실패 케이스)</button>
+        </div>
+
+        <div class="log-area">
+          <h3>🎈 약속 처리 결과</h3>
+          <div id="promise-result">버튼을 눌러 약속을 시작하세요.</div>
+          <div id="finally-status"></div>
+        </div>
+      </section>
+    </main>
+  </body>
+
+</html>
