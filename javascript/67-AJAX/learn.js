@@ -36,15 +36,37 @@ function requestGitHubUser(username) {
 
 // 버튼 클릭 이벤트 연결
 fetchButton.addEventListener('click', () => {
-  const username = usernameInput.value.trim()
+ 
+  // 1. XHR 객체 생성
+  // 서버와 통신을 담당할 XMLHttpRequest 인스턴스를 생성하세요
+  const xhr = new XMLHttpRequest()  
   
-  if (!username) {
-    alert('사용자 이름을 입력해 주세요!')
-    return
-  }
+  // 2. 응답 이벤트 리스너 설정 (load 이벤트)
+  // 서버로부터 응답이 완료되었을 때 실행될 로직을 작성합니다  
+  // - 응답 받은 JSON 문자열을 자바스크립트 객체로 변환하세요
+  // - 변환된 객체를 콘솔에 출력하여 확인해 보세요
+  // - 응답 결과를 화면에 출력하는 로직을 작성하세요
+  // - 성공 시 유저 정보를 표시하고 실패 시 에러 메시지를 출력합니다
+  // - 보안을 위해 DOMPurify.sanitize() 사용을 권장합니다
+  xhr.addEventListener('readystatechange', (e) => {
+    const xhr = e.currentTarget
+    console.log(
+      xhr.status, // 통신 상태 (200 OK)
+      xhr.readyState, // 0 UNSENT, 1 OPENED, 2 HEADERS_RECEIVED, 3 LOADING, 4 DONE 
+      xhr.response, // 응답 데이터
+      xhr.responseText, // 응답 데이터 텍스트 포맷
+      // JSON으로 변경
+    )
+  })    
 
-  responseLog.textContent = '데이터 로딩 중...'
-  requestGitHubUser(username)
+  // 3. 요청 구성 (GET 메서드, API URL)
+  // .open() 메서드를 사용해 요청 방식과 목적지 URL을 설정하세요
+  // URL: https://api.github.com/users/{username}
+  xhr.open('GET', `https://api.github.com/users/${username}`)
+
+  // 4. 요청 전송
+  // .send() 메서드를 호출하여 서버에 실제 요청을 전달하세요
+  xhr.send(null)
 })
 
 
