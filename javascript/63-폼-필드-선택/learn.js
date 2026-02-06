@@ -1,7 +1,25 @@
 // --------------------------------------------------------------------------
 // 실습: 폼 필드 선택하기 (form.elements)
 // --------------------------------------------------------------------------
+const form = document.getElementById('login-form')
 
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault()
+
+  const formControls = form.elements
+  // 아이디 
+  const { value: idValue } = formControls.userid
+
+  // 패스워드
+  const { value: passwordValue }= formControls.password
+
+  console.log( idValue, passwordValue )
+
+  const formElement = e.currentTarget
+  formElement.reset()
+
+})
 
 
 // --------------------------------------------------------------------------
