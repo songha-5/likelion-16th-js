@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>AJAX 라이브러리</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      
+    </style>
+    <script src="./src/learn.js" type="module"></script>
+  </head>
+
+  <body>
+
+    <main class="prose">
+      <h1>Fetch API vs Axios 라이브러리</h1>
+
+      <section>
+        <h2>라이브러리가 필요한 이유 (Fetch의 한계)</h2>
+        <p>Fetch API는 저수준(Low-level) API로, 사용 시 다음과 같은 번거로움이 있습니다.</p>
+        <ul>
+          <li><strong>중복 호출:</strong> <code>.then()</code>을 두 번 사용해야 데이터 파싱 가능.</li>
+          <li><strong>수동 파싱:</strong> <code>Content-Type</code>에 따라 <code>.json()</code>, <code>.text()</code> 등을 직접 분기해야 함.</li>
+          <li><strong>오류 처리:</strong> 404, 500 에러도 성공으로 간주하므로 <code>response.ok</code>를 수동으로 체크해야 함.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Axios 라이브러리의 장점</h2>
+        <p>가장 대중적인 AJAX 라이브러리로, Fetch의 단점을 해결하고 코드를 간결하게 만듭니다.</p>
+        
+        <div class="card">
+          <h3>⚡ Axios 실습: GET 요청</h3>
+          <p>버튼을 클릭하면 <code>axios.get()</code>을 사용하여 사용자 정보를 가져옵니다.</p>
+          <button class="btn">Axios로 데이터 가져오기</button>
+          <div id="axios-result" class="result-box">결과가 여기에 표시됩니다.</div>
+        </div>
+      </section>
+    </main>
+
+  </body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>오류 처리 및 사용자 경험</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .prose {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: sans-serif;
+      }
+
+      .auth-card {
+        background: #fff;
+        border: 1px solid #dee2e6;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      }
+
+      .control-group {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      .button {
+        padding: 10px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.2s;
+      }
+
+      .btn-error {
+        background: #fa5252;
+        color: white;
+      }
+
+      .btn-error:hover {
+        background: #e03131;
+      }
+
+      /* 사용자에게 보여줄 친절한 메시지 스타일 */
+      #user-message {
+        padding: 15px;
+        border-radius: 6px;
+        margin-top: 15px;
+        display: none;
+        /* 기본은 숨김 */
+      }
+
+      .msg-error {
+        background: #fff5f5;
+        border: 1px solid #ffc9c9;
+        color: #c92a2a;
+      }
+
+      .status-code {
+        font-weight: bold;
+        color: #495057;
+        margin-bottom: 5px;
+        display: block;
+      }
+
+      pre {
+        background: #212529;
+        color: #f8f9fa;
+        padding: 12px;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        overflow-x: auto;
+      }
+    </style>
+    <script src="./src/learn.js" type="module"></script>
+  </head>
+
+  <body>
+
+    <main class="prose">
+      <h1>⚠️ 오류 처리 및 가이드 실습</h1>
+      <p>서버에서 보낸 에러 메시지를 파싱하여 사용자에게 최적의 해결책을 제시합니다.</p>
+
+      <section class="auth-card">
+        <h2>GitHub API 요청 테스트</h2>
+        <p>토큰 없이 POST 요청을 보내 401 Unauthorized 오류를 유도해 봅니다.</p>
+        <div class="control-group">
+          <button type="button" id="btn-request" class="button btn-error">저장소 생성 요청 (에러 유도)</button>
+        </div>
+
+        <div id="user-message" class="msg-error">
+          <strong>앗! 문제가 발생했어요. 😳</strong>
+          <p id="error-guide"></p>
+        </div>
+
+        <div style="margin-top: 20px;">
+          <span class="status-code" id="debug-status">기술적 상세 정보: -</span>
+          <pre id="debug-response">서버 응답 데이터가 여기에 표시됩니다.</pre>
+        </div>
+      </section>
+    </main>
+
+  </body>
+
+</html>

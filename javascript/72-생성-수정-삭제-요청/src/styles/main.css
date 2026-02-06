@@ -1,0 +1,219 @@
+@import url("./fonts.css");
+
+:root {
+  color-scheme: light dark;
+
+  --white-color: #fff;
+  --dark-navy-color: #171c28;
+  --deep-yellow-color: #ffcb29;
+  --deep-pink-color: #ff2970;
+  --deep-cyan-color: #0c7482;
+  --deep-purple-color: #5237a4;
+  --deep-orange-color: #ed9625;
+  
+  --bg-color: light-dark(var(--white-color), var(--dark-navy-color));
+  --text-color: light-dark(var(--dark-navy-color), var(--white-color));
+
+  --primary-color: light-dark(var(--deep-purple-color), var(--deep-yellow-color));
+  --secondary-color: light-dark(var(--deep-cyan-color), var(--deep-orange-color));
+
+  --surface-color: color-mix(in srgb, var(--text-color), transparent 97%);
+  --surface-color-bold: color-mix(in srgb, var(--text-color), transparent 80%);
+}
+
+body {
+  margin: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font: 1rem/1.5 "Spoqa Han Sans Neo", ui-sans-serif, system-ui, sans-serif;
+}
+
+.prose {
+  max-width: 65ch;
+  margin: 1.75rem;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  letter-spacing: -0.02em;
+  color: var(--text-color);
+
+  & h1, & h2, & h3 {
+    margin: 0;
+    line-height: 1.2;
+    font-weight: 400;
+    color: var(--primary-color);
+  }
+
+  & h1 { font-size: 1.75rem; }
+  & h2 { font-size: 1.5rem; }
+  & h3 { font-size: 1.125rem; }
+
+  & p {
+    margin-block: 1.25em;
+  }
+
+  & blockquote {
+    margin-block: 1.6rem;
+    margin-inline: 0.8rem 0;
+    padding-inline: 1.2rem;
+    padding-block: 0.8em;
+    border-left: 0.25rem solid var(--primary-color);
+    background-color: var(--surface-color);
+    color: var(--secondary-color);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  & strong {
+    color: var(--primary-color);
+    font-weight: 700;
+  }
+
+  & code {
+    padding: 0.2em 0.4em;
+    border-radius: 0.375rem;
+    font-size: 0.875em;
+    font-family: ui-monospace, monospace;
+    background-color: var(--surface-color);
+  }
+
+  & a {
+    color: var(--secondary-color);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    font-weight: 500;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+
+  & dfn {
+    font-style: normal;
+    
+    & abbr[title] {
+      cursor: help;
+      border-block-end: 1px dashed var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+    }
+  }
+
+  & abbr:not(dfn abbr) {
+    font-weight: 500;
+  }
+}
+
+.experiment-box {
+  max-width: 460px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.scroll-box {
+  height: 80px;
+  overflow-y: scroll;
+  background: #fff;
+  border: 2px solid #333;
+  margin: 15px 0;
+}
+
+.content {
+  padding: 12px 40px 100px;
+  background: linear-gradient(to bottom, #fff, #eee);
+}
+
+.spacer { height: 400px; }
+
+#log {
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.toggle-switch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.container {
+  max-width: 500px;
+  margin-block: 40px 120px;
+  font-family: sans-serif;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  
+  &.button--primary { background-color: #3b82f6; }
+	&.button--danger { background-color: #ef4444; }
+	&:disabled { cursor: not-allowed; background-color: #ccc; }
+}
+
+.tracker-area {
+  height: 200px;
+  background-color: #f3f4f6;
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+  
+  &.active {
+	  background-color: #e0f2fe;
+	  border-color: #3b82f6;
+	}
+}
+
+
+#coordinates {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #374151;
+  margin-top: 10px;
+}
+
+
+.sr-only {
+  overflow: hidden;
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: circle(0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  white-space: nowrap;
+
+  caption& {
+    position: static;
+  }
+  
+  &.focusable:focus {
+    overflow: initial;
+    position: static;
+    clip: auto;
+    clip-path: unset;
+    width: initial;
+    height: initial;
+    margin: initial;
+    white-space: initial;
+  }
+}

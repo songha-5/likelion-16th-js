@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTTP 요청/응답 시뮬레이터</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/es-logo.png" />
+    <style>
+      .http-dashboard { margin-top: 20px; }
+      
+      .request-panel {
+        background: #f1f3f5;
+        padding: 20px;
+        border-radius: 8px;
+      }
+
+      .response-panel {
+        margin-top: 20px;
+        padding: 20px;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+      }
+
+      /* 컨트롤 요소 */
+      .control-group { 
+        display: flex; 
+        gap: 10px; 
+        align-items: center; 
+        margin-bottom: 10px; 
+      }
+
+      #btn-send-request {
+        background: #228be6;
+        color: white;
+        border: none;
+        padding: 5px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      #btn-send-request:hover { background: #1c7ed6; }
+
+      /* 응답 표시 영역 */
+      #response-status {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      #response-body {
+        background: #212529;
+        color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        overflow-x: auto;
+        font-family: 'Courier New', Courier, monospace;
+      }
+    </style>
+    <script src="./src/learn.js" type="module"></script>
+  </head>
+
+  <body>
+
+    <main class="prose">
+      <h1>🌐 HTTP 요청/응답 시뮬레이터</h1>
+      <p>다양한 HTTP 메서드를 사용해 서버와 통신하고 응답 구조를 확인해 보세요.</p>
+
+      <hr />
+
+      <section class="http-dashboard">
+        <div class="request-panel">
+          <h3>Request (요청)</h3>
+          <div class="control-group">
+            <label for="http-method">메서드:</label>
+            <select id="http-method">
+              <option value="GET">GET (조회)</option>
+              <option value="POST">POST (생성)</option>
+              <option value="PATCH">PATCH (일부 수정)</option>
+              <option value="DELETE">DELETE (삭제)</option>
+            </select>
+            <button type="button" id="btn-send-request">요청 보내기</button>
+          </div>
+          <p><small>엔드포인트: <code>https://jsonplaceholder.typicode.com/posts/1</code></small></p>
+        </div>
+
+        <div class="response-panel">
+          <h3>Response (응답)</h3>
+          <div id="response-status">상태 코드: -</div>
+          <pre id="response-body">응답 바디가 여기에 표시됩니다.</pre>
+        </div>
+      </section>
+    </main>
+    
+  </body>
+
+</html>

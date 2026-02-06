@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTTP 헤더 정보 확인 실습</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .prose {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: sans-serif;
+      }
+
+      .panel {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid #dee2e6;
+        margin-bottom: 20px;
+      }
+
+      .button {
+        padding: 10px 20px;
+        background: #099268;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .button:hover {
+        background: #087f5b;
+      }
+
+      /* 헤더 테이블 스타일 */
+      .header-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-size: 0.9rem;
+      }
+
+      .header-table th,
+      .header-table td {
+        padding: 12px;
+        border-bottom: 1px solid #dee2e6;
+        text-align: left;
+      }
+
+      .header-table th {
+        background: #e9ecef;
+        color: #495057;
+      }
+
+      .header-name {
+        font-weight: bold;
+        color: #1c7ed6;
+      }
+
+      .header-value {
+        font-family: monospace;
+        word-break: break-all;
+      }
+    </style>
+    <script src="./src/learn.js" type="module"></script>
+  </head>
+
+  <body>
+
+    <main class="prose">
+      <h1>📋 응답 헤더(Response Headers) 탐색기</h1>
+      <p>서버가 보내온 응답 헤더 정보를 추출하여 리스트로 확인해 보세요.</p>
+
+      <section class="panel">
+        <button type="button" id="btn-fetch-headers" class="button">헤더 정보 가져오기</button>
+
+        <div id="header-container" style="display: none;">
+          <table class="header-table">
+            <thead>
+              <tr>
+                <th>헤더 이름 (Key)</th>
+                <th>값 (Value)</th>
+              </tr>
+            </thead>
+            <tbody id="header-list">
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+  </body>
+
+</html>

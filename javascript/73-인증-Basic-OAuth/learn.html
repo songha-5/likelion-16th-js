@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>인증 및 권한 부여</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .prose {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: sans-serif;
+      }
+
+      .auth-card {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
+
+      .control-group {
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      input {
+        padding: 8px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+      }
+
+      .button {
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .btn-basic {
+        background: #495057;
+        color: white;
+      }
+
+      .btn-oauth {
+        background: #228be6;
+        color: white;
+      }
+
+      .result-view {
+        background: #212529;
+        color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        min-height: 80px;
+        white-space: pre-wrap;
+        font-family: monospace;
+      }
+
+      .warning {
+        color: #e03131;
+        font-size: 0.85rem;
+        margin-top: 10px;
+      }
+    </style>
+    <script src="./src/learn.js" type="module"></script>
+  </head>
+
+  <body>
+
+    <main class="prose">
+      <h1>인증 방식 시뮬레이터</h1>
+      <p>기본 인증(Basic)과 OAuth(Bearer)의 헤더 구성 차이를 학습합니다.</p>
+
+      <section class="auth-card">
+        <h2>1. 기본 인증 (Basic Auth)</h2>
+        <div class="control-group">
+          <input type="text" id="username" placeholder="사용자 이름 (예: yamoo9)" />
+          <input type="password" id="password" placeholder="비밀번호" />
+        </div>
+        <button type="button" id="btn-basic-auth" class="button btn-basic">Base64 인코딩 및 요청 생성</button>
+        <p class="warning">※ 주의: 실제 비밀번호를 입력하지 마세요!</p>
+      </section>
+
+      <section class="auth-card">
+        <h2>2. OAuth 인증 (Bearer Token)</h2>
+        <div class="control-group">
+          <input type="text" id="access-token" placeholder="GitHub Access Token 입력" />
+        </div>
+        <button type="button" id="btn-oauth-auth" class="button btn-oauth">Bearer 토큰 요청 보내기</button>
+      </section>
+
+      <section class="auth-card">
+        <h3>생성된 Authorization 헤더 및 응답</h3>
+        <div id="auth-result" class="result-view">결과가 여기에 표시됩니다.</div>
+      </section>
+    </main>
+
+  </body>
+
+</html>

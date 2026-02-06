@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTTP 리소스 관리</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .prose {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: sans-serif;
+      }
+
+      .panel {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+        margin-bottom: 20px;
+      }
+
+      .control-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .input-field {
+        padding: 8px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+      }
+
+      .button {
+        padding: 8px 16px;
+        background: #339af0;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        background: #228be6;
+      }
+
+      #response-viewer {
+        background: #212529;
+        color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        overflow-x: auto;
+        min-height: 100px;
+      }
+
+      .note {
+        font-size: 0.85rem;
+        color: #868e96;
+      }
+    </style>
+    <script src="./src/learn.js" type="module"></script>
+  </head>
+
+  <body>
+
+    <main class="prose">
+      <h1>리소스 관리 시뮬레이터 (CRUD)</h1>
+      <p>POST, PUT, PATCH, DELETE 메서드와 다양한 데이터 포맷을 실습합니다.</p>
+
+      <section class="panel">
+        <h3>요청 설정</h3>
+        <div class="control-group">
+          <label for="method-select">메서드:</label>
+          <select id="method-select" class="input-field">
+            <option value="POST">POST (생성)</option>
+            <option value="PUT">PUT (전체 수정)</option>
+            <option value="PATCH">PATCH (일부 수정)</option>
+            <option value="DELETE">DELETE (삭제)</option>
+          </select>
+
+          <label for="format-select">포맷:</label>
+          <select id="format-select" class="input-field">
+            <option value="application/json">JSON</option>
+            <option value="application/x-www-form-urlencoded">URL Encoded</option>
+            <option value="multipart/form-data">Multipart (Form Data)</option>
+          </select>
+
+          <button type="button" id="btn-submit" class="button">요청 전송</button>
+        </div>
+        <p class="note">※ 테스트 서버: DummyJSON (실제 DB는 변경되지 않는 Mockup 서버입니다.)</p>
+      </section>
+
+      <section class="panel">
+        <h3>응답 결과</h3>
+        <pre id="response-viewer">요청 버튼을 클릭하면 결과가 여기에 표시됩니다.</pre>
+      </section>
+    </main>
+
+  </body>
+
+</html>

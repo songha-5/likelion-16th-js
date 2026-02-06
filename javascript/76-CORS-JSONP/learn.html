@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>CORS 핵심 정리</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: -apple-system, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        color: #333;
+      }
+
+      h1 {
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+      }
+
+      h2 {
+        margin-top: 30px;
+        color: #0056b3;
+      }
+
+      code {
+        background: #f4f4f4;
+        padding: 2px 5px;
+        border-radius: 4px;
+        font-family: monospace;
+        color: #c7254e;
+      }
+
+      .card {
+        background: #f8f9fa;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 15px 0;
+      }
+
+      .btn {
+        background: #228be6;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .btn:hover {
+        background: #1c7ed6;
+      }
+
+      .result-box {
+        margin-top: 15px;
+        padding: 10px;
+        background: #fff;
+        border: 1px solid #eee;
+        min-height: 50px;
+        font-size: 0.9rem;
+        white-space: pre-wrap;
+        word-break: break-all;
+      }
+
+      .img-list img {
+        height: 80px;
+        margin-right: 5px;
+        border-radius: 4px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        font-size: 0.9rem;
+      }
+
+      th {
+        background-color: #f1f3f5;
+      }
+    </style>
+    <script src="./src/learn.js" type="module"></script>
+  </head>
+
+  <body>
+
+    <main class="prose">
+      <h1>CORS & 우회 기법 핵심 정리</h1>
+
+      <section>
+        <h2>CORS란?</h2>
+        <p><strong>CORS(Cross-Origin Resource Sharing)</strong>는 브라우저가 다른 출처(Origin)의 리소스를 로드할 수 있도록 허용하는 보안 체계입니다.</p>
+        <ul>
+          <li><strong>동일 출처(Same Origin):</strong> <code>프로토콜</code> + <code>호스트</code> + <code>포트</code>가 모두 같은 경우.</li>
+          <li><strong>문제 상황:</strong> 기본적으로 브라우저는 보안을 위해 다른 출처의 API 요청을 차단합니다.</li>
+          <li><strong>해결책:</strong> 서버가 <code>Access-Control-Allow-Origin</code> 헤더를 내려주거나, 클라이언트가 우회해야 합니다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>우회 방법 A: JSONP</h2>
+        <p><code>&lt;script&gt;</code> 태그는 출처 제약을 받지 않는 점을 이용합니다. (GET 요청만 가능)</p>
+
+        <div class="card">
+          <h3>실습: Flickr 사진 (JSONP)</h3>
+          <p>API 주소 뒤에 <code>?callback=함수명</code>을 붙여 스크립트로 로드합니다.</p>
+          <button class="btn" onclick="runJsonp()">고양이 사진 가져오기</button>
+          <div id="jsonp-result" class="result-box img-list">결과가 여기에 표시됩니다.</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>우회 방법 B: Proxy 서버</h2>
+        <p>중계 서버(Proxy)를 통해 데이터를 요청하여 CORS 정책을 회피합니다. (가장 권장됨)</p>
+
+        <div class="card">
+          <h3>📰 실습: NYT 뉴스 피드 (Proxy)</h3>
+          <p><code>corsproxy.io</code> 서비스를 경유하여 RSS(XML) 데이터를 가져옵니다.</p>
+          <button class="btn" onclick="runProxy()">뉴스 피드 가져오기</button>
+          <div id="proxy-result" class="result-box">결과가 여기에 표시됩니다.</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>요약 비교</h2>
+        <table>
+          <tr>
+            <th>구분</th>
+            <th>JSONP</th>
+            <th>Proxy (CORS)</th>
+          </tr>
+          <tr>
+            <td><strong>방식</strong></td>
+            <td><code>&lt;script&gt;</code> 태그 해킹</td>
+            <td>중계 서버 사용</td>
+          </tr>
+          <tr>
+            <td><strong>제약</strong></td>
+            <td>GET 메서드만 가능</td>
+            <td>모든 메서드 가능</td>
+          </tr>
+          <tr>
+            <td><strong>권장</strong></td>
+            <td>❌ (레거시, 보안 취약)</td>
+            <td>✅ (현대적 방법)</td>
+          </tr>
+        </table>
+      </section>
+    </main>
+
+  </body>
+
+</html>
