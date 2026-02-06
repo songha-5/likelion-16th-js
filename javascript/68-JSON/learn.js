@@ -26,7 +26,11 @@ console.log(parsedFamilyObject)
 
   xhr.open('GET', 'https://api.github.com/users/yamoo9')
 
-  xhr.send()
+  const data = {
+    message: '문자열'
+  }
+
+  xhr.send( JSON.stringify(data))
 
   xhr.addEventListener('readystatechange', (e) => {
     const { response } = e.currentTarget
@@ -37,6 +41,24 @@ console.log(parsedFamilyObject)
   })
 })()
 
+// 응답 받은 결과(json 문자열 -> js 객체화)
+xhr.addEventListener('readystatechange', (e) => {
+  const { response } = e.currentTarget
+  // console.log(response, typeof response)
+  // json string -> js object
+  const repos = JSON.parse(response)
+  // 실제 필요한 정보만 데이터 정리(massage)
+  const massagedRepos = repos.map(({ name, visibility, private: priv, url }) => {
+    return {
+      name,
+      visibility,
+      private: priv,
+      url,
+    }
+  })
+
+  console.log(massagedRepos)
+})
 // --------------------------------------------------------------------------
 // 핵심 요약
 // --------------------------------------------------------------------------

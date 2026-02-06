@@ -2,6 +2,13 @@
 // 실습: 프로미스(Promise) 객체 생성 및 체이닝
 // --------------------------------------------------------------------------
 
+fetch('https://dummyjson.com/products')
+  .then(data => data.json())
+  .then((data) => data.map((title, brand, category) => {
+    title,
+    brand,
+    category
+  }))
 
 
 // --------------------------------------------------------------------------

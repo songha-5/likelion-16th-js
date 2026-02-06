@@ -1,0 +1,10 @@
+{
+  "name": "multipart-formdata-test-server",
+  "scripts": {
+    "start": "bun app.mjs"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "multer": "^2.0.2"
+  }
+}
