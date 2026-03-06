@@ -11,21 +11,37 @@ const buttonText = document.querySelector('[data-button-text]')
 const contentDisplay = document.querySelector('[data-content-display]')
 const logoutButton = document.querySelector('[data-logout-button]')
 
+// 로그아웃 상태에서 로그인 버튼을 클릭하면 실행
 loginForm.addEventListener('submit', handleLoginSubmit)
 
+// 로그인 상태에서 로그아웃 버튼을 사용자가 클릭하면 실행
 logoutButton.addEventListener('click', () => {
   switchDisplayMode(false)
   loginForm.reset()
 })
 
-function requestAuth(credentials) {
+// 비동기 함수 선언
+async function requestAuth(credentials) {
   // fetch를 사용하여 `${API_BASE_URL}/auth/login`에 POST 요청을 보내세요.
   // headers에 'Content-Type': 'application/json'을 설정하고 body를 JSON 문자열로 변환하세요.
   // 응답이 ok가 아니면 에러를 던지고, 성공하면 json 결과를 반환하세요,
+
+  const response = await fetch(`${API_BASE_URL}/auth/login`, {
+    method: 'POST',
+    headers: { 'Content-Type' : 'application/json'},
+    body: JSON.stringify(credentials)
+  })
+
+  // 로그인 실패 (오류 던지기)
+  if(!response.ok) throw new Error('로그인 실패')
+
+  // OAuth 인증 방식
+  // 로그인 성공 (서버에서 응답받은 사용자 정보 + 접근 가능한 토큰)
+  return response.json()
 }
 
 // TODO 2: 멀티 요청 처리
-function handleLoginSubmit(e) {
+async function handleLoginSubmit(e) {
   e.preventDefault()
   const payload = Object.fromEntries(new FormData(e.target))
 
@@ -33,7 +49,10 @@ function handleLoginSubmit(e) {
     loadingState(true)
 
     // TODO 2-1: requestAuth 함수를 호출하여 사용자 정보를 가져오세요.
-    const user = null
+    const user = await requestAuth(payload)
+
+    // 토큰 받아오는지 확인 콘솔
+    // console.log({user})
 
     // TODO 2-2: 다음의 멀티 엔드포인트에 데이터를 요청하세요.
     // 각 fetch 요청 뒤에 .then((response) => response.json())을 연결하세요
@@ -44,18 +63,60 @@ function handleLoginSubmit(e) {
     // - comments
     // - todos/user/${id}
     // - quotes
-    const cartsData = { carts: null }
-    const productsData = { products: null }
-    const recipesData = { recipes: null }
-    const postsData = { posts: null }
-    const commentsData = { comments: null }
-    const todosData = { todos: null }
-    const quotesData = { quotes: null }
+
+    // 한번에 불러오고 순서대로 불러오는 차이 확인하기
+    
+    // const cartsData = { carts: null }
+    // const productsData = { products: null }
+    // const recipesData = { recipes: null }
+    // const postsData = { posts: null }
+    // const commentsData = { comments: null }
+    // const todosData = { todos: null }
+    // const quotesData = { quotes: null }
+
+    // console.time('직렬 호출 방식')
+    // const cartsData = await fetch(`${API_BASE_URL}/carts/user/${user.id}`).then(r => r.json())
+    // const productsData = await fetch(`${API_BASE_URL}/products?limit=2`).then(r => r.json())
+    // const recipesData = await fetch(`${API_BASE_URL}/recipes?limit=2`).then(r => r.json())
+    // const postsData = await fetch(`${API_BASE_URL}/posts/user/${user.id}`).then(r => r.json())
+    // const commentsData = await fetch(`${API_BASE_URL}/comments?limit=2`).then(r => r.json())
+    // const todosData = await fetch(`${API_BASE_URL}/todos/user/${user.id}`).then(r => r.json())
+    // const quotesData = await fetch(`${API_BASE_URL}/quotes?limit=2`).then(r => r.json())
+    // console.timeEnd('직렬 호출 방식')
 
     // TODO 2-3: 멀티 요청 병렬 처리
     // Promise.all을 사용해 멀티 데이터를 병렬 방식으로 요청합니다.
     // 가져온 데이터 리스트(멀티 데이터)를 구조 분해 할당합니다. (모두 성공해야 함)
     // 반면, Promise.allSettled는 일부가 실패해도 데이터를 보여줍니다. (일부만 성공해도 됨)
+
+    const [
+      cartsData,
+      productsData,
+      recipesData,
+      postsData,
+      commentsData,
+      todosData,
+      quotesData,
+    ] = await Promise.all([
+      fetch(`${API_BASE_URL}/carts/user/${user.id}`).then(r => r.json()),
+      fetch(`${API_BASE_URL}/products?limit=2`).then(r => r.json()),
+      fetch(`${API_BASE_URL}/recipes?limit=2`).then(r => r.json()),
+      fetch(`${API_BASE_URL}/posts/user/${user.id}`).then(r => r.json()),
+      fetch(`${API_BASE_URL}/comments?limit=2`).then(r => r.json()),
+      fetch(`${API_BASE_URL}/todos/user/${user.id}`).then(r => r.json()),
+      fetch(`${API_BASE_URL}/quotes?limit=2`).then(r => r.json()),
+    ])
+
+    console.log(
+      cartsData,
+      productsData,
+      recipesData,
+      postsData,
+      commentsData,
+      todosData,
+      quotesData,
+    )
+
 
     const isRenderSuccess = renderDashboard(user, {
       cartsData,
