@@ -1,0 +1,79 @@
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222.2 84% 4.9%;
+  --radius: 0.5rem;
+}
+
+body {
+  overflow-y: scroll;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+h1 {
+  margin-block-end: 0;
+}
+
+main {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 480px;
+  margin-inline: auto;
+}
+
+[data-description] {
+  margin-block-start: 0;
+}
+
+[data-practice] {
+  width: 100%;
+}
+
+[data-fetching-button] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: hsl(var(--primary));
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: hsl(var(--primary-foreground));
+  transition: opacity 0.2s;
+  cursor: pointer;
+  border-radius: var(--radius);
+  opacity: 0.9;
+  
+  &:hover {
+    opacity: 1;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+  }
+}
+
+[data-loading] {
+  margin-block: 20px;
+}
+
+[data-container] {
+  overflow: auto;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border: 1px solid hsl(var(--border));
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+  width: 100%;
+  height: 400px;
+  background-color: hsl(var(--background));
+  font-size: 0.875rem;
+  border-radius: var(--radius);
+}

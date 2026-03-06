@@ -23,12 +23,12 @@ async function requestAuth(credentials) {
   // 정상 경로
   let endpoint = `${API_BASE_URL}/auth/login`
 
+  // TODO 1: 오류 발생 상황
   // - 404 Not Found 오류: `${API_BASE_URL}/wrong-path`로 수정해 보세요.
   endpoint = `${API_BASE_URL}/wrong-path`
 
-  // TODO 1: 오류 발생 상황
-  // - 404 Not Found 오류: `${API_BASE_URL}/wrong-path`로 수정해 보세요.
   // - CORS 오류: `http://localhost:4000/auth/login`으로 수정해 보세요.
+  endpoint = '/cors-proxy/auth/login'
 
   const response = await fetch(endpoint, {
     method: 'POST',
@@ -38,8 +38,9 @@ async function requestAuth(credentials) {
 
   if (!response.ok) {
     // 404나 401 에러 시, 서버가 보내는 JSON 메시지를 추출합니다.
-    const errorData = await response.json()
-    throw new Error(errorData.message ?? '인증에 실패했습니다.')
+    // const errorData = await response.json()
+    // console.log(errorData)
+    throw new Error(`오류 상태 코드: ${response.status} - 로그인에 실패했습니다.`)
   }
 
   return response.json()
@@ -77,7 +78,8 @@ async function handleLoginSubmit(event) {
 
     if (isRenderSuccess) switchDisplayMode(true)
 
-  } catch (error) {
+  } catch (error /* Error { name, stack, message } */) {
+    console.dir(error)
     // 전역 오류 처리 (네트워크 단절, CORS 위반 등)
     showGlobalError(error.message)
   } finally {
