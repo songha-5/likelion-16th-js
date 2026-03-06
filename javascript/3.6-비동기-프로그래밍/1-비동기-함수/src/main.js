@@ -11,7 +11,6 @@ document.addEventListener('click', (e) => {
   if (!button) return
 
   // TODO 4: 데이터를 가져오는 함수 호출
-  console.log('데이터 페칭')
   fetchData()
 })
 
@@ -30,8 +29,21 @@ function wait(delay = 1000) {
 
 // --------------------------------------------------------------------------
 // TODO 2: fetchData 함수 코드를 비동기 함수로 작성
-function fetchData() {
+// 1. 비동기 함수로 선언 async
+async function fetchData() {
   loadingState(true) // 로딩중 표시
+
+  // 2. promise를 반환하는 함수 앞에 await를 받을 수 있음 (동기방식의 코드처럼 처리됨)
+  const data = await simpleFetch()
+
+  // 3. Promise를 반환하는 함수 앞에 await를 붙일 수 있음
+  await wait(3000)
+
+  // 4. 로딩 감추고, 데이터 렌더링
+  loadingState(false)
+  render(data)
+
+  return
 
   simpleFetch()
     .then((data) => {
@@ -45,9 +57,14 @@ function fetchData() {
 
 // --------------------------------------------------------------------------
 // TODO 3: simpleFetch 함수 코드를 비동기 함수로 작성
-function simpleFetch() {
+async function simpleFetch() { 
   // fetch() => Promise 객체 반환
-  return fetch(`${API_BASE_URL}/users/1`).then((response) => response.json())
+  // return fetch(`${API_BASE_URL}/users/1`).then((response) => response.json())
+
+  const response = await fetch(`${API_BASE_URL}/users/1`)
+  const data = await response.json()
+
+  return data
 }
 
 // 화면에 로딩 상태를 처리하는 함수(기능)
