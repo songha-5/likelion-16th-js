@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "type": "module",
+  "name": "learing-js",
+  "version": "1.0.0",
+  "scripts": {
+    "vite": "bunx --bun vite --port 3000",
+    "server": "bun --cwd ./cors-test-server start",
+    "dev": "bunx npm-run-all --parallel vite server",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "vite": "^7.3.1"
+  }
+}
