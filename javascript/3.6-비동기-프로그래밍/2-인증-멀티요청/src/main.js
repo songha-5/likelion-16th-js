@@ -86,6 +86,7 @@ async function handleLoginSubmit(e) {
 
     // TODO 2-3: 멀티 요청 병렬 처리
     // Promise.all을 사용해 멀티 데이터를 병렬 방식으로 요청합니다.
+    // Promise.all은 하나만 실패해도 받아온 데이터를 전부 그려주지 않음
     // 가져온 데이터 리스트(멀티 데이터)를 구조 분해 할당합니다. (모두 성공해야 함)
     // 반면, Promise.allSettled는 일부가 실패해도 데이터를 보여줍니다. (일부만 성공해도 됨)
 
@@ -107,6 +108,16 @@ async function handleLoginSubmit(e) {
       fetch(`${API_BASE_URL}/quotes?limit=2`).then(r => r.json()),
     ])
 
+    // const response = await Promise.allSettled([
+    //   fetch(`${API_BASE_URL}/carts/user/${user.id}`).then(r => r.json()),
+    //   fetch(`${API_BASE_URL}/products?limit=2`).then(r => r.json()),
+    //   fetch(`${API_BASE_URL}/recipes?limit=2`).then(r => r.json()),
+    //   fetch(`${API_BASE_URL}/posts/user/${user.id}`).then(r => r.json()),
+    //   fetch(`${API_BASE_URL}/comments?limit=2`).then(r => r.json()),
+    //   fetch(`${API_BASE_URL}/t/user/${user.id}`).then(r => r.json()),
+    //   fetch(`${API_BASE_URL}/quotes?limit=2`).then(r => r.json()),
+    // ])
+    
     console.log(
       cartsData,
       productsData,
@@ -116,7 +127,6 @@ async function handleLoginSubmit(e) {
       todosData,
       quotesData,
     )
-
 
     const isRenderSuccess = renderDashboard(user, {
       cartsData,
@@ -147,6 +157,7 @@ function renderDashboard(user, data) {
   const todos = data.todosData?.todos
 
   // Promise.allSettled()을 사용할 경우
+  console.log(carts)
   // const carts = getSafeData(data.cartsData, 'carts')
   // const products = getSafeData(data.productsData, 'products')
   // const posts = getSafeData(data.postsData, 'posts')
