@@ -14,52 +14,59 @@ logoutButton.addEventListener('click', handleReset)
 // TODO 1: 클로저를 활용해 프라이빗 데이터 저장소를 구축하세요.
 // --------------------------------------------------------------------------
 
-let currentPlaySong = null
-
-const PLAYLIST = {
-  'sunny-happy': {
-    title: '라라랜드 (La La Land)',
-    track: 'Another Day of Sun',
-    url: '/media/Another-Day-of-Sun.webm',
-  },
-  'rainy-calm': {
-    title: '어바웃 타임 (About Time)',
-    track: 'How Long Will I Love You',
-    url: '/media/How-Long-Will-I-Love-You.webm',
-  },
-  'snowy-energetic': {
-    title: '겨울왕국 (Frozen)',
-    track: 'Let It Go',
-    url: '/media/Let-It-Go.webm',
-  },
-  'default-song': {
-    title: '위대한 쇼맨',
-    track: 'This Is Me',
-    url: '/media/This-Is-Me.webm',
-  },
-}
-
 function createCinemaManager() {
   // 이 공간은 외부에서 접근 불가능한 영역
+  let currentPlaySong = 'this is me'
 
-  return {
+  const PLAYLIST = {
+    'sunny-happy': {
+      title: '라라랜드 (La La Land)',
+      track: 'Another Day of Sun',
+      url: '/media/Another-Day-of-Sun.webm',
+    },
+    'rainy-calm': {
+      title: '어바웃 타임 (About Time)',
+      track: 'How Long Will I Love You',
+      url: '/media/How-Long-Will-I-Love-You.webm',
+    },
+    'snowy-energetic': {
+      title: '겨울왕국 (Frozen)',
+      track: 'Let It Go',
+      url: '/media/Let-It-Go.webm',
+    },
+    'default-song': {
+      title: '위대한 쇼맨',
+      track: 'This Is Me',
+      url: '/media/This-Is-Me.webm',
+    },
+  }
+
+  // cinemaManager { curate, getCurrentPlaySong, cleanup }
+  const cinemaManager = {
     // 날씨, 감정 정보 기반으로 현재 재생 곡 설정
     // - 현재 재생 곡 반환 (없을 경우, 기본 재생 곡 반환)
     curate(weather, mood) {
       const key = `${weather}-${mood}`
+      currentPlaySong = PLAYLIST[key] ?? PLAYLIST['default-song']
     },
     // 현재 재생 중인 곡 반환
     // - 유효 범위(scope) 접근
-    getCurrentPlaySong() {},
+    getCurrentPlaySong() {
+      return currentPlaySong
+    },
     // 현재 재생 중인 곡 비우기
-    cleanup() {},
+    cleanup() {
+      currentPlaySong = null
+    },
   }
+
+  return cinemaManager
 }
 
 // TODO 2: 시네마 매니저 객체를 생성하세요.
 // - 스코프 체인: 상위 스코프 변수 참조 및 제어
 // - 함수가 정의된 위치에 따라 결정되는 렉시컬 스코프를 활용해 상태를 공유함
-const cinemaManager = {}
+const cinemaManager = createCinemaManager()
 
 // --------------------------------------------------------------------------
 // 이벤트 리스너
@@ -70,12 +77,15 @@ function handleCurateMusic(e) {
 
   // TODO 3: FormData를 사용하여 입력값(weather, mood)을 스코프 내 상수로 선언하세요.
   const form = e.currentTarget
-  const weather = null
-  const mood = null
+  const formData = new FormData(form)
+  const weather = formData.get('weather')
+  const mood = formData.get('mood')
 
   if (!weather || !mood) return
 
   // TODO 4: weather, mood를 인자로 전달해 시네마 매니저의 큐레이션 함수를 실행하세요.
+  cinemaManager.curate(weather, mood)
+
 
   renderPlayer()
   toggleUI(true)
@@ -87,7 +97,7 @@ function handleCurateMusic(e) {
 
 function renderPlayer() {
   // TODO 5: 시네마 매니저의 현재 재생 곡을 가져오세요.
-  const movie = mull
+  const movie = cinemaManager.getCurrentPlaySong()
 
   if (!movie) return
 
@@ -122,6 +132,9 @@ function handleReset() {
 
   // 상태 및 UI 초기화
   // TODO 6: 시네마 매니저의 클린업 함수를 실행하세요.
+  console.log(cinemaManager.getCurrentPlaySong())
+  cinemaManager.cleanup()
+  console.log(cinemaManager.getCurrentPlaySong())
 
   contentDisplay.innerHTML = '' // 렌더링된 카드 제거
   loginForm.reset()
