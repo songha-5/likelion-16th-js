@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트 야간 학습</title>
+    <link rel="icon" type="image/svg+xml" href="/javascript.svg" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
+
+  <body>
+
+    <main data-main-container>
+      <header>
+        <h1 data-title>🌟 행운의 칭찬 대시보드</h1>
+        <p id="dashboard-desc" data-description>
+          별명을 입력하고 버튼을 누르면 당신의 운세와 칭찬을 한꺼번에 확인하실 수 있습니다.
+        </p>
+      </header>
+
+      <div data-auth-shell data-state="logout">
+
+        <form data-login-form novalidate>
+          <div data-field-group>
+            <label data-label for="nickname">당신의 별명</label>
+            <input
+              data-input
+              type="text"
+              id="nickname"
+              name="nickname"
+              placeholder="예: 코드 마법사"
+              required
+              aria-describedby="dashboard-desc" />
+          </div>
+
+          <div
+            id="login-error"
+            data-error-message
+            role="alert"
+            hidden></div>
+
+          <button
+            type="submit"
+            data-submit-button
+            aria-live="polite">
+            <span data-button-text>운세 뽑고 로그인하기</span>
+          </button>
+        </form>
+
+        <section
+          data-dashboard-container
+          aria-labelledby="dashboard-result-title">
+          <h2 id="dashboard-result-title" class="sr-only" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">
+            행운 결과 리포트
+          </h2>
+
+          <div
+            data-content-display
+            aria-live="relevant"
+            aria-atomic="true">
+          </div>
+
+          <button type="button" data-logout-button>
+            초기화하고 다시 뽑기
+          </button>
+        </section>
+
+      </div>
+    </main>
+
+  </body>
+
+</html>

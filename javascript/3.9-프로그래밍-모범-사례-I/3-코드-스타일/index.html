@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트 야간 학습</title>
+    <link rel="icon" type="image/svg+xml" href="/javascript.svg" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
+
+  <body>
+
+    <main data-main-container>
+      <header data-header>
+        <h1 data-title>쇼핑 카탈로그</h1>
+
+        <div data-filter-group>
+          <input
+            data-search-input
+            type="search"
+            placeholder="상품명 검색..."
+            aria-label="상품명 검색" />
+
+          <div
+            data-category-buttons
+            role="group"
+            aria-label="카테고리 필터링">
+            <button type="button" data-category="all" data-active="true" aria-pressed="true">전체</button>
+            <button type="button" data-category="beauty" data-active="false" aria-pressed="false">뷰티</button>
+            <button type="button" data-category="fragrances" data-active="false" aria-pressed="false">향수</button>
+            <button type="button" data-category="furniture" data-active="false" aria-pressed="false">가구</button>
+          </div>
+        </div>
+      </header>
+
+      <section data-product-list aria-live="polite" aria-busy="false">
+        <div role="status" data-loading-text>상품을 불러오는 중입니다...</div>
+      </section>
+    </main>
+
+  </body>
+
+</html>
