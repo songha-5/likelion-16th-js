@@ -1,5 +1,34 @@
 import fetchProducts from './api/fetchProducts'
 
+{
+  function makeState(initialState = {}) {
+    let state = { ...initialState }
+
+    function getState() {
+      return state
+    }
+
+    function setState(newState) {
+      state = { ...state, ...newState }
+    }
+
+    return [getState, setState]
+    // return { getState, setState, }
+  }
+
+  const INITIAL_STATE = Object.freeze({
+    isLoading: false,
+    error: '',
+    products: [],
+    filter: {
+      keyword: '',
+      category: 'all',
+    },
+  })
+
+  const [getState, setState] = makeState(INITIAL_STATE)
+}
+
 /**
  * [실습 목표]
  * 1. 시스템의 모든 상태를 하나의 'state' 객체에서 관리합니다.
@@ -15,35 +44,43 @@ import fetchProducts from './api/fetchProducts'
 //   - filter
 //     - keyword: ''
 //     - category: 'all'
-let state = {
+
+// 상태 선언
+const state = {
   isLoading: false,
   error: '',
   products: [],
   filter: {
     keyword: '',
-    category: 'all'
-  }
+    category: 'all',
+  },
 }
 
 // TODO 2: 상태 업데이트 엔진
 // - 상태를 업데이트한 후 반드시 render() 함수를 호출하여 UI를 동기화하세요.
-function updateState(newState) {
+
+function updateState(newState = {}) {
+  // API 1: 객체
+  let nextState = newState
+  
+  // API 2: 함수
   if (typeof newState === 'function') {
-    Object.assign(state);
-  } else {
-    Object.assign(state, newState);
+    nextState = newState(state)
   }
+
+  // 상태 업데이트
+  Object.assign(state, nextState)
+
+  // UI 업데이트 (상태가 변경되면)
+  render()
 }
 
-
 // --------------------------------------------------------------------------
-
 
 const searchInput = document.querySelector('[data-search-input]')
 const categoryGroup = document.querySelector('[data-category-buttons]')
 const productList = document.querySelector('[data-product-list]')
 const loading = document.querySelector('[data-loading-text]')
-
 
 searchInput.addEventListener('input', handleSearchInput)
 categoryGroup.addEventListener('click', handleCategoryClick)
@@ -54,21 +91,31 @@ init()
 async function init() {
   try {
     // TODO 3: 로딩 상태를 true로 변경하여 화면에 로딩 표시를 띄우세요.
-        
+    updateState({ isLoading: true })
+
     const data = await fetchProducts()
-    
+
     // TODO 4: 받아온 데이터(data)를 state에 저장하고 로딩 상태를 false로 바꾸세요.
+    updateState({ products: data.products })
 
   } catch (error) {
     // TODO 5: 에러 발생 시, state.error에 메시지를 담고 로딩을 종료하세요.
-    
+    updateState({ error: error.message })
+  } finally {
+    updateState({ isLoading: false })
   }
 }
 
 function handleSearchInput(e) {
-  const keyword = e.target.value.toLowerCase()
+  const search = e.target.value.toLowerCase()
   // TODO 6: 사용자가 입력한 검색어를 state.filter.keyword에 반영하세요.
-  
+  updateState({
+    filter: {
+      ...state.filter,
+      keyword: search
+    }
+  })
+
 }
 
 function handleCategoryClick(e) {
@@ -78,7 +125,12 @@ function handleCategoryClick(e) {
   const { category } = button.dataset
 
   // TODO 7: 선택된 카테고리(cateogry)를 state에 반영하세요. (updateState 활용)
-  
+  updateState({
+    filter: {
+      ...state.filter,
+      category
+    }
+  })
 }
 
 function render() {
@@ -88,7 +140,7 @@ function render() {
   productList.setAttribute('aria-busy', state.isLoading)
 
   if (state.isLoading) return
-  
+
   // 에러 UI 처리
   if (state.error) {
     productList.innerHTML = `<p role="alert">오류 발생: ${state.error}</p>`
@@ -104,8 +156,12 @@ function render() {
 
   // 필터링 로직 (데이터 가공)
   const filteredList = state.products.filter((product) => {
-    const matchKeyword = product.title.toLowerCase().includes(state.filter.keyword)
-    const matchCategory = state.filter.category === 'all' || product.category === state.filter.category
+    const matchKeyword = product.title
+      .toLowerCase()
+      .includes(state.filter.keyword)
+    const matchCategory =
+      state.filter.category === 'all' ||
+      product.category === state.filter.category
     return matchKeyword && matchCategory
   })
 
@@ -118,9 +174,10 @@ function render() {
           <h3 data-product-name>${item.title}</h3>
           <span data-product-price>$${item.price}</span>
         </article>
-      `
+      `,
     )
     .join('')
 
-  productList.innerHTML = productHTML || '<p role="status">검색 결과가 없습니다.</p>'
+  productList.innerHTML =
+    productHTML || '<p role="status">검색 결과가 없습니다.</p>'
 }
