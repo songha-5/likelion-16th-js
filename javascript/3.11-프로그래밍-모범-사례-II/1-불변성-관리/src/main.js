@@ -18,11 +18,11 @@ logoutButton.addEventListener('click', handleSessionExit)
 // 절대 직접 수정해서는 안됩니다! (불변성 필요)
 const INITIAL_INVENTORY = [
   { id: 1, name: '맥북 프로 M5', price: 2970000, quantity: 1 },
-  { id: 2, name: '로지텍 마우스', price: 48000, quantity: 2 },
+  { id: 2, name: '로지텍 마우스', price: 48000, quantity: 1 },
   { id: 3, name: '무소음 키보드', price: 39200, quantity: 1 },
 ]
 
-// 현재 세션의 카트 데이터 (사용자의 행동에 따라 변하는 상태)
+// 현재 세션의 카트 상태 (사용자의 행동에 따라 변하는 데이터)
 let currentCart = []
 
 // --------------------------------------------------------------------------
@@ -39,7 +39,8 @@ function handleInitializeSession(e) {
   // - 아래처럼 할당하면 두 변수가 동일 '메모리 주소'를 가리키게 됩니다. (참조 연결)
   // - 원본과 연결 고리를 끊어야 안전하게 관리가 가능합니다.
   // - 두 변수가 다른 메모리 주소를 가리키도록 수정하세요.
-  currentCart = INITIAL_INVENTORY
+  currentCart = [...INITIAL_INVENTORY]
+  // currentCart !== INITIAL_INVENTORY
 
   updateDescription(`${managerName} 관리자님, 세션이 시작되었습니다.`)
   renderCart(currentCart)
@@ -71,16 +72,40 @@ function updateItemQuantity(targetId, action) {
   // - 안전하게 업데이트하려면 '새로운' 배열과 객체를 생성해 반환해야 합니다.
   // - 불변성 관리 방법으로 안전하게 업데이트 하도록 코드를 수정하세요.
 
-  const id = Number(targetId)
-  const editItem = currentCart.find((item) => item.id === id)
+  const id = Number(targetId) // 문자 -> 숫자화
 
-  if (action === 'plus') {
-    editItem.quantity += 1
-  } else {
-    editItem.quantity = Math.max(0, editItem.quantity - 1)
-  }
+  // 불변성 유지 (Immutable) 상태 관리
+  const nextCart = currentCart.map(((item) => {
+    // 찾는 아이템이 아닌 경우라면 기존 참조 유지한 채로 메모리를 아낌
+    if (item.id !== id) { return item }
+    
+    // 찾는 아이템이라면 원본 데이터가 아니라, 사본 데이터로 반환
+    let nextQuantity = item.quantity + 1
+    if (action === 'minus') nextQuantity = Math.max(0, item.quantity - 1)
+
+    // 새로운 아이템(복제)
+    const nextItem = {
+      ...item, // 기존 참조(원본) 주소와 끊김 (불변성 유지)
+      quantity: nextQuantity
+    }
+
+    return nextItem
+  }))
+
+
+  // 원본 데이터 수정(mutation) -> 악의 근원 (오류 발생, 공유된 상태)
+  // const editItem = currentCart.find((item) => item.id === id)
+  // console.log(editItem)
+
+  // if (action === 'plus') {
+  //   editItem.quantity += 1
+  // } else {
+  //   editItem.quantity = Math.max(0, editItem.quantity - 1)
+  // }
   
-  renderCart(currentCart)
+  // currentCart 상태 동기화 (새로운 참조 값으로 교체)
+  currentCart = nextCart
+  renderCart(nextCart) // 렌더링
 }
 
 function updateDescription(text) {
@@ -139,5 +164,3 @@ function renderCart(cartData) {
     </output>
   `
 }
-
-
