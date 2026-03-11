@@ -15,13 +15,24 @@ import fetchProducts from './api/fetchProducts'
 //   - filter
 //     - keyword: ''
 //     - category: 'all'
-let state = null
+let state = {
+  isLoading: false,
+  error: '',
+  products: [],
+  filter: {
+    keyword: '',
+    category: 'all'
+  }
+}
 
 // TODO 2: 상태 업데이트 엔진
 // - 상태를 업데이트한 후 반드시 render() 함수를 호출하여 UI를 동기화하세요.
 function updateState(newState) {
-  // - updateState 함수는 newState 전달 받아 state 객체 업데이트 (Object.assign 활용)
-  // - newState 타입이 함수인 경우, state를 전달해 반환되 값과 상태 병합
+  if (typeof newState === 'function') {
+    Object.assign(state);
+  } else {
+    Object.assign(state, newState);
+  }
 }
 
 

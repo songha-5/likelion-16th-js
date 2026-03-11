@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트 야간 학습</title>
+    <link rel="icon" type="image/svg+xml" href="/javascript.svg" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
+
+  <body>
+
+    <main data-main-container>
+      <header data-header>
+        <h1 data-title>🎹 CLASSIC PIANO LAB</h1>
+        <p data-description>키보드 A-S-D-F-G-H-J-K 키를 눌러 피아노를 연주해 보세요.</p>
+      </header>
+
+      <div data-auth-shell data-state="logout">
+        <form data-login-form>
+          <div data-field-group>
+            <label data-label for="pianist">피아니스트 이름</label>
+            <input data-input type="text" id="pianist" name="pianist" value="쇼팽 Choi" required />
+          </div>
+          <button type="submit" data-submit-button>피아노 스튜디오 입장</button>
+        </form>
+
+        <div data-dashboard-container>
+          <div data-piano-layout>
+            <section data-keyboard-section>
+              <div data-piano-keys></div>
+              <button type="button" data-save-record>현재 연주 상태 스냅샷 저장</button>
+            </section>
+
+            <aside data-record-section>
+              <h3 data-section-title>저장된 기록</h3>
+              <div data-content-display></div>
+            </aside>
+          </div>
+          <button type="button" data-logout-button>스튜디오 종료</button>
+        </div>
+      </div>
+    </main>
+
+  </body>
+
+</html>

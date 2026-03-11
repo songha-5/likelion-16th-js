@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트 야간 학습</title>
+    <link rel="icon" type="image/svg+xml" href="/javascript.svg" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
+
+  <body>
+
+    <main data-main-container>
+      <h1 data-title>데이터 프로세싱</h1>
+      <p data-description>함수형 프로그래밍 원리로 데이터를 안전하게 처리하세요.</p>
+
+      <div data-processor-shell data-state="input">
+        <form data-process-form>
+          <div data-field-group>
+            <label data-label for="raw-data">
+              처리할 원본 데이터 (<abbr title="JavaScript Object Notation">JSON</abbr>)
+            </label>
+            <button type="button" data-prettify-button title="JSON 정돈하기">✨ 포맷팅</button>
+            <textarea
+              data-textarea
+              id="raw-data"
+              name="rawData"
+              rows="12"
+              spellcheck="false"
+              required
+            ></textarea>
+          </div>
+
+          <div role="alert" data-error-message hidden></div>
+
+          <button type="submit" data-process-button>
+            <span data-button-text>데이터 변환 시작</span>
+          </button>
+        </form>
+
+        <div data-result-container>
+          <div data-content-display></div>
+          <button type="button" data-reset-button>초기화 및 돌아가기</button>
+        </div>
+      </div>
+    </main>
+
+  </body>
+
+</html>
