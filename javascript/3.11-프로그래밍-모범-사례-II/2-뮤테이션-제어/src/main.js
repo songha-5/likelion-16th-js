@@ -82,7 +82,7 @@ function handleEnterStudio(e) {
   // - 아래처럼 할당하면 두 변수가 동일한 '메모리 주소'를 가리킵니다.
   // - 피아노 상태의 현재 키 값을 변경하면 문제가 발생할 수 있습니다. (데이터 오염)
   // - 서로 다른 '메모리 주소'를 가리키게 만들어 원본 데이터 오염을 방지해야 합니다.
-  pianoState.currentKeys = INITIAL_KEYS
+  pianoState.currentKeys = [...INITIAL_KEYS]
   
   renderPiano()
   switchDisplayMode(true)
@@ -112,8 +112,12 @@ function toggleKey(index) {
   // - 배열의 특정 인덱스 값을 직접 바꾸는 것은 뮤테이션(mutation)입니다. 
   // - 뮤테이션은 예측할 수 없는 문제를 유발할 수 있습니다. (데이터 오염)
   // - 새로운 배열을 만들어 사용해야 원본을 유지할 수 있습니다.
-  const nextKeyState = !pianoState.currentKeys[index]
-  pianoState.currentKeys[index] = nextKeyState
+  // const nextKeyState = !pianoState.currentKeys[index]
+  // pianoState.currentKeys[index] = nextKeyState
+
+  const nextKeys = [...pianoState.currentKeys]
+  nextKeys[index] = !nextKeys[index] //false > true , true -> false
+  pianoState.currentKeys = nextKeys //상태 동기화
 
   renderPiano()
 
@@ -131,13 +135,18 @@ function handleSaveRecord() {
   // - 문제를 해결하려면 현재 피아노 상태를 복사해 고정된 '스냅샷'으로 저장해야 합니다.
   const newRecord = {
     time: new Date().toLocaleTimeString(),
-    data: pianoState.currentKeys,
+    data: [...pianoState.currentKeys], // snapshot 원본이 아닌 복제
   }
 
   // TODO 4: 배열 불변성 업데이트
   // - 전체 기록 배열도 불변성 업데이트가 필요합니다. 
   // - 배열을 변경(mutation)하는 메서드를 사용하면 문제가 발생합니다. (데이터 오염)
-  pianoState.records.unshift(newRecord)
+
+  // 뮤테이션 방식(데이터 오염)
+  // pianoState.records.unshift(newRecord)
+
+  // 원본유지, 복제된 데이터 가공(안전)
+  pianoState.records = [newRecord, ...pianoState.records]
   renderRecords()
 }
 
