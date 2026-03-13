@@ -16,48 +16,68 @@ listDisplay.addEventListener('click', handleCharacterAction)
 //   - levelUp(character): 전달받은 객체의 level +1, hp 100 설정 -> 캐릭터 렌더링
 //   - takeDamage(character): 전달받은 객체의 hp -20 (0 미만 방지) -> 캐릭터 렌더링
 // --------------------------------------------------------------------------
-;() => {
+;(() => {
 
-  function createCharacter() {
+  function createCharacter(name, job) {
     // 캐릭터 객체 생성
     // - name (사용자 설정)
     // - job (사용자 설정)
     // - level = 1 (기본값)
     // - hp = 100 (기본값)
+    const newCharacter = {
+      name, 
+      job, 
+      level: 1, 
+      hp: 100
+    }
 
     // 생성된 캐릭터 객체 반환
-
+    return newCharacter
   }
 
   function levelUp(character) {
     // 전달받은 객체의 level +1
-    
+    character.level += 1
     // 전달받은 객체의 hp = 100
-    
+    character.hp = 100
     // 모든 캐릭터 렌더링
-    
+    renderAllCharacters()
   }
 
   function takeDamage(character) {
     // 전달받은 객체의 hp - (5 ~ 20 사이) (0 미만 방지)
-    
+    const restHp = character.hp - Math.floor(Math.random() * (20 - 5 + 1) + 5)
+    character.hp = restHp
     // 모든 캐릭터 렌더링
-    
+    renderAllCharacters()
   }
 
   // 함수형으로만 구성할 경우, 캐릭터가 100명일 때 100번이나 함수에 데이터를 넣어야 합니다.
   // 함수와 데이터가 따로 놀다 보니 실수로 마법사 함수에 전사 데이터를 넣는 사고가 날 수도 있죠!
 
   // '아서'(전사) 캐릭터 생성
+  const 아서 = createCharacter('아서', '전사')
+  console.log(아서)
 
   // '간달프'(마법사) 캐릭터 생성
+  const 간달프 = createCharacter('간달프', '마법사')
+  console.log(간달프)
 
   // 아서 캐릭터 데미지 받음!
+  takeDamage(아서)
+  console.log(아서)
   // 간달프 캐릭터 데미지 받음!
+  takeDamage(간달프)
+  console.log(간달프)
+  takeDamage(간달프)
+  console.log(간달프)
   // 아서 캐릭터 데미지 받음!
+  takeDamage(아서)
+  console.log(아서)
   // 간달프 레벨 업!! ✨
-  
-} //()
+  levelUp(간달프)
+  console.log(간달프)
+}) //()
 
 // --------------------------------------------------------------------------
 // TODO 2: 생성자 함수 정의 (객체 지향의 초기 모델: prototype 활용)
@@ -69,26 +89,54 @@ listDisplay.addEventListener('click', handleCharacterAction)
 //   - levelUp 설정 (자신의 level +1, hp 100 회복) -> 캐릭터 렌더링
 //   - takeDamage 설정 (자신의 hp -20, 0보다 낮으면 0 설정) -> 캐릭터 렌더링
 // --------------------------------------------------------------------------
-;() => {
+;(() => {
   // 캐릭터(객체) 생성 함수
+  function Character(name, job) {
+    // 생성자 함수는 전달된 재료(인자들)를 가지고
+    // 생성될 객체(this)의 속성으로 설정
+    this.name = name
+    this.job = job
+    // 기본 속성(들)
+    this.level = 1
+    this.hp = 100
+  }
 
   // 모든 캐릭터가 공유하는 기술(메서드)을 프로토타입에 등록
+  Character.prototype.takeDamage = function() {
+    this.hp = this.hp - Math.floor(Math.random() * (20 - 5 + 1) + 5)
+    renderAllCharacters()
+  }
+
+  Character.prototype.levelUp = function() {
+    this.level++
+    this.hp = 100
+    renderAllCharacters()
+  }
+  
+  Character.prototype.vision = function() {}
 
   // 캐릭터(객체) 생성
   // - '아서'(전사) 생성
+  const 아서 = new Character('아서', '전사')
+  console.log(아서)
+
   // - '간달프'(마법사) 생성
+  const 간달프 = new Character('간달프', '마법사')
+  console.log(간달프)
 
   // 아서 캐릭터 데미지 받음!
+  아서.takeDamage()
   // 간달프 캐릭터 데미지 받음!
+  간달프.takeDamage()
   // 아서 캐릭터 데미지 받음!
+  아서.takeDamage()
   // 간달프 레벨 업!! ✨
-  
+  간달프.levelUp()
+
   // 이 방법을 사용하면 데이터와 함수가 '묶음'이 됩니다.
   // 하지만 프로토타입(prototype)이라는 용어가 낯설고
   // 사용된 코드가 여기저기 흩어져 있어서 한눈에 안 들어옵니다.
-
-  
-} //()
+}) //()
 
 // --------------------------------------------------------------------------
 // TODO 3: 클래스 정의 (객체 지향의 핵심: 설계도 만들기)
@@ -104,25 +152,78 @@ listDisplay.addEventListener('click', handleCharacterAction)
 // --------------------------------------------------------------------------
 ;(() => {
   // 캐릭터 클래스(설계도: 붕어빵 틀) 작성
-  // - 모든 캐릭터가 공유하는 기술(메서드) 등록
-  
+  class Character {
+    // 생성자 함수
+    constructor(name, job) {
+      // 생성될 객체를 지칭하는 this 사용
+      this.name = name
+      this.job = job
+      // 기본 속성들 (데이터)
+      this.level = 1
+      this.hp = 100
+    }
+    
+    // 모든 캐릭터가 공유하는 기술(메서드) 등록
+    levelUp() {
+      this.level++
+      this.hp = 100
+      renderAllCharacters()
+    }
+
+    takeDamage() {
+      this.hp = this.hp - Math.floor(Math.random() * (20 - 5 + 1) + 5)
+      renderAllCharacters()
+    }
+
+    vision() {}
+  }
+
   // 캐릭터 인스턴스(객체: 붕어빵) 생성
   // - '아서'(전사) 생성
+  const 아서 = new Character('아서', '전사')
+  
   // - '간달프'(마법사) 생성
+  const 간달프 = new Character('간달프', '마법사')
 
+  console.log(아서)
+  console.log(간달프)
+  
   // 아서 캐릭터 데미지 받음!
   // 간달프 캐릭터 데미지 받음!
   // 아서 캐릭터 데미지 받음!
   // 간달프 레벨 업!! ✨
-
-  
-  // 2015년부터 지원하는 ECMAScript의 클래스 문법은 
-  // 객체 지향 프로그래밍을 지원하는 JAVA, C#과 
-  // 유사(정확히는 다름)해서 객체 지향의 원칙을 
-  // JS에 더 쉽게 적용할 수 있게 된 것이 
+  // 2015년부터 지원하는 ECMAScript의 클래스 문법은
+  // 객체 지향 프로그래밍을 지원하는 JAVA, C#과
+  // 유사(정확히는 다름)해서 객체 지향의 원칙을
+  // JS에 더 쉽게 적용할 수 있게 된 것이
   // 가장 큰 수확이라고 볼 수 있습니다.
+})()
 
-}) //()
+class Character {
+  // 생성자 함수
+  constructor(name, job) {
+    // 생성될 객체를 지칭하는 this 사용
+    this.name = name
+    this.job = job
+    // 기본 속성들 (데이터)
+    this.level = 1
+    this.hp = 100
+  }
+  
+  // 모든 캐릭터가 공유하는 기술(메서드) 등록
+  levelUp() {
+    this.level++
+    this.hp = 100
+    renderAllCharacters()
+  }
+
+  takeDamage() {
+    this.hp = Math.max(0, this.hp - Math.floor(Math.random() * (20 - 5 + 1) + 5))
+    renderAllCharacters()
+  }
+
+  vision() {}
+}
 
 
 // --------------------------------------------------------------------------
@@ -164,7 +265,7 @@ function createCharacterCard(character, index) {
   cardArticle.dataset.characterCard = ''
   cardArticle.dataset.index = index
 
-  cardArticle.innerHTML = /* html */`
+  cardArticle.innerHTML = /* html */ `
     <div data-char-header>
       <strong data-char-name>${character.name}</strong>
       <span data-job-badge data-job="${character.job}">${character.job}</span>
