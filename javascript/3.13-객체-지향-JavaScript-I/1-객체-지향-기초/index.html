@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트 야간 학습</title>
+    <link rel="icon" type="image/svg+xml" href="/javascript.svg" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
+
+  <body>
+
+    <main data-main-container>
+      <h1 data-title>OOP 캐릭터 매니저</h1>
+      <p data-description>클래스와 객체를 활용해 캐릭터를 생성하고 관리해 보세요.</p>
+
+      <section data-control-panel>
+        <form data-character-form>
+          <div data-field-group>
+            <label data-label for="charName">캐릭터 이름</label>
+            <input data-input type="text" id="charName" name="name" placeholder="이름을 입력하세요" required />
+          </div>
+          <div data-field-group>
+            <label data-label for="charJob">직업 선택</label>
+            <select data-select id="charJob" name="job">
+              <option value="Warrior">전사 (Warrior)</option>
+              <option value="Mage">마법사 (Mage)</option>
+            </select>
+          </div>
+          <button type="submit" data-create-button>캐릭터 생성</button>
+        </form>
+      </section>
+
+      <hr data-divider />
+
+      <section data-character-list-display>
+        </section>
+    </main>
+
+  </body>
+
+</html>
