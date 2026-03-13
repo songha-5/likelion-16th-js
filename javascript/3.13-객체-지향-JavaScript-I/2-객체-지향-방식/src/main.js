@@ -5,13 +5,14 @@ const loginForm = document.querySelector('[data-login-form]')
 const logoutButton = document.querySelector('[data-logout-button]')
 const contentDisplay = document.querySelector('[data-content-display]')
 
-loginForm.addEventListener('submit', (e) => {
-  handleAuthSubmit(e)
-})
+loginForm.addEventListener('submit', handleAuthSubmit)
+logoutButton.addEventListener('click', handleAppLogout)
 
-logoutButton.addEventListener('click', () => {
-  handleAppLogout()
-})
+// 객체 지향 프로그래밍의 핵심 원리
+// 1. 추상화 (로직 단순화)
+// 2. 캡슐화 (데이터를 안전하게 보호)
+// 3. 상속 (코드 중복 제거)
+// 4. 다형성 (하나의 인터페이스를 사용해 다양한 기능을 수행할 수 있게 하는 설계)
 
 // --------------------------------------------------------------------------
 // 객체 지향 프로그래밍 (클래스: 캡슐화, 상속, 다형성)
@@ -19,11 +20,12 @@ logoutButton.addEventListener('click', () => {
 
 // TODO 1: 추상화 & 캡슐화(정보를 안전하게 관리)하는 클래스
 class SessionManager {
-  // 아래 변수들을 Private(#) 필드로 전환하세요.
-  isLoggedIn = false
-  currentUser = null
+  // 아래 변수들을 Private(#) 필드로 전환하세요. (캡슐화)
+  #isLoggedIn = false
+  #currentUser = null
 
-  static ADMIN_ACCOUNT = {
+  // 비공개 정적 속성
+  static #ADMIN_ACCOUNT = {
     id: 'yamoo9',
     name: '야무',
     role: 'Administrator',
@@ -32,14 +34,13 @@ class SessionManager {
 
   // 내부 로직은 숨기고 '로그인'이라는 행위만 제공 (추상화)
   login(userId, password) {
-    const { ADMIN_ACCOUNT } = SessionManager
 
-    if (userId === ADMIN_ACCOUNT.id && password === ADMIN_ACCOUNT.password) {
-      this.isLoggedIn = true
-      this.currentUser = {
+    if (userId === SessionManager.#ADMIN_ACCOUNT.id && password === SessionManager.#ADMIN_ACCOUNT.password) {
+      this.#isLoggedIn = true
+      this.#currentUser = {
         id: userId,
-        name: ADMIN_ACCOUNT.name,
-        role: ADMIN_ACCOUNT.role,
+        name: SessionManager.#ADMIN_ACCOUNT.name,
+        role: SessionManager.#ADMIN_ACCOUNT.role,
       }
       return true
     }
@@ -52,14 +53,21 @@ class SessionManager {
   }
 
   // 읽기 전용 getter (캡슐화 유지)
-  get user() { return this.currentUser }
-  get status() { return this.isLoggedIn }
+  get status() { return this.#isLoggedIn }
+  
+  // 읽기 쓰기 getter setter
+  get user() { return this.#currentUser }
+  // set user(newUser) { this.#currentUser = newUser }
 }
+
+// 클래스의 정적 멤버에 접근하는 방법
+// 비공개(private, #) 멤버(필드)에 접근 시도 (차단, 캡슐화: 데이터 안전하게 보호)
+// console.log(SessionManager.#ADMIN_ACCOUNT)
 
 const session = new SessionManager()
 
 // 공개 필드는 접근 가능
-console.log(session.isLoggedIn)
+// console.log(session.isLoggedIn)
 
 // 비공개 필드에 접근 시도할 경우 오류 발생
 // Uncaught SyntaxError: Private field '#isLoggedIn' must be declared in an enclosing class
@@ -78,7 +86,7 @@ class DashboardCard {
   // 기본 렌더링 로직
   // 상속받은 클래스들이 공통으로 사용
   render() {
-    return `
+    return /* html */`
       <article data-dashboard-card>
         <div data-card-info>
           <span data-card-label>${this.label}</span>
@@ -96,19 +104,21 @@ class DashboardCard {
 
 // TODO 2: DashboardCard를 상속하는 UserProfileCard 클래스를 작성하세요.
 //         상속을 통해 중복 코드 제거
-class UserProfileCard {
+class UserProfileCard extends DashboardCard {
   constructor(name, role) {
     // super를 호출해 상위 생성자에게 '사용자 프로필'과 name 값을 전달하세요.
-    
+    super('사용자 프로필', name)
+    // this.label = '사용자 프로필'
+    // this.name = name
     this.role = role
   }
 
   // renderBadge() 메서드 오버라이딩을 통한 다형성을 구현합니다.  
   // 반환값: `<span data-badge data-type="user">${this.role}</span>`
-  renderBadge() { return `` }
+  renderBadge() { return `<span data-badge data-type="user">${this.role}</span>` }
 
   // ⚠️ 상속 받은 후에는 render() 메서드를 제거하세요.
-  render() { return `` }
+  // render() { return `` }
 }
 
 
@@ -116,6 +126,8 @@ class UserProfileCard {
 class SystemStatusCard extends DashboardCard {
   constructor(systemName, status) {
     super('시스템 상태', systemName)
+    // this.label = '시스템 상태'
+    // this.name = systeName
     this.status = status
   }
 
