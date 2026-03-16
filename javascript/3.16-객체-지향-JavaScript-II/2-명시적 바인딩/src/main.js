@@ -38,7 +38,7 @@ function runCall() {
   
   // TODO 1: call은 인자를 쉼표로 구분하여 '낱개'로 전달합니다.
   // - Function.prototype.call 메서드로 this를 admin으로 변경해보세요.
-  instructor.introduce(greetingMessage, dateMessage)
+  instructor.introduce.call(admin, greetingMessage, dateMessage)
 }
 
 function runApply() {
@@ -47,7 +47,7 @@ function runApply() {
   
   // TODO 2: apply는 인자를 '배열'에 담아서 전달합니다.
   // - Function.prototype.apply 메서드로 this를 user로 변경해보세요.
-  instructor.introduce(greetingMessage, dateMessage)
+  instructor.introduce.apply(user, [greetingMessage, dateMessage])
 }
 
 function createBind() {
@@ -57,9 +57,9 @@ function createBind() {
   
   // TODO 3: bind는 함수를 즉시 실행하지 않고, this가 고정된 '새로운 함수'를 반환합니다.
   // - Function.prototype.bind 메서드로 this를 yamoo9으로 변경해보세요.
-  boundFunction = () => instructor.introduce(greetingMessage, dateMessage)
+  boundFunction = () => instructor.introduce.bind(yamoo9, greetingMessage, dateMessage)
   // - JSON.stringify(yamoo9)로 변경해보세요.
-  const jsonString = JSON.stringify(instructor)
+  const jsonString = JSON.stringify(yamoo9)
 
   updateScreen(
     `함수는 ${jsonString} 객체에 의해 바운드되었습니다.`,
