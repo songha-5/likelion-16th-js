@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트 야간 학습</title>
+    <link rel="icon" type="image/svg+xml" href="/javascript.svg" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
+
+  <body>
+
+    <main data-learning-container>
+      <h1 data-title>객체 지향 JavaScript 마스터</h1>
+      <p data-description>실행 컨텍스트와 <code>this</code>의 변화를 실시간으로 관찰하세요.</p>
+
+      <section data-control-panel>
+        <div data-button-group>
+          <button type="button" data-action="global">전역 실행</button>
+          <button type="button" data-action="object-method">객체 메서드 호출</button>
+          <button type="button" data-action="arrow-function">화살표 함수 호출</button>
+          <button type="button" data-action="clear">로그 초기화</button>
+        </div>
+      </section>
+
+      <section data-visual-dashboard>
+        <div data-context-stack-card>
+          <h3 data-card-title>Call Stack (실행 컨텍스트)</h3>
+          <ul data-stack-list>
+            <li data-stack-item="global">Global Execution Context</li>
+          </ul>
+        </div>
+
+        <div data-monitor-card>
+          <h3 data-card-title>this & Scope Monitor</h3>
+          <div data-monitor-content>
+            <div data-info-row>
+              <span data-label>Current this:</span>
+              <code data-this-value>window</code>
+            </div>
+            <div data-info-row>
+              <span data-label>Active Scope:</span>
+              <code data-scope-name>Global</code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-log-container>
+        <div data-log-display>
+          <p data-log-placeholder>상단 버튼을 클릭하여 코드를 실행해 보세요.</p>
+        </div>
+      </section>
+    </main>
+
+  </body>
+
+</html>

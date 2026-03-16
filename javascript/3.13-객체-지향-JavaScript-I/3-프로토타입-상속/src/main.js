@@ -14,7 +14,29 @@ logoutButton.addEventListener('click', handleAppLogout)
 
 // TODO 1-1: BaseCard 상위(부모) 생성자 함수를 정의하세요.
 // - category, content 인자를 전달 받아 자신의 속성으로 설정합니다.
-function BaseCard() {}
+function BaseCard(category, content) {
+  this.category = category
+  this.content = content
+}
+
+// TODO 1-2: BaseCard의 prototype 속성(객체)에 render 메서드를 추가하세요.
+// 반환값: `
+//   <article data-dashboard-card>
+//     <span data-card-type>${this.category}</span>
+//     <div data-card-body>${this.content}</div>
+//   </article>
+// `
+BaseCard.prototype.render = function() {
+  return `
+    <article data-dashboard-card>
+      <span data-card-type>${this.category}</span>
+      <div data-card-body>${this.content}</div>
+    </article>
+  `
+}
+
+const myCard = new BaseCard('강의', '프론트엔드 웹')
+console.log(myCard.render())
 
 // TODO 1-2: BaseCard의 prototype 속성(객체)에 render 메서드를 추가하세요.
 // 반환값: `

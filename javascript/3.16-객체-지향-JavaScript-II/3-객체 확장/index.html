@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트 야간 학습</title>
+    <link rel="icon" type="image/svg+xml" href="/javascript.svg" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
+
+  <body>
+
+    <main data-main-container>
+      <h1 data-title>객체 확장 대시보드</h1>
+      <p data-description>부모 클래스를 상속받아 기능을 확장하는 과정을 관찰하세요.</p>
+
+      <div data-auth-shell data-state="logout">
+        <form data-create-form>
+          <div data-field-group>
+            <label data-label for="widgetName">위젯 이름</label>
+            <input data-input type="text" id="widgetName" name="widgetName" value="기본 알림" required />
+          </div>
+
+          <div data-field-group>
+            <label data-label for="widgetType">위젯 타입</label>
+            <select data-select id="widgetType" name="widgetType">
+              <option value="base">Base 위젯</option>
+              <option value="premium">Premium 위젯</option>
+            </select>
+          </div>
+
+          <button type="submit" data-submit-button>
+            <span data-button-text>위젯 생성하기</span>
+          </button>
+        </form>
+
+        <div data-dashboard-container>
+          <div data-content-display></div>
+          <button type="button" data-reset-button>모든 위젯 초기화</button>
+        </div>
+      </div>
+    </main>
+
+  </body>
+
+</html>
