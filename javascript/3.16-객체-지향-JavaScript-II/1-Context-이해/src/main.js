@@ -15,14 +15,18 @@ function handleClick(e) {
   if (!action) return
 
   switch (action) {
-    case 'global': runGlobalContext()
+    case 'global':
+      runGlobalContext()
       break
-    case 'object-method': runObjectMethod()
+    case 'object-method':
+      runObjectMethod()
       break
-    case 'arrow-function': runArrowFunction()
+    case 'arrow-function':
+      runArrowFunction()
       break
     case 'clear':
-    default: clearLogs()
+    default:
+      clearLogs()
   }
 }
 
@@ -30,13 +34,8 @@ function handleClick(e) {
 
 function runGlobalContext() {
   const contextName = 'Global'
-  // TODO 1: 전역 컨텍스트와 일반 함수 호출
-  //
-  // Q1. 전역에서 함수를 그냥 호출했을 때 this는 무엇을 가리킬까요?
-  // 
-  // Q2. 전역에서 함수를 그냥 호출했을 때 this는 무엇을 가리킬까요?
-  //
-
+  const currentThis = 'window'
+  updateUI(contextName, currentThis, '글로벌 컨텍스트가 활성화되었습니다.')
 }
 
 function runObjectMethod() {
@@ -45,18 +44,28 @@ function runObjectMethod() {
     // TODO 2: 메서드 호출에서의 this 바인딩
     start() {
       // Q1. 일반 함수 메서드의 this는 무엇을 가리킬까요?
-      //
+      // this === studyGroup
+      updateUI(
+        'studyGroup.start()',
+        'studyGroup 객체',
+        '메서드로 호출되어 this가 studyGroup 객체를 가리킵니다.',
+      )
 
       function innerFunc() {
         // Q2. 메서드 안의 일반 함수(inner)의 this는 어떻게 변할까요?
-        //
-
+        
+        updateUI(
+          'innerFunc()',
+          String(this),
+          '모듈 내 객체의 메서드에 중첩된 일반 함수의 this는 undefined를 가리킵니다.'
+        )
       }
-      
+
+      innerFunc()
     },
   }
 
-  
+  studyGroup.start()
 }
 
 function runArrowFunction() {
@@ -64,15 +73,27 @@ function runArrowFunction() {
     name: '화살표 테스트',
     start() {
       // TODO 3: 화살표 함수와 렉시컬(Lexical, 어휘적) this
+      console.log(this) // this === arrowTest
+      updateUI(
+        'arrowTest.start()',
+        'arrowTest 객체', 
+        '메서드로 호출되어 this가 arrowTest를 가리킵니다.'
+      )
+
+
       const innerArrow = () => {
         // Q. 메서드 안의 화살표 함수(innerArrow)의 this는 어떻게 변할까요?
-        // 
-
+        // this === arrowTest
+        updateUI(
+          'innerArrow()',
+          'arrowTest 객체', 
+          '화살표 함수는 자신만의 this를 가지지 않고 상위 this를 참조합니다.'
+        )
       }
-        
     },
   }
 
+  arrowTest.start()
 }
 
 /* UI 렌더링 함수 ---------------------------------------------------------------- */
@@ -83,16 +104,16 @@ function updateUI(contextName, thisBinding, logMessage) {
   newItem.dataset.stackItem = 'function'
   newItem.textContent = `${contextName} Context`
   stackList.appendChild(newItem)
-  
+
   // 모니터 업데이트
   thisMonitor.textContent = thisBinding
   scopeMonitor.textContent = contextName
-  
+
   // 로그 추가
   const logEntry = document.createElement('p')
   logEntry.textContent = `> ${logMessage}`
   logDisplay.prepend(logEntry)
-  
+
   // 1.5초 후 스택에서 제거 (실행 완료 시뮬레이션)
   setTimeout(() => {
     if (stackList.lastChild && contextName !== 'Global') {
@@ -112,4 +133,3 @@ function clearLogs() {
     item.remove()
   })
 }
-
