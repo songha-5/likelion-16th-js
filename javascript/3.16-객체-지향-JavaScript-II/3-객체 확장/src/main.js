@@ -1,40 +1,55 @@
 import './style.css'
 
 // TODO 1: 상위(부모) 클래스 정의
-class BaseWidget {
+class BaseWidget{
+
   // 생성자(name)
-  // - 자신의 name 속성 설정 
-  // - 자신의 type 속성 값 'Normal' 설정 
+  constructor(name) {
+    // - 자신의 name 속성 설정 
+    this.name = name
+    // - 자신의 type 속성 값 'Normal' 설정 
+    this.type = 'Normal'
+  }
 
   // 기본 렌더링 로직
-  // render()
-  // 반환값: `
-  //   <section data-widget-card data-grade="base">
-  //     <h4 data-widget-title>📦 ${this.name}</h4>
-  //     <p data-widget-info>이것은 부모 클래스에서 정의된 기본 기능만 가진 위젯입니다.</p>
-  //   </section>
-  // `
+  render() {
+    return `
+      <section data-widget-card data-grade="base">
+        <h4 data-widget-title>📦 ${this.name}</h4>
+        <p data-widget-info>이것은 부모 클래스에서 정의된 기본 기능만 가진 위젯입니다.</p>
+      </section>
+    `
+  }
 }
 
 // TODO 2: BaseWidget 클래스로부터 파생된 클래스 정의
-class PremiumWidget {
-  // 생성자(name, bonusFeature)
-  // - 부모 생성자에게 name 전달
-  // - 자신의 type 속성 값 'Premium' 설정
-  // - 자신의 feature 속성 값 bonusFeature 설정
+class PremiumWidget extends BaseWidget {
+  constructor(name, bonusFeature) {
+    // - 부모 생성자에게 name 전달
+    super(name)
+    // - 자신의 type 속성 값 'Premium' 설정
+    this.type = 'Premium'
+    // - 자신의 feature 속성 값 bonusFeature 설정
+    this.feature = bonusFeature
+  }
+  
 
   // 렌더링 메서드 오버라이딩으로 다형성 구현
   // - 새로운 프리미엄 전용 UI 제공
-  // 반환값: `
-  //   <div data-widget-card data-grade="premium">
-  //     <h4 data-widget-title>💎 ${this.name} (확장 모델)</h4>
-  //     <p data-widget-info>
-  //       <strong>추가 기능:</strong> ${this.feature}<br />
-  //       super()를 통해 부모의 속성을 상속받고, 자신만의 특징을 추가했습니다.
-  //     </p>
-  //   </div>
-  // `
+  render() {
+    return `
+      <div data-widget-card data-grade="premium">
+        <h4 data-widget-title>💎 ${this.name} (확장 모델)</h4>
+        <p data-widget-info>
+          <strong>추가 기능:</strong> ${this.feature}<br />
+          super()를 통해 부모의 속성을 상속받고, 자신만의 특징을 추가했습니다.
+        </p>
+      </div>
+    `
+  }
 }
+const premiumwidget = new PremiumWidget('베스트 가이드', '+5 포인트')
+console.log(premiumwidget.render())
 
 /* DOM 접근/조작 ---------------------------------------------------------------- */
 
@@ -59,11 +74,12 @@ function handleCreateWidget(event) {
   if (type === 'premium') {
     // TODO 3-1: 파생된 클래스 PremiumWidget으로 인스턴스 생성
     // - name, '24시간 우선 지원 서비스' 전달
+    widgetInstance = new PremiumWidget(name, '24시간 우선 지원 서비스')
     
   } else {
     // TODO 3-2: 기본 클래스 BaseWidget으로 인스턴스 생성
     // - name 전달
-    
+    widgetInstance = new BaseWidget(name)
   }
 
   if (!widgetInstance) {

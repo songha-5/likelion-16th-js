@@ -3,15 +3,38 @@
 // --------------------------------------------------------------------------
 
 // TODO 1: 기본 가전 클래스인 Appliance를 만듭니다.
-// name 속성을 전달받아 자신의 name 속성으로 할당하세요.
-// 자신의 status 속성은 'off'를 기본값으로 합니다.
-// turnOn() 메서드가 실행되면 자신의 status 값을 'on'으로 변경하고,
-// `{기기 이름}의 전원이 켜졌습니다.`를 콘솔에 출력하세요.
+class Appliance {
+  constructor(name) {
+    // name 속성을 전달받아 자신의 name 속성으로 할당하세요.
+    this.name = name
+    // 자신의 status 속성은 'off'를 기본값으로 합니다.
+    this.status = 'off'
+  }
+
+  // turnOn() 메서드가 실행되면 자신의 status 값을 'on'으로 변경하고,
+  // `{기기 이름}의 전원이 켜졌습니다.`를 콘솔에 출력하세요.
+  turnOn() {
+    this.status = 'on'
+    console.log(`${this.name}의 전원이 켜졌습니다`)
+  }
+}
 
 // TODO 2: Appliance를 상속받는 SmartAppliance 클래스를 만드세요.
-// TODO 2-1: 생성자에서 부모의 name을 초기화하고, 자신만의 'wifi' 속성을 추가하세요.
-// TODO 2-2: 부모의 turnOn을 오버라이딩(재정의)하고, 부모의 turnOn()을 호출하고
-//           "{기기 WiFi 이름} 네트워크에 연결 중입니다..."를 콘솔에 출력하세요.
+class SmartAppliance extends Appliance {
+  // TODO 2-1: 생성자에서 부모의 name을 초기화하고, 자신만의 'wifi' 속성을 추가하세요.
+  constructor(name, wifiName) {
+    super(name)
+    this.wifi = wifiName
+  }
+
+  // TODO 2-2: 부모의 turnOn을 오버라이딩(재정의)하고, 부모의 turnOn()을 호출하고
+  //           "{기기 WiFi 이름} 네트워크에 연결 중입니다..."를 콘솔에 출력하세요.
+  turnOn() {
+    super.turnOn()
+    console.log(`${this.wifi} 네트워크에 연결중입니다`)
+  }
+}
+
 
 // TODO 3: SmartAppliance 인스턴스를 this로 설정해 아래 일반 함수를 실행하세요.
 function introduceAppliance(location) {
@@ -21,8 +44,17 @@ function introduceAppliance(location) {
 // TODO 3-1: SmartAppliance 객체를 생성합니다.
 // - 무풍 에어컨 (WiFi: 'StudyRoom_5G')
 // - 82인치 대형 TV (WiFi: 'LivingRoom_2.4G')
+const aircon = new SmartAppliance('무풍 에어컨', 'StudyRoom_5G')
+const wideTV = new SmartAppliance('82인치 대형 TV', 'LivingRoom_2')
 
 // TODO 3-2: 무풍 에어컨을 '공부방'에 설치하고 전원을 켭니다.
+introduceAppliance.call(aircon, '공부방')
+aircon.turnOn()
 
 // TODO 3-3: 82인치 대형 TV를 '거실'에 설치하고 전원 대기모드 상태로 만듭니다.
 //           전원 대기 상태에서 복구한 후, 전원을 켭니다.
+const powerStandByMode = introduceAppliance.bind(wideTV, '거실')
+setTimeout(() => {
+  powerStandByMode()
+  wideTV.turnOn()
+}, 2000)
