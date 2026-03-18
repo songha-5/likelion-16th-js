@@ -1,4 +1,13 @@
 import './style.css'
+import { useState } from './useState'
+
+const [state, setState] = useState(10)
+
+console.log(state)
+
+const nextState = setState(state + 1)
+
+console.log(nextState)
 
 // --------------------------------------------------------------------
 // 데이터 보호: 클로저(Closure)
@@ -37,6 +46,7 @@ const VAULT_ACTION = {
  */
 function createVault(initialBalance) {
   // TODO 1: initialBalance를 외부에서 접근 못하게 은닉하세요.
+  let balance = initialBalance
 
   // TODO 2: 클로저를 통해 반환되는 객체를 생성합니다.
   // - deposit(amount) : amount 만큼 금고에 입금하고 총액을 반환합니다. (은닉된 자산 증가)
@@ -44,7 +54,43 @@ function createVault(initialBalance) {
   //   - amount 만큼 금고에 출금하고 총액을 반환합니다. (은닉된 자산 감소)
   //   - 더 이상 출금할 은닉된 자산이 없다면? null을 반환합니다.
   // - getBalance() : 은닉된 자산을 반환합니다.
-  
+  const vaultManager = {
+    deposit(amount) {
+      balance += amount
+      return balance
+    },
+    withdraw(amount) {
+      if (balance < amount) return null
+      balance -= amount
+      return balance
+    },
+    getBalance() {
+      return balance
+    }
+  }
+
+  return vaultManager
+}
+
+// 클로저로 생성된 vaultManager 객체를 사용해
+// 은닉된 자산에 접근/수정(단 허용된 방법으로만)
+{
+  const vault = createVault(1000)
+  console.log(vault)
+
+  //현재 잔고
+  // console.log(vault.balance) // 접근/조작 불가능
+
+  // 허용된 방법
+  console.log(vault.getBalance())
+
+  // 허용된 방법으로 1500입금
+  vault.deposit(1500)
+  console.log(vault.getBalance())
+
+  // 허용된 방법으로 700출금 
+  vault.withdraw(700)
+  console.log(vault.getBalance())
 }
 
 // "내 금고" 캡슐화된 인스턴스를 담는 용도 변수
@@ -61,6 +107,8 @@ function handleVaultInit(event) {
 
   // 클로저 인스턴스 생성 ('은닉화' 시작)
   // 로직 작성
+  myVault = createVault(initialAsset)
+  console.log(myVault)
 
   if (!myVault) alert('금고를 열려면 먼저 클로저 인스턴스(myVault)를 생성해야 합니다.')
 
@@ -88,6 +136,7 @@ function excuteVaultAction(actionType) {
   if (actionType === deposit.type) {
     // 입금
     // 로직 작성
+    myVault.deposit(deposit.amount)
 
     updateLog(`${deposit.amount}원이 안전하게 입금되었습니다.`, 'success')
   }
@@ -95,6 +144,7 @@ function excuteVaultAction(actionType) {
   if (actionType === withdraw.type) {
     // 출금
     // 로직 작성
+    myVault.withdraw(withdraw.amount)
 
     const result = myVault.withdraw(withdraw.amount)
     
@@ -107,7 +157,9 @@ function excuteVaultAction(actionType) {
     try {
       // 은닉된 자산에 접근 시도 (차단!)
       // 로직 작성
-
+      console.log(myVault.balance)
+      myVault.balance = 0
+      
       updateLog(
         '접근 실패! 은닉된 변수(balance)에 직접 접근할 수 없습니다.',
         'danger',
