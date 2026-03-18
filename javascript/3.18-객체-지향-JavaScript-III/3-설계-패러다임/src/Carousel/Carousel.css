@@ -1,0 +1,442 @@
+:root {
+  --primary: #0f172a;
+  --accent: #6366f1;
+  --danger: #000000;
+  --on-danger: #ffffff;
+  --border: #e2e8f0;
+  --bg-sub: #f8fafc;
+  --radius: 12px;
+  --gray-light: #f1f5f9;
+  --gray-dark: #1e293b;
+}
+
+/* 기본 레이아웃 */
+body {
+  margin: 0;
+  font-family: 'Pretendard', -apple-system, sans-serif;
+  background: #fafafa;
+  color: var(--primary);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+[data-builder-container] {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+
+  header {
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: #64748b;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+/* 빌더 폼 (설정 영역) */
+[data-config-form] {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+  [data-input-group] {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+
+    label {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    input[type="text"] {
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 1rem;
+
+      &:focus {
+        border-color: var(--accent);
+        outline: none;
+      }
+    }
+  }
+
+  [data-select-wrapper] {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: 1rem;
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid #64748b;
+      border-bottom: 2px solid #64748b;
+      transform: rotate(45deg);
+      pointer-events: none;
+    }
+
+    select {
+      width: 100%;
+      appearance: none;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 1rem;
+      background: white;
+
+      &:focus {
+        border-color: var(--accent);
+        outline: none;
+      }
+    }
+  }
+
+  [data-file-drop-zone] {
+    position: relative;
+    border: 2px dashed var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: center;
+    background-color: var(--bg-sub);
+    transition: all 0.2s ease;
+
+    &:focus-within {
+      border-color: var(--accent);
+      background-color: #f1f5f9;
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    &[data-state="drag-over"] {
+      border-color: var(--accent);
+      background-color: #f1f5f9;
+    }
+
+    input[type="file"] {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    [data-drop-zone-content] {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: #64748b;
+      pointer-events: none;
+
+      [data-icon] {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  [data-action="submit"] {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary);
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 1rem;
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--gray-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      outline: none;
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+/* 이미지 미리보기 리스트 */
+[data-preview-grid] {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+
+  [data-preview-item] {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    [data-action="remove"] {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--danger);
+      color: var(--on-danger);
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s;
+      z-index: 20;
+
+      &:hover,
+      &:focus-visible {
+        background-color: #333;
+        outline: none;
+      }
+    }
+
+    &:hover [data-action="remove"],
+    &:focus-within [data-action="remove"] {
+      opacity: 1;
+    }
+  }
+}
+
+/* 생성된 캐러셀 컴포넌트 */
+[data-component="carousel"] {
+  position: relative;
+  margin-top: 3rem;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: white;
+  outline: none;
+
+  &:hover [data-control-panel],
+  &:focus-within [data-control-panel] {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  [data-carousel-header] {
+    padding: 1.25rem;
+    background: white;
+    border-bottom: 1px solid #eee;
+
+    h3 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+  }
+
+  [data-carousel-stage] {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    background: var(--bg-sub);
+    overflow: hidden;
+    touch-action: none;
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  [data-carousel-rail] {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    will-change: transform;
+
+    &[data-animating="true"] {
+      transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+    }
+  }
+
+  [data-slide-item] {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+      border-radius: 8px;
+    }
+  }
+}
+
+/* 캐러셀 컨트롤 유닛 */
+[data-control-panel] {
+  position: absolute;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+  [data-indicator-numeric] {
+    font-size: 0.85rem;
+    font-weight: 800;
+    align-self: center;
+    min-width: 60px;
+    text-align: center;
+  }
+}
+
+[data-nav] {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: white;
+  color: var(--primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+
+  /* 기본 호버/포커스 스타일 (옅은 회색) */
+  &:hover,
+  &:focus-visible {
+    background-color: var(--gray-light);
+    outline: none;
+  }
+
+  /* 자동 재생 활성 상태 스타일 */
+  &[data-active="true"] {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+
+    /* 자동 재생 중 호버/포커스 */
+    &:hover,
+    &:focus-visible {
+      background-color: var(--gray-dark);
+      border-color: var(--gray-dark);
+    }
+  }
+
+  img {
+    pointer-events: none;
+  }
+
+  [data-preview-box] {
+    position: absolute;
+    width: 140px;
+    height: 90px;
+    border: 3px solid white;
+    border-radius: 10px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &:hover [data-preview-box] {
+    opacity: 1;
+  }
+}
+
+/* 방향 모드별 특수 위치 설정 */
+[data-mode="horizontal"] {
+  [data-carousel-rail] {
+    flex-direction: row;
+  }
+
+  [data-control-panel] {
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  [data-nav] [data-preview-box] {
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+  }
+
+  [data-nav]:hover [data-preview-box] {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+[data-mode="vertical"] {
+  [data-carousel-rail] {
+    flex-direction: column;
+  }
+
+  [data-control-panel] {
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    flex-direction: column;
+    align-items: center;
+  }
+
+  [data-nav] [data-preview-box] {
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%) translateX(20px);
+  }
+
+  [data-nav]:hover [data-preview-box] {
+    transform: translateY(-50%) translateX(0);
+  }
+}

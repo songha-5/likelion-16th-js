@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트 야간 학습</title>
+    <link rel="icon" type="image/svg+xml" href="/javascript.svg" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
+
+  <body>
+    <main data-builder-container>
+      <header>
+        <h1>캐러셀 컴포넌트 빌더</h1>
+        <p>무한 루프와 하드웨어 가속 드래그가 적용된 인터페이스</p>
+      </header>
+
+      <form data-config-form>
+        <div data-input-group>
+          <label for="title">캐러셀 명칭</label>
+          <input type="text" id="title" name="title" value="스마트 캐러셀" required />
+        </div>
+
+        <div data-input-group>
+          <label for="mode">스크롤 방향</label>
+          <div data-select-wrapper>
+            <select id="mode" name="mode">
+              <option value="horizontal" selected>가로 방향 (Horizontal)</option>
+              <option value="vertical">세로 방향 (Vertical)</option>
+            </select>
+          </div>
+        </div>
+
+        <div data-input-group>
+          <label for="upload-photos">이미지 선택</label>
+          <div data-file-drop-zone id="drop-zone">
+            <input
+              type="file"
+              id="upload-photos"
+              name="photos"
+              data-file-upload-input
+              multiple accept="image/*"
+            />
+            <div data-drop-zone-content>
+              <span data-icon>📁</span>
+              <p>파일을 이 위로 드래그하거나 클릭하여 선택하세요</p>
+            </div>
+          </div>
+          <div data-preview-grid></div>
+        </div>
+
+        <button type="submit" data-action="submit">컴포넌트 생성</button>
+      </form>
+
+      <div data-rendered-content></div>
+    </main>
+  </body>
+
+</html>

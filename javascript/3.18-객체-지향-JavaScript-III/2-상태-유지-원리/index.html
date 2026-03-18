@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트 야간 학습</title>
+    <link rel="icon" type="image/svg+xml" href="/javascript.svg" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
+
+  <body>
+
+    <main data-main-container>
+      <h1 data-title>영웅 육성 시뮬레이터</h1>
+      <p data-description>클로저 주머니 안에 든 경험치는 오직 '전투'를 통해서만 오릅니다.</p>
+
+      <section data-game-shell data-state="setup">
+        <form data-create-form>
+          <div data-field-group>
+            <label data-label for="hero-name">영웅의 이름</label>
+            <input data-input type="text" id="hero-name" name="heroName" value="야무9" required />
+          </div>
+          <button type="submit" data-submit-button>
+            <span data-button-text>모험 시작하기</span>
+          </button>
+        </form>
+
+        <div data-game-container>
+          <div data-status-board>
+            <div data-profile>
+              <h2 data-hero-display-name>용사</h2>
+              <span data-level-badge>Lv. 1</span>
+            </div>
+            
+            <div data-exp-bar-container>
+              <div data-exp-fill style="width: 0%"></div>
+            </div>
+            <p data-exp-text>EXP: 0 / 100</p>
+            
+            <p data-system-log>모험이 시작되었습니다!</p>
+          </div>
+
+          <div data-action-panel>
+            <button type="button" data-action="battle">⚔️ 몬스터 사냥 (EXP +40)</button>
+            <button type="button" data-action="cheat" data-type="warning">🛠️ 치트 엔진 시도 (Level = 99)</button>
+          </div>
+
+          <button type="button" data-reset-button>캐릭터 삭제 및 초기화</button>
+        </div>
+      </section>
+    </main>
+
+  </body>
+
+</html>

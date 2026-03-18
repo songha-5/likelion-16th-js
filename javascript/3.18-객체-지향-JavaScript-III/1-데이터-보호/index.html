@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트 야간 학습</title>
+    <link rel="icon" type="image/svg+xml" href="/javascript.svg" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
+
+  <body>
+
+    <main data-main-container>
+      <h1 data-title>시크릿 자산 관리 시스템</h1>
+      <p data-description>클로저를 통해 외부 접근이 차단된 은닉 데이터를 관리합니다.</p>
+
+      <section data-vault-shell data-state="locked">
+        <form data-init-form>
+          <div data-field-group>
+            <label data-label for="initial-asset">초기 자산 설정 (은닉화 대상)</label>
+            <input data-input type="number" id="initial-asset" name="asset" value="1000" required />
+          </div>
+          <button type="submit" data-submit-button>
+            <span data-button-text>보안 금고 생성 (Capsule)</span>
+          </button>
+        </form>
+
+        <div data-vault-container>
+          <div data-display-panel>
+            <h2 data-vault-title>🔒 보안 금고 내부</h2>
+            <div data-asset-display>
+              <span data-label>현재 잔고:</span>
+              <strong data-asset-value>0</strong>
+            </div>
+            <p data-log-text>시스템이 준비되었습니다.</p>
+          </div>
+
+          <div data-control-panel>
+            <div data-button-group>
+              <button type="button" data-action-button="deposit">입금 (+100)</button>
+              <button type="button" data-action-button="withdraw">출금 (-50)</button>
+            </div>
+            <button type="button" data-action-button="hack" data-type="danger">외부 강제 수정 시도 (Direct Access)</button>
+          </div>
+
+          <button type="button" data-reset-button>금고 파기 및 재설정</button>
+        </div>
+      </section>
+    </main>
+
+  </body>
+
+</html>
