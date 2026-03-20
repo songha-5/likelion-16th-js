@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트 야간 학습</title>
+    <link rel="icon" type="image/svg+xml" href="/javascript.svg" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
+
+  <body data-theme="light">
+
+    <main data-main-container>
+      <h1 data-title>Delivery System Lab</h1>
+      <p data-description>배달 상태와 결제 전략에 따른 아키텍처의 변화를 체험하세요.</p>
+
+      <section data-app-shell>
+        <div data-card="status">
+          <h2 data-card-title>실시간 배달 상태</h2>
+          <div data-status-display data-state="ready">결제 대기 중</div>
+          <div data-control-group>
+            <button type="button" data-action="cooking">조리 시작</button>
+            <button type="button" data-action="delivery">배달 출발</button>
+          </div>
+        </div>
+
+        <div data-card="payment">
+          <h2 data-card-title>결제 시스템</h2>
+          <div data-price-display>기본 금액: 20,000원</div>
+          <div data-strategy-group>
+            <button type="button" data-strategy="fixed">천원 할인 전략</button>
+            <button type="button" data-strategy="percent">10% 할인 전략</button>
+          </div>
+          <button type="button" data-decorator="gift">🎁 선물 포장 추가 (+3,000원)</button>
+        </div>
+      </section>
+
+      <footer data-system-log>
+        <h3 data-log-title>실시간 아키텍처 로그</h3>
+        <ul data-log-list></ul>
+      </footer>
+
+      <button type="button" data-reset-button>시스템 리셋</button>
+    </main>
+
+  </body>
+
+</html>

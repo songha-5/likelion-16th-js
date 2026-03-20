@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "type": "module",
+  "name": "learing-js",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "bunx --bun vite --port 3000",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^8.0.1"
+  }
+}

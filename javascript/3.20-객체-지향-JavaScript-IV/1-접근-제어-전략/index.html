@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트 야간 학습</title>
+    <link rel="icon" type="image/svg+xml" href="/javascript.svg" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
+
+  <body>
+
+    <main data-main-container>
+      <h1 data-title>헬스 커넥트 프로필</h1>
+      <p data-description>Getter와 Setter를 사용하여 데이터의 무결성을 유지하세요.</p>
+
+      <div data-profile-shell data-state="form">
+        <form data-profile-form>
+          <div data-field-group>
+            <label data-label for="user-name">이름 (2자 이상)</label>
+            <input data-input type="text" id="user-name" name="name" value="정수인" required />
+          </div>
+
+          <div data-field-group>
+            <label data-label for="user-weight">현재 몸무게 (kg)</label>
+            <input data-input type="number" id="user-weight" name="weight" value="53" step="0.1" required />
+          </div>
+
+          <div data-error-feedback hidden></div>
+
+          <button type="submit" data-submit-button>
+            <span data-button-text>프로필 업데이트</span>
+          </button>
+        </form>
+
+        <div data-dashboard-container>
+          <div data-display-card>
+            <h3 data-card-title>실시간 건강 요약</h3>
+            <div data-stats-grid>
+              <div data-stat-item>
+                <span data-stat-label>사용자</span>
+                <strong data-view-name>-</strong>
+              </div>
+              <div data-stat-item>
+                <span data-stat-label>포맷팅된 체중</span>
+                <strong data-view-weight>-</strong>
+              </div>
+            </div>
+            <p data-info-text>※ 데이터는 Setter를 통해 검증된 후 저장됩니다.</p>
+          </div>
+          <button type="button" data-reset-button>정보 다시 수정하기</button>
+        </div>
+      </div>
+    </main>
+
+  </body>
+
+</html>

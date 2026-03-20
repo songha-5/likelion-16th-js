@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트 야간 학습</title>
+    <link rel="icon" type="image/svg+xml" href="/javascript.svg" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
+
+  <body data-theme="light">
+
+    <div data-app-container>
+      <header data-app-header>
+        <div data-brand-zone>
+          <h1 data-main-title>스마트 홈 코어 제어판</h1>
+          <div data-status-badge role="status" lang="en">ONLINE</div>
+        </div>
+
+        <div data-theme-control-container>
+          <button type="button" data-theme-btn aria-label="테마 전환" data-tooltip="모드 전환 D">
+            <svg data-theme-icon viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41M12 7a5 5 0 100 10 5 5 0 000-10z" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <div data-main-grid>
+        <aside data-panel="config">
+          <h2 data-panel-title>시스템 구성 및 설정</h2>
+          <form data-iot-form id="iot-form" novalidate>
+            <div data-form-group>
+              <label data-field-label>기기 유형 선택 (Factory)</label>
+              <div data-custom-select-container>
+                <select name="deviceType" data-native-select id="device-select" required aria-hidden="true" tabindex="-1">
+                  <option value="">기기를 선택해 주세요</option>
+                  <option value="light">💡 지능형 광원 시스템</option>
+                  <option value="aircon">❄️ 대기 정화 에어컨</option>
+                </select>
+                <button type="button" data-select-trigger role="combobox" aria-haspopup="listbox" aria-expanded="false" tabindex="0">
+                  기기를 선택해 주세요
+                </button>
+                <ul data-select-options role="listbox">
+                  <li data-option="light" role="option" tabindex="0">💡 지능형 광원 시스템</li>
+                  <li data-option="aircon" role="option" tabindex="0">❄️ 대기 정화 에어컨</li>
+                </ul>
+              </div>
+            </div>
+
+            <fieldset data-form-group>
+              <legend data-field-label>운영 알고리즘 모드 (Strategy)</legend>
+              <div data-radio-group>
+                <label data-radio-item>
+                  <input type="radio" name="mode" value="eco" checked />
+                  <span data-radio-mark></span>
+                  저전력 에코 모드
+                </label>
+                <label data-radio-item>
+                  <input type="radio" name="mode" value="power" />
+                  <span data-radio-mark></span>
+                  고성능 파워 모드
+                </label>
+              </div>
+            </fieldset>
+
+            <div data-form-group>
+              <label data-field-label>부가 모듈 확장 (Decorator)</label>
+              <label data-checkbox-item>
+                <input type="checkbox" name="useVoice" />
+                <span data-checkbox-mark></span>
+                AI 음성 제어 인터페이스 활성화
+              </label>
+            </div>
+
+            <button type="submit" data-btn-submit>시스템 가동 시작</button>
+          </form>
+        </aside>
+
+        <main data-panel="monitor">
+          <div data-stats-grid>
+            <div data-stat-card>
+              <span data-stat-label>중앙 제어 허브 (Singleton)</span>
+              <strong data-view-hub>대기 중</strong>
+            </div>
+            <div data-stat-card>
+              <span data-stat-label>통신 프로토콜 (Adapter)</span>
+              <strong data-view-adapter>미연결</strong>
+            </div>
+          </div>
+
+          <div data-active-display aria-live="polite">
+            <div data-display-header>실시간 모니터링</div>
+            <div data-display-content>
+              <h3 data-view-device-info>시스템을 초기화하세요</h3>
+              <p data-view-action-log>설정된 패턴 로직에 따라 장치가 생성됩니다</p>
+            </div>
+          </div>
+
+          <div data-terminal>
+            <div data-terminal-header>시스템 로그 (Observer)</div>
+            <div data-observer-list role="log"></div>
+          </div>
+        </main>
+      </div>
+      <button type="button" data-btn-shutdown>시스템 전체 셧다운</button>
+    </div>
+
+  </body>
+
+</html>
