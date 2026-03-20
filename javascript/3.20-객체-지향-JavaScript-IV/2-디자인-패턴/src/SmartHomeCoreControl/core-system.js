@@ -18,7 +18,8 @@ export const CentralHub = (() => {
   return {
     get: () => {
       // TODO 1: 여러 번 요청해도 singleton만 반환하도록 설정
-      
+      if(!instance) instance = singleton
+      return instance
     }
   }
 })()
@@ -34,13 +35,24 @@ export const CentralHub = (() => {
  */
 export const createLogger = () => {
   // TODO 2-1: 구독자 명단 subscribers 생성 
-  
+  const subscribers = new Set()
 
   return {
     // TODO 2-2: 구독자 명단에 추가할 subscribe 메서드 작성
-    
-    // TODO 2-3: 등록된 모든 구독자에게 동시 방송할 log 메서드 작성
+    subscribe(subscriber) {
+      subscribers.add(subscriber)
+    },
 
+    // 삭제
+    unsubscribe(subscriber) { 
+      subscribers.delete(subscriber)
+    },
+
+    // TODO 2-3: 등록된 모든 구독자에게 동시 방송할 log 메서드 작성
+    log(message) {
+      const formattedMassage = `[INFO] ${message}`
+      subscribers.forEach((subscriber) => subscriber(formattedMassage))
+    }
   }
 }
 
@@ -68,15 +80,15 @@ export const DeviceFactory = {
     // 장치별 특화 데이터 (모델 카탈로그)
     const models = {
       light: { name: '지능형 광원 시스템', emoji: '💡' },
-      aircon: { name: '대기 정화 에어컨', emoji: '❄️' }
+      aircon: { name: '대기 정화 에어컨', emoji: '❄️' },
     }
 
     const modelType = models[type]
 
     // TODO 3-1: 주문받은 타입이 없다면 null 반환
-    
+    if (!modelType) return null
     // TODO 3-2: 주문받은 타입이 있다면 모델 타입에 따라 뼈대와 데이터를 합쳐 완제품 출고
-
+    return { ...base, ...modelType }
   }
 }
 
@@ -92,10 +104,10 @@ export const DeviceFactory = {
 export const modeStrategies = {
   // TODO 4-1: 에코(eco) 모드인 경우, name을 전달 받아 다음 메시지 출력 (함수)
   //           `${name}이(가) 저전력 에코 알고리즘으로 가동됩니다.`
-  
+  eco: (name) => `${name}이(가) 저전력 에코 알고리즘으로 가동됩니다.`,
   // TODO 4-2: 파워(power) 모드인 경우, name을 전달 받아 다음 메시지 출력 (함수)
   //           `${name}이(가) 최대 출력 파워 모드로 가동됩니다.`
-  
+  power: (name) => `${name}이(가) 최대 출력 파워모드로 가동됩니다.`
 }
 
 /**
@@ -111,7 +123,7 @@ export const ProtocolAdapter = (raw) => {
   // TODO 5: raw 데이터를 확인해 어댑터 설정
   // raw가 신형(modern)인 경우, 'Matter Standard v1' 출력(변환된 규격)
   // raw가 구형(legacy)인 경우, 'Legacy Bridge' 출력(변환된 규격)
-  
+  return raw = 'modern' ? 'Matter Standard v1' : 'Legacy Bridge'
 }
 
 /**
@@ -129,5 +141,5 @@ export const withVoiceControl = (device) => {
   }
   
   // TODO 6: 전달받은 기기(device)에 AI 음성 제어 모듈을 활성화해서 내보냄
-  
+  return {...device, ...decorator}
 }
